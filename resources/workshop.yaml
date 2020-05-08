@@ -1,20 +1,28 @@
 apiVersion: training.eduk8s.io/v1alpha2
 kind: Workshop
 metadata:
-  name: lab-markdown-sample
+  name: lab-container-training
 spec:
-  title: Markdown Sample
-  description: A sample workshop using Markdown
+  title: Kubernetes Fundamentals
+  description: Workshop on getting started with Kubernetes
+  url: https://github.com/paulczar/lab-container-training
   vendor: eduk8s.io
-  difficulty: beginner
-  duration: 15m
-  url: https://github.com/eduk8s/lab-markdown-sample
+  authors:
+    - Paul Czarkowski
+    - Jerome Petazzio
+  difficulty: intermediate
+  duration: 1h
+  tags:
+    - kubernetes
   content:
-    #image: quay.io/eduk8s/lab-markdown-sample:master
-    files: github.com/eduk8s/lab-markdown-sample
+    image: paulczar/lab-container-training:master
+  # logo:
   session:
-    budget: small
+    budget: medium
     applications:
+      terminal:
+        enabled: true
+        layout: split
       console:
         enabled: true
       editor:

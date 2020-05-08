@@ -1,0 +1,11 @@
+apiVersion: training.eduk8s.io/v1alpha1
+kind: WorkshopEnvironment
+metadata:
+  name: lab-container-training
+spec:
+  workshop:
+    name: lab-container-training
+  request:
+    token: lab-container-training
+  session:
+    username: eduk8s

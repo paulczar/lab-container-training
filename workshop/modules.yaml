@@ -1,12 +1,234 @@
 modules:
-    workshop-overview:
-        name: Workshop Overview
-        exit_sign: Setup Environment
-    setup-environment:
-        name: Setup Environment
-        exit_sign: Start Workshop
-    exercises/01-sample-content:
-        name: Sample Content
-    workshop-summary:
-        name: Workshop Summary
-        exit_sign: Finish Workshop
+  workshop-overview:
+    name: Workshop Overview
+    exit_sign: Setup Environment
+  setup-environment:
+    name: Setup Environment
+    exit_sign: Start Workshop
+  workshop-summary:
+    name: Workshop Summary
+    exit_sign: Finish Workshop
+  container-training/README:
+    name: "README"
+  container-training/logistics:
+    name: "logistics"
+  container-training/logistics-bridget:
+    name: "logistics-bridget"
+  container-training/k8s/localkubeconfig:
+    name: "localkubeconfig"
+  container-training/k8s/owners-and-dependents:
+    name: "owners-and-dependents"
+  container-training/k8s/kubectlexpose:
+    name: "kubectlexpose"
+  container-training/k8s/operators:
+    name: "operators"
+  container-training/k8s/declarative:
+    name: "declarative"
+  container-training/k8s/build-with-kaniko:
+    name: "build-with-kaniko"
+  container-training/k8s/logs-cli:
+    name: "logs-cli"
+  container-training/k8s/links:
+    name: "links"
+  container-training/k8s/volumes:
+    name: "volumes"
+  container-training/k8s/helm-chart-format:
+    name: "helm-chart-format"
+  container-training/k8s/build-with-docker:
+    name: "build-with-docker"
+  container-training/k8s/resource-limits:
+    name: "resource-limits"
+  container-training/k8s/batch-jobs:
+    name: "batch-jobs"
+  container-training/k8s/multinode:
+    name: "multinode"
+  container-training/k8s/podsecuritypolicy:
+    name: "podsecuritypolicy"
+  container-training/k8s/statefulsets:
+    name: "statefulsets"
+  container-training/k8s/kubectlscale:
+    name: "kubectlscale"
+  container-training/k8s/prometheus:
+    name: "prometheus"
+  container-training/k8s/setup-selfhosted:
+    name: "setup-selfhosted"
+  container-training/k8s/deploymentslideshow:
+    name: "deploymentslideshow"
+  container-training/k8s/cloud-controller-manager:
+    name: "cloud-controller-manager"
+  container-training/k8s/labels-annotations:
+    name: "labels-annotations"
+  container-training/k8s/buildshiprun-selfhosted:
+    name: "buildshiprun-selfhosted"
+  container-training/k8s/cluster-upgrade:
+    name: "cluster-upgrade"
+  container-training/k8s/extending-api:
+    name: "extending-api"
+  container-training/k8s/bootstrap:
+    name: "bootstrap"
+  container-training/k8s/horizontal-pod-autoscaler:
+    name: "horizontal-pod-autoscaler"
+  container-training/k8s/exercise-yaml:
+    name: "exercise-yaml"
+  container-training/k8s/kubercoins:
+    name: "kubercoins"
+  container-training/k8s/netpol:
+    name: "netpol"
+  container-training/k8s/namespaces:
+    name: "namespaces"
+  container-training/k8s/local-persistent-volumes:
+    name: "local-persistent-volumes"
+  container-training/k8s/scalingdockercoins:
+    name: "scalingdockercoins"
+  container-training/k8s/exercise-wordsmith:
+    name: "exercise-wordsmith"
+  container-training/k8s/prereqs-admin:
+    name: "prereqs-admin"
+  container-training/k8s/exercise-helm:
+    name: "exercise-helm"
+  container-training/k8s/helm-create-better-chart:
+    name: "helm-create-better-chart"
+  container-training/k8s/intro:
+    name: "intro"
+  container-training/k8s/healthchecks-more:
+    name: "healthchecks-more"
+  container-training/k8s/metrics-server:
+    name: "metrics-server"
+  container-training/k8s/cluster-sizing:
+    name: "cluster-sizing"
+  container-training/k8s/kubectlget:
+    name: "kubectlget"
+  container-training/k8s/helm-secrets:
+    name: "helm-secrets"
+  container-training/k8s/kubectlproxy:
+    name: "kubectlproxy"
+  container-training/k8s/exercise-configmap:
+    name: "exercise-configmap"
+  container-training/k8s/control-plane-auth:
+    name: "control-plane-auth"
+  container-training/k8s/gitworkflows:
+    name: "gitworkflows"
+  container-training/k8s/healthchecks:
+    name: "healthchecks"
+  container-training/k8s/configuration:
+    name: "configuration"
+  container-training/k8s/ingress:
+    name: "ingress"
+  container-training/k8s/kubectl-run:
+    name: "kubectl-run"
+  container-training/k8s/links-bridget:
+    name: "links-bridget"
+  container-training/k8s/concepts-k8s:
+    name: "concepts-k8s"
+  container-training/k8s/apilb:
+    name: "apilb"
+  container-training/k8s/openid-connect:
+    name: "openid-connect"
+  container-training/k8s/logs-centralized:
+    name: "logs-centralized"
+  container-training/k8s/interco:
+    name: "interco"
+  container-training/k8s/operators-design:
+    name: "operators-design"
+  container-training/k8s/shippingimages:
+    name: "shippingimages"
+  container-training/k8s/authn-authz:
+    name: "authn-authz"
+  container-training/k8s/setup-k8s:
+    name: "setup-k8s"
+  container-training/k8s/kustomize:
+    name: "kustomize"
+  container-training/k8s/yamldeploy:
+    name: "yamldeploy"
+  container-training/k8s/record:
+    name: "record"
+  container-training/k8s/rollout:
+    name: "rollout"
+  container-training/k8s/staticpods:
+    name: "staticpods"
+  container-training/k8s/helm-create-basic-chart:
+    name: "helm-create-basic-chart"
+  container-training/k8s/setup-managed:
+    name: "setup-managed"
+  container-training/k8s/buildshiprun-dockerhub:
+    name: "buildshiprun-dockerhub"
+  container-training/k8s/lastwords:
+    name: "lastwords"
+  container-training/k8s/versions-k8s:
+    name: "versions-k8s"
+  container-training/k8s/dmuc:
+    name: "dmuc"
+  container-training/k8s/dryrun:
+    name: "dryrun"
+  container-training/k8s/helm-intro:
+    name: "helm-intro"
+  container-training/k8s/accessinternal:
+    name: "accessinternal"
+  container-training/k8s/kubectl-logs:
+    name: "kubectl-logs"
+  container-training/k8s/ourapponkube:
+    name: "ourapponkube"
+  container-training/k8s/kubenet:
+    name: "kubenet"
+  container-training/k8s/csr-api:
+    name: "csr-api"
+  container-training/k8s/architecture:
+    name: "architecture"
+  container-training/k8s/whatsnext:
+    name: "whatsnext"
+  container-training/k8s/portworx:
+    name: "portworx"
+  container-training/k8s/cni:
+    name: "cni"
+  container-training/k8s/daemonset:
+    name: "daemonset"
+  container-training/k8s/dashboard:
+    name: "dashboard"
+  container-training/k8s/cluster-backup:
+    name: "cluster-backup"
+  container-training/logistics-online:
+    name: "logistics-online"
+  container-training/namespaced/connecting:
+    name: "connecting"
+  container-training/namespaced/sampleapp:
+    name: "sampleapp"
+  container-training/namespaced/handson:
+    name: "handson"
+  container-training/namespaced/ourapponkube:
+    name: "ourapponkube"
+  container-training/logistics-template:
+    name: "logistics-template"
+  container-training/shared/declarative:
+    name: "declarative"
+  container-training/shared/connecting:
+    name: "connecting"
+  container-training/shared/webssh:
+    name: "webssh"
+  container-training/shared/composescale:
+    name: "composescale"
+  container-training/shared/pwd:
+    name: "pwd"
+  container-training/shared/title:
+    name: "title"
+  container-training/shared/composedown:
+    name: "composedown"
+  container-training/shared/prereqs:
+    name: "prereqs"
+  container-training/shared/sampleapp:
+    name: "sampleapp"
+  container-training/shared/thankyou:
+    name: "thankyou"
+  container-training/shared/handson:
+    name: "handson"
+  container-training/shared/hastyconclusions:
+    name: "hastyconclusions"
+  container-training/shared/chat-room-zoom-meeting:
+    name: "chat-room-zoom-meeting"
+  container-training/shared/chat-room-im:
+    name: "chat-room-im"
+  container-training/shared/chat-room-zoom-webinar:
+    name: "chat-room-zoom-webinar"
+  container-training/shared/toc:
+    name: "toc"
+  container-training/shared/about-slides:
+    name: "about-slides"

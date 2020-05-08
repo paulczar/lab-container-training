@@ -1,11 +1,12 @@
 apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
-  name: lab-markdown-sample
+  name: lab-container-training
 spec:
   portal:
-    capacity: 1
-    expires: 60m
+    capacity: 3
+    reserved: 1
+    expires: 1h
     orphaned: 5m
   workshops:
-  - name: lab-markdown-sample
+  - name: lab-container-training
