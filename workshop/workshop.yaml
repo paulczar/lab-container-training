@@ -3,93 +3,42 @@ name: Container Training
 modules:
   activate:
     - workshop-overview
+    - logistics
     - setup-environment
-    - container-training/shared/title
-    - container-training/logistics
-    - container-training/k8s/intro
-    - container-training/shared/about-slides
-    - container-training/shared/chat-room-im
-    #- container-training/shared/chat-room-zoom
-    - container-training/shared/toc
-    - container-training/shared/prereqs
-    - container-training/namespaced/handson
-    #- container-training/shared/webssh
-    - container-training/namespaced/connecting
-    #- container-training/k8s/versions-k8s
-    - container-training/namespaced/sampleapp
-    #- container-training/shared/composescale
-    #- container-training/shared/hastyconclusions
-    - container-training/shared/composedown
-    - container-training/k8s/concepts-k8s
-    - container-training/k8s/kubectlget
-    - container-training/k8s/kubectl-run
-    - container-training/k8s/batch-jobs
-    - container-training/k8s/labels-annotations
-    - container-training/k8s/kubectl-logs
-    - container-training/k8s/logs-cli
-    - container-training/shared/declarative
-    - container-training/k8s/declarative
-    - container-training/k8s/deploymentslideshow
-    - container-training/k8s/kubenet
-    - container-training/k8s/kubectlexpose
-    - container-training/k8s/shippingimages
-    #- container-training/k8s/buildshiprun-selfhosted
-    - container-training/k8s/buildshiprun-dockerhub
-    - container-training/namespaced/ourapponkube
-    #- container-training/k8s/exercise-wordsmith
-    - container-training/k8s/yamldeploy
-    # - container-training/k8s/setup-k8s
-    #- container-training/k8s/dashboard
-    #- container-training/k8s/kubectlscale
-    - container-training/k8s/scalingdockercoins
-    - container-training/shared/hastyconclusions
-    - container-training/k8s/daemonset
-    #- container-training/k8s/dryrun
-    #- container-training/k8s/exercise-yaml
-    #- container-training/k8s/localkubeconfig
-    #- container-training/k8s/accessinternal
-    #- container-training/k8s/kubectlproxy
-    - container-training/k8s/rollout
-    #- container-training/k8s/healthchecks
-    #- container-training/k8s/healthchecks-more
-    #- container-training/k8s/record
-    # TODO - container-training/Update namespaces section to explain, but not do excercises
-    # as user will not have permissions to create ns.
-    # - container-training/k8s/namespaces
-    # TODO - container-training/Update to show nginx or generic Ingress vs Traefik specific.
-    # - container-training/k8s/ingress
-    #- container-training/k8s/kustomize
-    # - container-training/k8s/helm-intro
-    # - container-training/k8s/helm-chart-format
-    # - container-training/k8s/helm-create-basic-chart
-    # - container-training/k8s/helm-create-better-chart
-    # - container-training/k8s/helm-secrets
-    # - container-training/k8s/exercise-helm
-    # - container-training/k8s/create-chart
-    # - container-training/k8s/create-more-charts
-    #- container-training/k8s/netpol
-    #- container-training/k8s/authn-authz
-    #- container-training/k8s/csr-api
-    #- container-training/k8s/openid-connect
-    #- container-training/k8s/podsecuritypolicy
-    - container-training/k8s/volumes
-    #- container-training/k8s/exercise-configmap
-    #- container-training/k8s/build-with-docker
-    #- container-training/k8s/build-with-kaniko
-    - container-training/k8s/configuration
-    #- container-training/k8s/logs-centralized
-    #- container-training/k8s/prometheus
-    #- container-training/k8s/statefulsets
-    #- container-training/k8s/local-persistent-volumes
-    #- container-training/k8s/portworx
-    #- container-training/k8s/extending-api
-    #- container-training/k8s/operators
-    #- container-training/k8s/operators-design
-    #- container-training/k8s/staticpods
-    #- container-training/k8s/owners-and-dependents
-    #- container-training/k8s/gitworkflows
-    - container-training/k8s/whatsnext
-    - container-training/k8s/lastwords
-    - container-training/k8s/links
-    - container-training/shared/thankyou
     - workshop-summary
+    # - shared/title
+    # - k8s/intro
+    # - shared/about-slides
+    # - shared/chat-room-im
+    # - shared/toc
+    # - shared/prereqs
+    # - namespaced/handson
+    # - namespaced/connecting
+    # - namespaced/sampleapp
+    # - shared/composedown
+    # - k8s/concepts-k8s
+    # - k8s/kubectlget
+    # - k8s/kubectl-run
+    # - k8s/batch-jobs
+    # - k8s/labels-annotations
+    # - k8s/kubectl-logs
+    # - k8s/logs-cli
+    # - shared/declarative
+    # - k8s/declarative
+    # - k8s/deploymentslideshow
+    # - k8s/kubenet
+    # - k8s/kubectlexpose
+    # - k8s/shippingimages
+    # - k8s/buildshiprun-dockerhub
+    # - namespaced/ourapponkube
+    # - k8s/yamldeploy
+    # - k8s/scalingdockercoins
+    # - shared/hastyconclusions
+    # - k8s/daemonset
+    # - k8s/rollout
+    # - k8s/volumes
+    # - k8s/configuration
+    # - k8s/whatsnext
+    # - k8s/lastwords
+    # - k8s/links
+    # - shared/thankyou

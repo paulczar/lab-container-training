@@ -5,8 +5,8 @@ metadata:
 spec:
   portal:
     capacity: 3
-    reserved: 1
-    expires: 1h
+    # reserved: 1
+    expires: 8h
     orphaned: 5m
   workshops:
   - name: lab-container-training

@@ -1,13 +1,3 @@
-modules:
-  workshop-overview:
-    name: Workshop Overview
-    exit_sign: Setup Environment
-  setup-environment:
-    name: Setup Environment
-    exit_sign: Start Workshop
-  workshop-summary:
-    name: Workshop Summary
-    exit_sign: Finish Workshop
   shared/title:
     name: "shared/title"
   logistics:

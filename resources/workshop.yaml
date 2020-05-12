@@ -10,20 +10,53 @@ spec:
   authors:
     - Paul Czarkowski
     - Jerome Petazzio
-  difficulty: intermediate
-  duration: 1h
+  difficulty: beginner
+  duration: 8h
   tags:
     - kubernetes
   content:
-    image: paulczar/lab-container-training:master
+    files: github.com/paulczar/lab-container-training
   # logo:
   session:
     budget: medium
+    resources:
+      storage: 1Gi
     applications:
       terminal:
         enabled: true
         layout: split
       console:
         enabled: true
+        vendor: octant
       editor:
         enabled: true
+      docker:
+        enabled: true
+    objects:
+      - kind: ClusterRole
+        apiVersion: rbac.authorization.k8s.io/v1
+        metadata:
+          name: $(session_namespace)-workshop-extra
+        rules:
+        - apiGroups: ["", "extensions", "apps"]
+          resources: ["*"]
+          verbs: ["list"]
+        - apiGroups: [""]
+          resources: ["nodes"]
+          verbs: ["list","get"]
+        - apiGroups: ["rbac.authorization.k8s.io"]
+          resources: ["*"]
+          verbs: ["list"]
+      - kind: ClusterRoleBinding
+        apiVersion: rbac.authorization.k8s.io/v1
+        metadata:
+          name: workshop-extra
+          namespace: $(session_namespace)
+        subjects:
+        - kind: ServiceAccount
+          namespace: $(workshop_namespace)
+          name: $(service_account)
+        roleRef:
+          kind: ClusterRole
+          name: $(session_namespace)-workshop-extra
+          apiGroup: rbac.authorization.k8s.io
