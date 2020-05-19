@@ -1,84 +1,73 @@
 modules:
   workshop-overview:
     name: Workshop Overview
-    exit_sign: Setup Environment
-  setup-environment:
-    name: Setup Environment
     exit_sign: Start Workshop
+  setup-environment:
+    name: Verify Environment
   workshop-summary:
     name: Workshop Summary
     exit_sign: Finish Workshop
-  shared/title:
-    name: "shared/title"
   logistics:
     name: "logistics"
-  k8s/intro:
-    name: "k8s/intro"
-  shared/about-slides:
-    name: "shared/about-slides"
-  shared/chat-room-im:
-    name: "shared/chat-room-im"
-  shared/toc:
-    name: "shared/toc"
-  shared/prereqs:
-    name: "shared/prereqs"
-  namespaced/handson:
-    name: "namespaced/handson"
-  namespaced/connecting:
-    name: "namespaced/connecting"
-  namespaced/sampleapp:
-    name: "namespaced/sampleapp"
-  shared/composedown:
-    name: "shared/composedown"
-  k8s/concepts-k8s:
-    name: "k8s/concepts-k8s"
-  k8s/kubectlget:
-    name: "k8s/kubectlget"
-  k8s/kubectl-run:
-    name: "k8s/kubectl-run"
-  k8s/batch-jobs:
-    name: "k8s/batch-jobs"
-  k8s/labels-annotations:
-    name: "k8s/labels-annotations"
-  k8s/kubectl-logs:
-    name: "k8s/kubectl-logs"
-  k8s/logs-cli:
-    name: "k8s/logs-cli"
-  shared/declarative:
-    name: "shared/declarative"
-  k8s/declarative:
-    name: "k8s/declarative"
-  k8s/deploymentslideshow:
-    name: "k8s/deploymentslideshow"
-  k8s/kubenet:
-    name: "k8s/kubenet"
-  k8s/kubectlexpose:
-    name: "k8s/kubectlexpose"
-  k8s/shippingimages:
-    name: "k8s/shippingimages"
-  k8s/buildshiprun-dockerhub:
-    name: "k8s/buildshiprun-dockerhub"
-  namespaced/ourapponkube:
-    name: "namespaced/ourapponkube"
-  k8s/yamldeploy:
-    name: "k8s/yamldeploy"
-  k8s/scalingdockercoins:
-    name: "k8s/scalingdockercoins"
-  shared/hastyconclusions:
-    name: "shared/hastyconclusions"
-  k8s/daemonset:
-    name: "k8s/daemonset"
-  k8s/rollout:
-    name: "k8s/rollout"
-  k8s/volumes:
-    name: "k8s/volumes"
-  k8s/configuration:
-    name: "k8s/configuration"
-  k8s/whatsnext:
-    name: "k8s/whatsnext"
-  k8s/lastwords:
-    name: "k8s/lastwords"
-  k8s/links:
-    name: "k8s/links"
-  shared/thankyou:
-    name: "shared/thankyou"
+  kubectl/auth-can-i:
+    name: "Role Based Access Control"
+  kubectl/get-node:
+    name: "Tell me about my nodes"
+  kubectl/describe:
+    name: "kubectl describe"
+  kubectl/get-pods:
+    name: "Pods"
+  kubectl/get-services:
+    name: "Services"
+  pingpong/run:
+    name: "kubectl run pingpong"
+  pingpong/deployment:
+    name: "kubectl create deployment"
+  pingpong/logs:
+    name: "Viewing container output"
+  pingpong/scale:
+    name: "Scaling our application"
+  pingpong/resilience:
+    name: "Resilience"
+  jobs/intro:
+    name: "Executing batch jobs"
+  jobs/create:
+    name: "Creating a job"
+  jobs/cronjob:
+    name: "Creating a scheduled job"
+  labels/intro:
+    name: "Labels and annotations"
+  labels/deployment:
+    name: "Viewing labels and annotations"
+  labels/selectors:
+    name: "Selectors"
+  labels/setting:
+    name: "Setting labels and annotations"
+  labels/cleanup:
+    name: "Clean up web deployment"
+  logs/intro:
+    name: "Revisiting logs"
+  logs/multiple:
+    name: "Streaming logs of multiple pods"
+  logs/multiple-2:
+    name: "Streaming logs of multiple pods"
+  logs/shortcomings:
+    name: "Shortcomings of kubectl logs"
+  logs/stern:
+    name: "Using Stern"
+  deployment/cleanup:
+    name: "Clean up ping pong deployment"
+  services/intro:
+    name: "Services in a nutshell"
+  services/advantages:
+    name: "Advantages of services"
+  services/flavors:
+    name: "Many kinds and flavors of service"
+  services/create:
+    name: "Create and Expose a Deployment"
+  services/curl-clusterip:
+    name: "Testing our service"
+  services/endpoints:
+    name: "Services and endpoints"
+  services/dns:
+    name: "The DNS Zone"

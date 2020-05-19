@@ -1,6 +1,0 @@
-name: Container Training
-
-modules:
-  activate:
-    - workshop-overview
-    - setup-environment

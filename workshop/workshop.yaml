@@ -5,40 +5,38 @@ modules:
     - workshop-overview
     - logistics
     - setup-environment
+    - kubectl/auth-can-i
+    - kubectl/get-node
+    - kubectl/describe
+    - kubectl/get-pods
+    - kubectl/get-services
+    - pingpong/run
+    - pingpong/deployment
+    - pingpong/logs
+    - pingpong/scale
+    - pingpong/resilience
+    - jobs/intro
+    - jobs/create
+    - jobs/cronjob
+    - labels/intro
+    - labels/deployment
+    - labels/selector
+    - labels/setting
+    - labels/cleanup
+    - logs/intro
+    - logs/multiple
+    - logs/multiple2
+    - logs/shortcomings
+    - logs/stern
+    - pingpong/cleanup
+    - services/intro
+    - services/advantages
+    - services/flavors
+    - services/create
+    - services/curl-clusterip
+    - services/endpoints
+    - services/dns
+
+
+
     - workshop-summary
-    # - shared/title
-    # - k8s/intro
-    # - shared/about-slides
-    # - shared/chat-room-im
-    # - shared/toc
-    # - shared/prereqs
-    # - namespaced/handson
-    # - namespaced/connecting
-    # - namespaced/sampleapp
-    # - shared/composedown
-    # - k8s/concepts-k8s
-    # - k8s/kubectlget
-    # - k8s/kubectl-run
-    # - k8s/batch-jobs
-    # - k8s/labels-annotations
-    # - k8s/kubectl-logs
-    # - k8s/logs-cli
-    # - shared/declarative
-    # - k8s/declarative
-    # - k8s/deploymentslideshow
-    # - k8s/kubenet
-    # - k8s/kubectlexpose
-    # - k8s/shippingimages
-    # - k8s/buildshiprun-dockerhub
-    # - namespaced/ourapponkube
-    # - k8s/yamldeploy
-    # - k8s/scalingdockercoins
-    # - shared/hastyconclusions
-    # - k8s/daemonset
-    # - k8s/rollout
-    # - k8s/volumes
-    # - k8s/configuration
-    # - k8s/whatsnext
-    # - k8s/lastwords
-    # - k8s/links
-    # - shared/thankyou

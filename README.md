@@ -33,40 +33,14 @@ kubectl delete -k "github.com/eduk8s/eduk8s?ref=master"
 ```
 
 
-## Import slides into eduk8s
-
-not working real good, ignore
-
-
-## How to build a container.training workshop for eduk8s
-
-> Note: this is a quick and dirty POC
-
-Clone container training (gitignore should stop it being commited back up):
+## Developing
 
 ```bash
-git clone --single-branch --branch fullday-namespaced \
-    https://github.com/paulczar/container.training.git
+docker run -ti --rm -p 10080:10080 -v \
+  $(pwd):/home/eduk8s quay.io/eduk8s/workshop-dashboard:master
 ```
 
 ```bash
-/scripts/build_workshop.sh container.training/slides/kube-fullday-namespaced.yml
-```
-
-We're not processing the manifest variables into the workshop markdown so you'll want to run the following and modify yourself:
-
-```bash
-grep -r '@@' workshop/content
-```
-
-You can run some commands like this to speed it up:
-
-```bash
-find ./workshop/content -name '*.md' -exec sed -i 'sX@@GITREPO@@Xgithub.com/jpetazzo/container.trainingX' {} \;
-```
-
-The workshop can let the user auto-run commands that are surrounded by '```execute' ... so lets try and do that across our slides:
-
-```bash
-find ./workshop/content -name '*.md' -exec sed -i 's/```bash/```execute/' {} \;
+docker build -t paulczar/lab-container-training:master .
+docker push paulczar/lab-container-training:master
 ```

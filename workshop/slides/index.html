@@ -29,6 +29,17 @@ Deploying and Scaling Microservices<br/>with Kubernetes<br/>
 
 .debug[
 ```
+ M slides/k8s/kubectl-logs.md
+ M slides/k8s/kubectlexpose.md
+ M slides/k8s/kubectlget.md
+ M slides/k8s/labels-annotations.md
+ M slides/k8s/logs-cli.md
+ M slides/kube-fullday-namespaced.yml
+ M slides/markmaker.py
+ M slides/namespaced/connecting.md
+ M slides/namespaced/handson.md
+ M slides/namespaced/sampleapp.md
+?? slides/namespaced/kubectlget.md
 
 ```
 
@@ -43,7 +54,7 @@ class: title, in-person
 Deploying and Scaling Microservices<br/>with Kubernetes<br/><br/></br>
 
 .footnote[
-**Slides[:](https://www.youtube.com/watch?v=h16zyxiwDLY) http://container.training/**
+**Slides[:](https://www.youtube.com/watch?v=h16zyxiwDLY) https://k8s.camp/l2kube**
 ]
 
 <!--
@@ -65,8 +76,9 @@ Password: **Something**
 
 - Hello! We are:
 <ul>
-<li>👩🏻‍🏫 Ann O'Nymous <a href="https://twitter.com/annonypotomus">@annonypotomus</a>, Megacorp Inc
-<li>👨🏾‍🎓 Stu Dent <a href="https://twitter.com/stufromwakanda">@stufromwakanda</a>, University of Wakanda
+<li>👨🏾‍🎓 Paul Czarkowski <a href="https://twitter.com/pczarkowski">@pczarkowski</a>, VMware
+<li>👩🏻‍🏫 Tiffany Jernigan <a href="https://twitter.com/tiffanyfayj">@tiffanyfayj</a>, VMware
+<li>👨🏾‍🎓 Tyler Britten <a href="https://twitter.com/tybritten">@tybritten</a>, VMware
 </ul>
 
 
@@ -145,7 +157,7 @@ class: self-paced
 
 - We recommend that you open these slides in your browser:
 
-  http://container.training/
+  https://k8s.camp/l2kube
 
 - Use arrows to move to next/previous slide
 
@@ -168,7 +180,7 @@ class: self-paced
 
 - You can download the slides using that URL:
 
-  http://container.training/slides.zip
+  https://k8s.camp/l2kube/slides.zip
 
   (then open the file `kube-fullday-namespaced.yml.html`)
 
@@ -242,8 +254,6 @@ name: toc-module-1
 ## Module 1
 
 - [Pre-requirements](#toc-pre-requirements)
-
-- [Our sample application](#toc-our-sample-application)
 
 - [Kubernetes concepts](#toc-kubernetes-concepts)
 
@@ -336,7 +346,7 @@ class: title
 |
 [Back to table of contents](#toc-module-1)
 |
-[Next section](#toc-our-sample-application)
+[Next section](#toc-kubernetes-concepts)
 ]
 
 .debug[(automatically generated title slide)]
@@ -393,9 +403,9 @@ Misattributed to Benjamin Franklin
 
 - This is the stuff you're supposed to do!
 
-- Go to http://container.training/ to view these slides
+- Go to https://k8s.camp/l2kube to view these slides
 
-<!-- ```open http://container.training/``` -->
+<!-- ```open https://k8s.camp/l2kube``` -->
 
 ]
 
@@ -451,100 +461,17 @@ class: in-person
 
   - a web browser
 
-  - an SSH client
-
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/handson.md)]
----
-
-class: in-person
-
-## SSH clients
-
-_If needed_
-
-- On Linux, OS X, FreeBSD... you are probably all set
-
-- On Windows, get one of these:
-
-  - [putty](http://www.putty.org/)
-  - Microsoft [Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
-  - [Git BASH](https://git-for-windows.github.io/)
-  - [MobaXterm](http://mobaxterm.mobatek.net/)
-
-- On Android, [JuiceSSH](https://juicessh.com/)
-  ([Play Store](https://play.google.com/store/apps/details?id=com.sonelli.juicessh))
-  works pretty well
-
-- Nice-to-have: [Mosh](https://mosh.org/) instead of SSH, if your internet connection tends to lose packets
-
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/handson.md)]
----
-
-class: in-person, extra-details
-
-## What is this Mosh thing?
-
-*You don't have to use Mosh or even know about it to follow along.
-<br/>
-We're just telling you about it because some of us think it's cool!*
-
-- Mosh is "the mobile shell"
-
-- It is essentially SSH over UDP, with roaming features
-
-- It retransmits packets quickly, so it works great even on lossy connections
-
-  (Like hotel or conference WiFi)
-
-- It has intelligent local echo, so it works great even in high-latency connections
-
-  (Like hotel or conference WiFi)
-
-- It supports transparent roaming when your client IP address changes
-
-  (Like when you hop from hotel to conference WiFi)
-
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/handson.md)]
----
-
-class: in-person, extra-details
-
-## Using Mosh
-
-- To install it: `(apt|yum|brew) install mosh`
-
-- It has been pre-installed on the VMs that we are using
-
-- To connect to a remote machine: `mosh user@host`
-
-  (It is going to establish an SSH connection, then hand off to UDP)
-
-- It requires UDP ports to be open
-
-  (By default, it uses a UDP port between 60000 and 61000)
-
 .debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/handson.md)]
 ---
 class: in-person
 
 ## Connecting to our lab environment
 
-.exercise[
+Log into https://lab.demo.paulczar.wtf with your provided credentials.
 
-- Log into the provided URL with your provided credentials.
+This should bring up a workshop dashboard with a terminal, a link to these slides, and an editor.
 
-- Follow the instructions on the auth portal to set up a `kubeconfig` file.
-
-- Check that you can connect to the cluster with `kubectl cluster-info`:
-
-```bash
-$ kubectl cluster-info
-Kubernetes master is running at https://k8s.cluster1.xxxx:8443
-CoreDNS is running at https://k8s.cluster1.xxxx:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-```
-]
-
-If anything goes wrong — ask for help!
+If anything goes wrong, ask for help.
 
 .debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/connecting.md)]
 ---
@@ -645,429 +572,13 @@ class: pic
 
 ---
 
-name: toc-our-sample-application
-class: title
-
- Our sample application
-
-.nav[
-[Previous section](#toc-pre-requirements)
-|
-[Back to table of contents](#toc-module-1)
-|
-[Next section](#toc-kubernetes-concepts)
-]
-
-.debug[(automatically generated title slide)]
-
----
-# Our sample application
-
-- We will clone the GitHub repository into our workspace
-
-> _If you were provided a SSH host, SSH to that first._
-
-- The repository also contains scripts and tools that we will use through the workshop
-
-.exercise[
-
-<!--
-```bash
-cd ~
-if [ -d container.training ]; then
-  mv container.training container.training.$RANDOM
-fi
-```
--->
-
-- Clone the repository:
-  ```bash
-  git clone https://github.com/jpetazzo/container.training
-  ```
-
-]
-
-(You can also fork the repository on GitHub and clone your fork if you prefer that.)
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Downloading and running the application
-
-Let's start this before we look around, as downloading will take a little time...
-
-> _Only do this if you were provided a SSH host, or your instructor says there is enough bandwidth._
-
-.exercise[
-
-- Go to the `dockercoins` directory, in the cloned repo:
-  ```bash
-  cd ~/container.training/dockercoins
-  ```
-
-- Use Compose to build and run all containers:
-  ```bash
-  docker-compose up
-  ```
-
-<!--
-```longwait units of work done```
--->
-
-]
-
-Compose tells Docker to build all container images (pulling
-the corresponding base images), then starts all containers,
-and displays aggregated logs.
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## What's this application?
-
---
-
-- It is a DockerCoin miner! .emoji[💰🐳📦🚢]
-
---
-
-- No, you can't buy coffee with DockerCoins
-
---
-
-- How DockerCoins works:
-
-  - generate a few random bytes
-
-  - hash these bytes
-
-  - increment a counter (to keep track of speed)
-
-  - repeat forever!
-
---
-
-- DockerCoins is *not* a cryptocurrency
-
-  (the only common points are "randomness," "hashing," and "coins" in the name)
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## DockerCoins in the microservices era
-
-- DockerCoins is made of 5 services:
-
-  - `rng` = web service generating random bytes
-
-  - `hasher` = web service computing hash of POSTed data
-
-  - `worker` = background process calling `rng` and `hasher`
-
-  - `webui` = web interface to watch progress
-
-  - `redis` = data store (holds a counter updated by `worker`)
-
-- These 5 services are visible in the application's Compose file,
-  [docker-compose.yml](
-  https://github.com/jpetazzo/container.training/blob/master/dockercoins/docker-compose.yml)
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## How DockerCoins works
-
-- `worker` invokes web service `rng` to generate random bytes
-
-- `worker` invokes web service `hasher` to hash these bytes
-
-- `worker` does this in an infinite loop
-
-- every second, `worker` updates `redis` to indicate how many loops were done
-
-- `webui` queries `redis`, and computes and exposes "hashing speed" in our browser
-
-*(See diagram on next slide!)*
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: pic
-
-![Diagram showing the 5 containers of the applications](images/dockercoins-diagram.svg)
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Service discovery in container-land
-
-How does each service find out the address of the other ones?
-
---
-
-- We do not hard-code IP addresses in the code
-
-- We do not hard-code FQDNs in the code, either
-
-- We just connect to a service name, and container-magic does the rest
-
-  (And by container-magic, we mean "a crafty, dynamic, embedded DNS server")
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Example in `worker/worker.py`
-
-```python
-redis = Redis("`redis`")
-
-
-def get_random_bytes():
-    r = requests.get("http://`rng`/32")
-    return r.content
-
-
-def hash_bytes(data):
-    r = requests.post("http://`hasher`/",
-                      data=data,
-                      headers={"Content-Type": "application/octet-stream"})
-```
-
-(Full source code available [here](
-https://github.com/jpetazzo/container.training/blob/8279a3bce9398f7c1a53bdd95187c53eda4e6435/dockercoins/worker/worker.py#L17
-))
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## Links, naming, and service discovery
-
-- Containers can have network aliases (resolvable through DNS)
-
-- Compose file version 2+ makes each container reachable through its service name
-
-- Compose file version 1 required "links" sections to accomplish this
-
-- Network aliases are automatically namespaced
-
-  - you can have multiple apps declaring and using a service named `database`
-
-  - containers in the blue app will resolve `database` to the IP of the blue database
-
-  - containers in the green app will resolve `database` to the IP of the green database
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Show me the code!
-
-- You can check the GitHub repository with all the materials of this workshop:
-  <br/>https://github.com/jpetazzo/container.training
-
-- The application is in the [dockercoins](
-  https://github.com/jpetazzo/container.training/tree/master/dockercoins)
-  subdirectory
-
-- The Compose file ([docker-compose.yml](
-  https://github.com/jpetazzo/container.training/blob/master/dockercoins/docker-compose.yml))
-  lists all 5 services
-
-- `redis` is using an official image from the Docker Hub
-
-- `hasher`, `rng`, `worker`, `webui` are each built from a Dockerfile
-
-- Each service's Dockerfile and source code is in its own directory
-
-  (`hasher` is in the [hasher](https://github.com/jpetazzo/container.training/blob/master/dockercoins/hasher/) directory,
-  `rng` is in the [rng](https://github.com/jpetazzo/container.training/blob/master/dockercoins/rng/)
-  directory, etc.)
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## Compose file format version
-
-*This is relevant only if you have used Compose before 2016...*
-
-- Compose 1.6 introduced support for a new Compose file format (aka "v2")
-
-- Services are no longer at the top level, but under a `services` section
-
-- There has to be a `version` key at the top level, with value `"2"` (as a string, not an integer)
-
-- Containers are placed on a dedicated network, making links unnecessary
-
-- There are other minor differences, but upgrade is easy and straightforward
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Our application at work
-
-- On the left-hand side, the "rainbow strip" shows the container names
-
-- On the right-hand side, we see the output of our containers
-
-- We can see the `worker` service making requests to `rng` and `hasher`
-
-- For `rng` and `hasher`, we see HTTP access logs
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Connecting to the web UI
-
-- "Logs are exciting and fun!" (No-one, ever)
-
-- The `webui` container exposes a web dashboard; let's view it
-
-.exercise[
-
-- With a web browser, connect to `localhost` on port 8000
-
-- Remember: the `nodeX` aliases are valid only on the nodes themselves
-
-- In your browser, you need to enter the IP address of your node
-
-<!-- ```open http://localhost:8000``` -->
-
-]
-
-A drawing area should show up, and after a few seconds, a blue
-graph will appear.
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: self-paced, extra-details
-
-## If the graph doesn't load
-
-If you just see a `Page not found` error, it might be because your
-Docker Engine is running on a different machine. This can be the case if:
-
-- you are using the Docker Toolbox
-
-- you are using a VM (local or remote) created with Docker Machine
-
-- you are controlling a remote Docker Engine
-
-When you run DockerCoins in development mode, the web UI static files
-are mapped to the container using a volume. Alas, volumes can only
-work on a local environment, or when using Docker Desktop for Mac or Windows.
-
-How to fix this?
-
-Stop the app with `^C`, edit `dockercoins.yml`, comment out the `volumes` section, and try again.
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## Why does the speed seem irregular?
-
-- It *looks like* the speed is approximately 4 hashes/second
-
-- Or more precisely: 4 hashes/second, with regular dips down to zero
-
-- Why?
-
---
-
-class: extra-details
-
-- The app actually has a constant, steady speed: 3.33 hashes/second
-  <br/>
-  (which corresponds to 1 hash every 0.3 seconds, for *reasons*)
-
-- Yes, and?
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## The reason why this graph is *not awesome*
-
-- The worker doesn't update the counter after every loop, but up to once per second
-
-- The speed is computed by the browser, checking the counter about once per second
-
-- Between two consecutive updates, the counter will increase either by 4, or by 0
-
-- The perceived speed will therefore be 4 - 4 - 4 - 0 - 4 - 4 - 0 etc.
-
-- What can we conclude from this?
-
---
-
-class: extra-details
-
-- "I'm clearly incapable of writing good frontend code!" 😀 — Jérôme
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Stopping the application
-
-- If we interrupt Compose (with `^C`), it will politely ask the Docker Engine to stop the app
-
-- The Docker Engine will send a `TERM` signal to the containers
-
-- If the containers do not exit in a timely manner, the Engine sends a `KILL` signal
-
-.exercise[
-
-- Stop the application by hitting `^C`
-
-<!--
-```key ^C```
--->
-
-]
-
---
-
-Some containers exit immediately, others take longer.
-
-The containers that do not handle `SIGTERM` end up being killed after a 10s timeout. If we are very impatient, we can hit `^C` a second time!
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-## Clean up
-
-- Before moving on, let's remove those containers
-
-.exercise[
-
-- Tell Compose to remove everything:
-  ```bash
-  docker-compose down
-  ```
-
-]
-
-.debug[[shared/composedown.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/composedown.md)]
----
-
-class: pic
-
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
-
----
-
 name: toc-kubernetes-concepts
 class: title
 
  Kubernetes concepts
 
 .nav[
-[Previous section](#toc-our-sample-application)
+[Previous section](#toc-pre-requirements)
 |
 [Back to table of contents](#toc-module-1)
 |
@@ -1515,7 +1026,7 @@ Both diagrams used with permission.
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
 
 ---
 
@@ -1555,7 +1066,7 @@ class: title
 
 - `kubectl` can be pronounced "Cube C T L", "Cube cuttle", "Cube cuddle"...
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1578,7 +1089,7 @@ class: extra-details
 
   - to inspect and poke at things
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1601,7 +1112,7 @@ class: extra-details
 
 - The Kubernetes API is always the underlying access method
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## `kubectl get`
@@ -1624,7 +1135,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Obtaining machine-readable output
@@ -1646,7 +1157,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## (Ab)using `kubectl` and `jq`
@@ -1663,7 +1174,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1689,7 +1200,7 @@ class: extra-details
   kubectl explain node --recursive
   ```
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1708,7 +1219,7 @@ class: extra-details
 
   (they communicate with the API server and obtain the exact type definitions)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Type names
@@ -1727,7 +1238,7 @@ class: extra-details
 
   (because even a single `Endpoints` resource is actually a list of endpoints)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Viewing details
@@ -1746,7 +1257,7 @@ class: extra-details
 
 - For a comprehensive overview, we can use `kubectl describe` instead
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## `kubectl describe`
@@ -1775,7 +1286,7 @@ class: extra-details
 
 (We should notice a bunch of control plane pods.)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Listing running containers
@@ -1801,7 +1312,7 @@ class: extra-details
 
 *Where are the pods that we saw just a moment earlier?!?*
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Namespaces
@@ -1827,7 +1338,7 @@ class: extra-details
 
 `kubectl describe node node1`
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Accessing namespaces
@@ -1852,10 +1363,12 @@ class: extra-details
 
 *Here are our system pods!*
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## What are all these control plane pods?
+
+*Depending on your cluster setup, some of these pods may not be listed.*
 
 - `etcd` is our etcd server
 
@@ -1863,7 +1376,7 @@ class: extra-details
 
 - `kube-controller-manager` and `kube-scheduler` are other control plane components
 
-- `coredns` provides DNS-based service discovery ([replacing kube-dns as of 1.11](https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/))
+- `kube-dns` or `coredns` provides DNS-based service discovery ([coredns replaced kube-dns as of 1.11](https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/))
 
 - `kube-proxy` is the (per-node) component managing port mappings and such
 
@@ -1873,7 +1386,7 @@ class: extra-details
 
   (1 for most pods, but `weave` has 2, for instance)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Scoping another namespace
@@ -1890,7 +1403,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Namespaces and other `kubectl` commands
@@ -1909,116 +1422,13 @@ class: extra-details
 
   - `kubectl label` can add/remove/update labels across multiple namespaces
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
-
-## What about `kube-public`?
-
-> _Not all clusters have a `kube-public`, you can skip these steps if your cluster does not have this namespace._
-
-.exercise[
-
-- List the pods in the `kube-public` namespace:
-  ```bash
-  kubectl -n kube-public get pods
-  ```
-
-]
-
-Nothing!
-
-`kube-public` is created by kubeadm & [used for security bootstrapping](https://kubernetes.io/blog/2017/01/stronger-foundation-for-creating-and-managing-kubernetes-clusters).
-
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
----
-
-class: extra-details
-
-## Exploring `kube-public`
-
-> _Not all clusters have a `kube-public`, you can skip these steps if your cluster does not have this namespace._
-
-- The only interesting object in `kube-public` is a ConfigMap named `cluster-info`
-
-.exercise[
-
-- List ConfigMap objects:
-  ```bash
-  kubectl -n kube-public get configmaps
-  ```
-
-- Inspect `cluster-info`:
-  ```bash
-  kubectl -n kube-public get configmap cluster-info -o yaml
-  ```
-
-]
-
-Note the `selfLink` URI: `/api/v1/namespaces/kube-public/configmaps/cluster-info`
-
-We can use that!
-
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
----
-
-class: extra-details
-
-## Accessing `cluster-info`
-
-> _Not all clusters have a `kube-public`, you can skip these steps if your cluster does not have this namespace._
-
-- Earlier, when trying to access the API server, we got a `Forbidden` message
-
-- But `cluster-info` is readable by everyone (even without authentication)
-
-.exercise[
-
-- Retrieve `cluster-info`:
-  ```bash
-  curl -k https://10.96.0.1/api/v1/namespaces/kube-public/configmaps/cluster-info
-  ```
-
-]
-
-- We were able to access `cluster-info` (without auth)
-
-- It contains a `kubeconfig` file
-
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
----
-
-class: extra-details
-
-## Retrieving `kubeconfig`
-
-> _Not all clusters have a `kube-public`, you can skip these steps if your cluster does not have this namespace._
-
-- We can easily extract the `kubeconfig` file from this ConfigMap
-
-.exercise[
-
-- Display the content of `kubeconfig`:
-  ```bash
-    curl -sk https://10.96.0.1/api/v1/namespaces/kube-public/configmaps/cluster-info \
-         | jq -r .data.kubeconfig
-  ```
-
-]
-
-- This file holds the canonical address of the API server, and the public key of the CA
-
-- This file *does not* hold client keys or tokens
-
-- This is not sensitive information, but allows us to establish trust
-
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
----
-
-class: extra-details
-
 ## What about `kube-node-lease`?
+
 
 - Starting with Kubernetes 1.14, there is a `kube-node-lease` namespace
 
@@ -2035,7 +1445,7 @@ class: extra-details
 [KEP-0009]: https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/0009-node-heartbeat.md
 [node controller documentation]: https://kubernetes.io/docs/concepts/architecture/nodes/#node-controller
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Services
@@ -2058,7 +1468,7 @@ class: extra-details
 
 There is already one service on our cluster: the Kubernetes API itself.
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## ClusterIP services
@@ -2082,7 +1492,7 @@ There is already one service on our cluster: the Kubernetes API itself.
 
 The command above should either time out, or show an authentication error. Why?
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Time out
@@ -2097,7 +1507,7 @@ The command above should either time out, or show an authentication error. Why?
 
 - To try the connection from within the cluster, we can use [shpod](https://github.com/jpetazzo/shpod)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Authentication error
@@ -2121,7 +1531,7 @@ $ curl -k https://10.96.0.1
 }
 ```
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## Explanations
@@ -2140,7 +1550,7 @@ $ curl -k https://10.96.0.1
 
   (many apps integrating with Kubernetes will use this)
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 ## DNS integration
@@ -2160,12 +1570,12 @@ $ curl -k https://10.96.0.1
 :EN:- Getting started with kubectl
 :FR:- Se familiariser avec kubectl
 
-.debug[[k8s/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
 
 ---
 
@@ -2736,7 +2146,7 @@ We'll see later how to address that shortcoming.
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
 
 ---
 
@@ -2964,7 +2374,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-housing.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
 
 ---
 
@@ -3047,25 +2457,31 @@ So, what do we get?
 .debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
 ---
 
-## And for the related Pod?
+## Selectors
 
-- Let's look up the Pod that was created and check it too
+- A **selector** is an expression for matching labels
+
+- It will restrict a command to the objects matching *at least* all these labels
+
+- We can use a Selector to look up the Pod that was created and check it too
 
 .exercise[
 
 - Find the name of the Pod:
   ```bash
-  kubectl get pods
+  kubectl get pods --selector "app=web"
   ```
 
 - Display its information:
   ```bash
-  kubectl describe pod web-xxxxxxxxxx-yyyyy
+  kubectl describe $(kubectl get pods --selector "app=web" | head -1)
   ```
 
 ]
 
-So, what do we get?
+--
+
+We could have also used `kubectl get pods --selector=app` to get all pods with the selector "app" regardless of its value.
 
 .debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
 ---
@@ -3089,49 +2505,6 @@ So, what do we get?
   Annotations: <none>
   ```
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
----
-
-## Selectors
-
-- A *selector* is an expression matching labels
-
-- It will restrict a command to the objects matching *at least* all these labels
-
-.exercise[
-
-- List all the pods with at least `app=web`:
-  ```bash
-  kubectl get pods --selector=app=web
-  ```
-
-- List all the pods with a label `app`, regardless of its value:
-  ```bash
-  kubectl get pods --selector=app
-  ```
-
-]
-
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
----
-
-## Settings labels and annotations
-
-- The easiest method is to use `kubectl label` and `kubectl annotate`
-
-.exercise[
-
-- Set a label on the `web` Deployment:
-  ```bash
-  kubectl label deployment web color=blue
-  ```
-
-- Check it out:
-  ```bash
-  kubectl describe deployment web
-  ```
-
-]
 
 .debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
 ---
@@ -3173,6 +2546,27 @@ class: extra-details
 .debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
 ---
 
+## Setting labels and annotations
+
+- The easiest method is to use `kubectl label` and `kubectl annotate`
+
+.exercise[
+
+- Set a label on the `web` Deployment:
+  ```bash
+  kubectl label deployment web color=blue
+  ```
+
+- Check it out:
+  ```bash
+  kubectl get deployment web -o json | jq -r .metadata.labels
+  ```
+
+]
+
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/labels-annotations.md)]
+---
+
 ## Differences between labels and annotations
 
 - The *key* for both labels and annotations:
@@ -3206,6 +2600,8 @@ class: extra-details
   ```
 ]
 
+???
+
 :EN:- Labels and annotations
 :FR:- *Labels* et annotations
 
@@ -3214,7 +2610,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/containers-by-the-water.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-housing.jpg)]
 
 ---
 
@@ -3241,6 +2637,14 @@ class: title
   (e.g. `pingpong` that we scaled to at least 3 pods)
 
 - We will highlights some of the limitations of `kubectl logs`
+
+.exercise[
+
+- Check that we still have our `pingpong` deployment with three pods:
+  ```bash
+  kubectl get pods -l app=pingpong
+  ```
+]
 
 .debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectl-logs.md)]
 ---
@@ -3409,7 +2813,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/distillery-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/containers-by-the-water.jpg)]
 
 ---
 
@@ -3542,13 +2946,11 @@ Exactly what we need!
 
 - The `-t` / `--timestamps` flag shows timestamps
 
-- The `--all-namespaces` flag is self-explanatory
-
 .exercise[
 
-- View what's up with the `weave` system containers:
+- Only view new logs and show timestamps:
   ```bash
-  stern --tail 1 --timestamps --all-namespaces weave
+  stern --tail 1 --timestamps pingpong
   ```
 
 <!--
@@ -3577,7 +2979,7 @@ Exactly what we need!
 
 - View the logs for all the things started with `kubectl create deployment`:
   ```bash
-  stern -l app
+  stern -l app --all-namespaces
   ```
 
 <!--
@@ -3611,7 +3013,7 @@ Exactly what we need!
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/lots-of-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/distillery-containers.jpg)]
 
 ---
 
@@ -3828,7 +3230,7 @@ class: pic
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/plastic-containers.JPG)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/lots-of-containers.jpg)]
 
 ---
 
@@ -4012,7 +3414,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/train-of-containers-1.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/plastic-containers.JPG)]
 
 ---
 
@@ -4129,26 +3531,6 @@ class: title
 .debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
 ---
 
-## `LoadBalancer`
-
-- An external load balancer is allocated for the service
-
-  (typically a cloud load balancer, e.g. ELB on AWS, GLB on GCE ...)
-
-- This is available only when the underlying infrastructure provides some kind of
-  "load balancer as a service"
-
-- Each service of that type will typically cost a little bit of money
-
-  (e.g. a few cents per hour on AWS or GCE)
-
-- Ideally, traffic would flow directly from the load balancer to the pods
-
-- In practice, it will often flow through a `NodePort` first
-
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
----
-
 ## `NodePort`
 
 - A port number is allocated for the service
@@ -4166,6 +3548,28 @@ class: title
 - Sometimes, it's the only available option for external traffic
 
   (e.g. most clusters deployed with kubeadm or on-premises)
+
+
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
+---
+
+## `LoadBalancer`
+
+- An external load balancer is allocated for the service
+
+  (typically a cloud load balancer, e.g. ELB on AWS, GLB on GCE ...)
+
+- This is available only when the underlying infrastructure provides some kind of
+  "load balancer as a service"
+
+- Each service of that type will typically cost a little bit of money
+
+  (e.g. a few cents per hour on AWS or GCE)
+
+- Ideally, traffic would flow directly from the load balancer to the pods
+
+- In practice, it will often flow through a `NodePort` first
+
 
 .debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
 ---
@@ -4561,7 +3965,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/train-of-containers-2.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/train-of-containers-1.jpg)]
 
 ---
 
@@ -4735,7 +4139,7 @@ It is possible to view the build logs by setting up an account on [ctr.run](http
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/two-containers-on-a-truck.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/train-of-containers-2.jpg)]
 
 ---
 
@@ -4929,7 +4333,7 @@ Wait a few moments and rerun `kubectl get svc` you should see the `EXTERNAL-IP` 
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/wall-of-containers.jpeg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/two-containers-on-a-truck.jpg)]
 
 ---
 
@@ -5134,7 +4538,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/Container-Ship-Freighter-Navigation-Elbe-Romance-1782991.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/wall-of-containers.jpeg)]
 
 ---
 
@@ -5372,7 +4776,7 @@ Note: this is a fiction! We have enough entropy. But we need a pretext to scale 
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/ShippingContainerSFBay.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/Container-Ship-Freighter-Navigation-Elbe-Romance-1782991.jpg)]
 
 ---
 
@@ -5691,7 +5095,7 @@ The master node has [taints](https://kubernetes.io/docs/concepts/configuration/t
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/ShippingContainerSFBay.jpg)]
 
 ---
 
@@ -6146,7 +5550,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
 
 ---
 
@@ -6641,7 +6045,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
 
 ---
 
@@ -7165,7 +6569,7 @@ spec:
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
 
 ---
 
@@ -7776,7 +7180,7 @@ spec:
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-housing.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
 
 ---
 
@@ -8096,7 +7500,7 @@ Sorry Star Trek fans, this is not the federation you're looking for!
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/containers-by-the-water.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-housing.jpg)]
 
 ---
 
@@ -8358,7 +7762,7 @@ are a few tools that can help us.*
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/distillery-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/containers-by-the-water.jpg)]
 
 ---
 

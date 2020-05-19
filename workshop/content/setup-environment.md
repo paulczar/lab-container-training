@@ -1,4 +1,3 @@
-Welcome to Container Training!
 
 1. To ensure your workshop environment is set up correctly, please run the following command in the terminal window:
 
