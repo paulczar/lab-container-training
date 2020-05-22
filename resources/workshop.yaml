@@ -15,6 +15,8 @@ spec:
   tags:
     - kubernetes
   content:
+    # image: paulczar/eduk8s-base:stable
+    image: paulczar/lab-container-training:latest
     files: github.com/paulczar/lab-container-training
   # logo:
   session:

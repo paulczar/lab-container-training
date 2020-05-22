@@ -71,3 +71,9 @@ modules:
     name: "Services and endpoints"
   services/dns:
     name: "The DNS Zone"
+  dockercoins/about:
+    name: "Our sample application"
+  dockercoins/run:
+    name: "Running dockercoins"
+  dockercoins/expose:
+    name: "Networking dockercoins"

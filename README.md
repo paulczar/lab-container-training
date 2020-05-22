@@ -17,7 +17,7 @@ Deploy Operator:
 ```bash
 kubectl create -k "github.com/eduk8s/eduk8s?ref=master"
 kubectl set env deployment/eduk8s-operator -n eduk8s \
-  INGRESS_DOMAIN=eduk8s.34.71.25.210.xip.io
+  INGRESS_DOMAIN=eduk8s.34.68.224.58.xip.io
 ```
 
 Deploy Workshop:
@@ -36,7 +36,7 @@ kubectl delete -k "github.com/eduk8s/eduk8s?ref=master"
 ## Developing
 
 ```bash
-docker run -ti --rm -p 10080:10080 -v \
+docker run -ti --rm -p 10080:10080 -e ENABLE_EDITOR=true -v \
   $(pwd):/home/eduk8s quay.io/eduk8s/workshop-dashboard:master
 ```
 
