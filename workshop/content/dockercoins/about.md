@@ -24,19 +24,3 @@ It contains these five services:
 * `worker` - background process calling `rng` and `hasher`
 * `webui` - web interface to watch progress
 * `redis` - data store (holds a counter updated by `worker`)
-
-Where is the code ?
-
-It's part of this workshop and which you just cloned down locally.
-
-2. Change into the dockercoins directory
-
-```execute
-cd container.training/dockercoins
-```
-
-3. view the `docker-compose.yml` file
-
-```execute
-cat docker-compose.yml
-```

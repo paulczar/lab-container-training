@@ -73,6 +73,8 @@ modules:
     name: "The DNS Zone"
   dockercoins/about:
     name: "Our sample application"
+  dockercoins/code:
+    name: "Where is the code ?"
   dockercoins/run:
     name: "Running dockercoins"
   dockercoins/expose:

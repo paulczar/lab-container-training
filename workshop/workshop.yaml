@@ -37,6 +37,7 @@ modules:
     # - services/endpoints
     # - services/dns
     - dockercoins/about
+    - dockercoins/code
     - dockercoins/run
     - dockercoins/expose
 
