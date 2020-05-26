@@ -35,6 +35,8 @@ modules:
     name: "Creating a job"
   jobs/cronjob:
     name: "Creating a scheduled job"
+  jobs/cleanup:
+    name: "Clean up cronjobs"
   labels/intro:
     name: "Labels and annotations"
   labels/deployment:
@@ -49,13 +51,13 @@ modules:
     name: "Revisiting logs"
   logs/multiple:
     name: "Streaming logs of multiple pods"
-  logs/multiple-2:
+  logs/multiple2:
     name: "Streaming logs of multiple pods"
   logs/shortcomings:
     name: "Shortcomings of kubectl logs"
   logs/stern:
     name: "Using Stern"
-  deployment/cleanup:
+  pingpong/cleanup:
     name: "Clean up ping pong deployment"
   services/intro:
     name: "Services in a nutshell"
@@ -71,6 +73,8 @@ modules:
     name: "Services and endpoints"
   services/dns:
     name: "The DNS Zone"
+  services/cleanup:
+    name: "Clean up our services example"
   dockercoins/about:
     name: "Our sample application"
   dockercoins/code:
@@ -79,3 +83,27 @@ modules:
     name: "Running dockercoins"
   dockercoins/expose:
     name: "Networking dockercoins"
+  dockercoins/upgrade:
+    name: "Rolling updates"
+  dockercoins/upgrade-bad:
+    name: "Rolling out something invalid"
+  dockercoins/upgrade-rollback:
+    name: "Recovering from a bad rollout"
+  dockercoins/replicasets:
+    name: "Explaining deployment revisions"
+  dockercoins/patch:
+    name: "Applying changes through a YAML patch"
+  dockercoins/cleanup:
+    name: "Cleaning up"
+  volumes/intro:
+    name: "Volumes"
+  volumes/vs-pv:
+    name: "Volumes ≠ Persistent Volumes"
+  volumes/nginx-without-volume:
+    name: "A Pod without a volume"
+  volumes/nginx-with-volume:
+    name: "A Pod with a volume"
+  volumes/nginx-shared-volume:
+    name: "Two Containers share a volume"
+  volumes/nginx-init:
+    name: "Using an init container to populate a volume"

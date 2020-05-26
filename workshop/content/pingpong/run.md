@@ -35,4 +35,8 @@ and will be removed in a future version. Use kubectl run
 deployment.apps/pingpong created
 ```
 
-`
+3. Check what's running:
+
+```execute
+kubectl get all
+```

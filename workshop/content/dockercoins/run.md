@@ -24,7 +24,7 @@ kubectl logs deploy/rng
 4. Check if `worker` is working:
 
 ```execute
-kubectl logs deploy/worker
+kubectl logs deploy/webui
 ```
 
-It appears that `rng` is working but `worker` is not.
+It appears that `rng` is working but `webui` is not.

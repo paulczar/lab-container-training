@@ -21,8 +21,8 @@ stern pingpong
 stern --tail 1 --timestamps pingpong
 ```
 
-3. Use stern with a selector to view logs for all pods with the label `app` across all namespaces:
+3. Use stern with a selector to view logs for all pods with the label `app`:
 
 ```execute
-stern -l app --all-namespaces
+stern -l app --tail 1
 ```

@@ -8,7 +8,7 @@ kubectl create deployment web --image=nginx
 
 2. Look at its annotations and labels:
 
-```
+```execute
 kubectl describe deployment web
 ```
 

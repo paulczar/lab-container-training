@@ -12,9 +12,15 @@ You're not running any pods yet ... but somebody else might be.
 
 Namespaces are used to separate workloads (tenancy).
 
+2. List namespaces:
+
+```execute
+kubectl get namespaces
+```
+
 We can see resources across all namespaces with `--all-namespaces`
 
-2. List all running pods in all namespaces:
+3. List all running pods in all namespaces:
 
 
 ```execute
@@ -25,7 +31,7 @@ kubectl get pods --all-namespaces
 
 You can also look at resources for a specific namespace.
 
-3. List all running pods in the `kube-system` namespace:
+4. List all running pods in the `kube-system` namespace:
 
 ```execute
 kubectl get pods --namespace=kube-system

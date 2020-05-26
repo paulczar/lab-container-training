@@ -17,10 +17,10 @@ spec:
   content:
     # image: paulczar/eduk8s-base:stable
     image: paulczar/lab-container-training:latest
-    files: github.com/paulczar/lab-container-training
+    # files: github.com/paulczar/lab-container-training
   # logo:
   session:
-    budget: medium
+    budget: custom
     resources:
       storage: 1Gi
     applications:
@@ -42,7 +42,7 @@ spec:
         rules:
         - apiGroups: ["", "extensions", "apps"]
           resources: ["*"]
-          verbs: ["list"]
+          verbs: ["list", "get", "watch"]
         - apiGroups: [""]
           resources: ["nodes"]
           verbs: ["list","get"]
@@ -62,3 +62,76 @@ spec:
           kind: ClusterRole
           name: $(session_namespace)-workshop-extra
           apiGroup: rbac.authorization.k8s.io
+      - apiVersion: v1
+        kind: LimitRange
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: resource-limits
+          namespace: $(session_namespace)
+        spec:
+          limits:
+          - max:
+              cpu: "2"
+              memory: 2Gi
+            min:
+              cpu: 50m
+              memory: 32Mi
+            type: Pod
+          - default:
+              cpu: 250m
+              memory: 256Mi
+            defaultRequest:
+              cpu: 50m
+              memory: 128Mi
+            max:
+              cpu: "2"
+              memory: 2Gi
+            min:
+              cpu: 50m
+              memory: 32Mi
+            type: Container
+          - max:
+              storage: 5Gi
+            min:
+              storage: 1Gi
+            type: PersistentVolumeClaim
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: compute-resources
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            limits.cpu: "2"
+            limits.memory: 2Gi
+          scopes:
+          - NotTerminating
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: compute-resources-timebound
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            limits.cpu: "2"
+            limits.memory: 2Gi
+          scopes:
+          - Terminating
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: object-counts
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            persistentvolumeclaims: "6"
+            replicationcontrollers: "15"
+            secrets: "25"
+            services: "10"

@@ -2,45 +2,57 @@ name: Container Training
 
 modules:
   activate:
-    # - workshop-overview
-    # - logistics
-    # - setup-environment
-    # - kubectl/auth-can-i
-    # - kubectl/get-node
-    # - kubectl/describe
-    # - kubectl/get-pods
-    # - kubectl/get-services
-    # - pingpong/run
-    # - pingpong/deployment
-    # - pingpong/logs
-    # - pingpong/scale
-    # - pingpong/resilience
-    # - jobs/intro
-    # - jobs/create
-    # - jobs/cronjob
-    # - labels/intro
-    # - labels/deployment
-    # - labels/selector
-    # - labels/setting
-    # - labels/cleanup
-    # - logs/intro
-    # - logs/multiple
-    # - logs/multiple2
-    # - logs/shortcomings
-    # - logs/stern
-    # - pingpong/cleanup
-    # - services/intro
-    # - services/advantages
-    # - services/flavors
-    # - services/create
-    # - services/curl-clusterip
-    # - services/endpoints
-    # - services/dns
+    - workshop-overview
+    - logistics
+    - setup-environment
+    - kubectl/auth-can-i
+    - kubectl/get-node
+    - kubectl/describe
+    - kubectl/get-pods
+    - kubectl/get-services
+    - pingpong/run
+    - pingpong/deployment
+    - pingpong/logs
+    - pingpong/scale
+    - pingpong/resilience
+    - jobs/intro
+    - jobs/create
+    - jobs/cronjob
+    - labels/intro
+    - labels/deployment
+    - labels/selectors
+    - labels/setting
+    - labels/cleanup
+    - logs/intro
+    - logs/multiple
+    - logs/multiple2
+    - logs/shortcomings
+    - logs/stern
+    - pingpong/cleanup
+    - jobs/cleanup
+    - services/intro
+    - services/advantages
+    - services/flavors
+    - services/create
+    - services/curl-clusterip
+    - services/endpoints
+    - services/dns
+    - services/cleanup
     - dockercoins/about
     - dockercoins/code
     - dockercoins/run
     - dockercoins/expose
-
-
+    - dockercoins/upgrade
+    - dockercoins/upgrade-bad
+    - dockercoins/upgrade-rollback
+    - dockercoins/replicasets
+    - dockercoins/patch
+    - dockercoins/cleanup
+    - volumes/intro
+    - volumes/vs-pv
+    - volumes/nginx-without-volume
+    - volumes/nginx-with-volume
+    - volumes/nginx-shared-volume
+    - volumes/nginx-init
 
     - workshop-summary

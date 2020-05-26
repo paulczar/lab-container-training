@@ -1,15 +1,10 @@
-It's part of this workshop and which you just cloned down locally.
+It's part of this workshop and should already be in your path.
 
-2. Change into the dockercoins directory
 
-```execute
-cd container.training/dockercoins
-```
-
-3. view the `docker-compose.yml` file
+1. view the `docker-compose.yml` file
 
 ```execute
-cat docker-compose.yml
+cat examples/dockercoins/docker-compose.yml
 ```
 
-*If you see an "editor" tab above, click it. You can browse to the `container.training/dockercoins` path and view the `docker-compose.yml` and other project files in there.*
+*If you see an "editor" tab above, click it. You can browse to the `examples/dockercoins` path and view the `docker-compose.yml` and other project files in there.*

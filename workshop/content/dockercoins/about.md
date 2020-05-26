@@ -1,11 +1,5 @@
 **Docker Coins**
 
-1. Clone the Docker Coins git repo to the local machine:
-
-```execute
-git clone https://github.com/jpetazzo/container.training
-```
-
 What actually is this application?
 
 It is a pretend crypto currency miner that:

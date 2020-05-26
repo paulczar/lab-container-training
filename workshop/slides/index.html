@@ -34,13 +34,16 @@ Deploying and Scaling Microservices<br/>with Kubernetes<br/>
  M slides/k8s/kubectlget.md
  M slides/k8s/labels-annotations.md
  M slides/k8s/logs-cli.md
+ M slides/k8s/rollout.md
  M slides/kube-fullday-namespaced.yml
  M slides/markmaker.py
  M slides/namespaced/connecting.md
  M slides/namespaced/handson.md
  M slides/namespaced/ourapponkube.md
  M slides/namespaced/sampleapp.md
+?? slides/k8s/batch-jobs-cleanup.md
 ?? slides/namespaced/kubectlget.md
+?? slides/namespaced/rollout.md
 
 ```
 
@@ -295,12 +298,6 @@ name: toc-module-3
 ## Module 3
 
 - [Deploying with YAML](#toc-deploying-with-yaml)
-
-- [Scaling our demo app](#toc-scaling-our-demo-app)
-
-- [Daemon sets](#toc-daemon-sets)
-
-- [Labels and selectors](#toc-labels-and-selectors)
 
 - [Rolling updates](#toc-rolling-updates)
 
@@ -2982,7 +2979,7 @@ Exactly what we need!
 
 - View the logs for all the things started with `kubectl create deployment`:
   ```bash
-  stern -l app --all-namespaces
+  stern -l app --tail 1
   ```
 
 <!--
@@ -3012,6 +3009,25 @@ Exactly what we need!
 :FR:- Consulter les logs des pods depuis la CLI
 
 .debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/logs-cli.md)]
+---
+## Clean up our Jobs from earlier
+
+Remember the `Job` and `Cronjob` we created earlier? Now would be a great time to clean them up.
+
+.exercise[
+
+- Delete the job:
+  ```bash
+  kubectl delete job flipcloin
+  ```
+
+- Delete the cronjob:
+  ```bash
+  kubectl delete cronjob every3mins
+  ```
+]
+
+.debug[[k8s/batch-jobs-cleanup.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/batch-jobs-cleanup.md)]
 ---
 
 class: pic
@@ -3621,9 +3637,9 @@ class: title
   kubectl create deployment httpenv --image=jpetazzo/httpenv
   ```
 
-- Scale it to 10 replicas:
+- Scale it to 5 replicas:
   ```bash
-  kubectl scale deployment httpenv --replicas=10
+  kubectl scale deployment httpenv --replicas=5
   ```
 
 ]
@@ -3899,11 +3915,6 @@ class: extra-details
 - The default domain name for the service we created is `default.svc.cluster.local` (unless you deployed to a namespace other than default)
 
 .exercise[
-
-- Get the IP address of the internal DNS server:
-  ```bash
-  IP=$(kubectl -n kube-system get svc kube-dns -o jsonpath={.spec.clusterIP})
-  ```
 
 - Resolve the cluster IP for the `httpenv` service:
   ```bash
@@ -4696,7 +4707,7 @@ class: title
 |
 [Back to table of contents](#toc-module-3)
 |
-[Next section](#toc-scaling-our-demo-app)
+[Next section](#toc-rolling-updates)
 ]
 
 .debug[(automatically generated title slide)]
@@ -4891,1025 +4902,13 @@ class: pic
 
 ---
 
-name: toc-scaling-our-demo-app
-class: title
-
- Scaling our demo app
-
-.nav[
-[Previous section](#toc-deploying-with-yaml)
-|
-[Back to table of contents](#toc-module-3)
-|
-[Next section](#toc-daemon-sets)
-]
-
-.debug[(automatically generated title slide)]
-
----
-# Scaling our demo app
-
-- Our ultimate goal is to get more DockerCoins
-
-  (i.e. increase the number of loops per second shown on the web UI)
-
-- Let's look at the architecture again:
-
-  ![DockerCoins architecture](images/dockercoins-diagram.svg)
-
-- The loop is done in the worker;
-  perhaps we could try adding more workers?
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Adding another worker
-
-- All we have to do is scale the `worker` Deployment
-
-.exercise[
-
-- Open a new terminal to keep an eye on our pods:
-  ```bash
-  kubectl get pods -w
-  ```
-
-<!--
-```wait RESTARTS```
-```tmux split-pane -h```
--->
-
-- Now, create more `worker` replicas:
-  ```bash
-  kubectl scale deployment worker --replicas=2
-  ```
-
-]
-
-After a few seconds, the graph in the web UI should show up.
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Adding more workers
-
-- If 2 workers give us 2x speed, what about 3 workers?
-
-.exercise[
-
-- Scale the `worker` Deployment further:
-  ```bash
-  kubectl scale deployment worker --replicas=3
-  ```
-
-]
-
-The graph in the web UI should go up again.
-
-(This is looking great! We're gonna be RICH!)
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Adding even more workers
-
-- Let's see if 10 workers give us 10x speed!
-
-.exercise[
-
-- Scale the `worker` Deployment to a bigger number:
-  ```bash
-  kubectl scale deployment worker --replicas=10
-  ```
-
-<!--
-```key ^D```
-```key ^C```
--->
-
-]
-
---
-
-The graph will peak at 10 hashes/second.
-
-(We can add as many workers as we want: we will never go past 10 hashes/second.)
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-class: extra-details
-
-## Didn't we briefly exceed 10 hashes/second?
-
-- It may *look like it*, because the web UI shows instant speed
-
-- The instant speed can briefly exceed 10 hashes/second
-
-- The average speed cannot
-
-- The instant speed can be biased because of how it's computed
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-class: extra-details
-
-## Why instant speed is misleading
-
-- The instant speed is computed client-side by the web UI
-
-- The web UI checks the hash counter once per second
-  <br/>
-  (and does a classic (h2-h1)/(t2-t1) speed computation)
-
-- The counter is updated once per second by the workers
-
-- These timings are not exact
-  <br/>
-  (e.g. the web UI check interval is client-side JavaScript)
-
-- Sometimes, between two web UI counter measurements,
-  <br/>
-  the workers are able to update the counter *twice*
-
-- During that cycle, the instant speed will appear to be much bigger
-  <br/>
-  (but it will be compensated by lower instant speed before and after)
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Why are we stuck at 10 hashes per second?
-
-- If this was high-quality, production code, we would have instrumentation
-
-  (Datadog, Honeycomb, New Relic, statsd, Sumologic, ...)
-
-- It's not!
-
-- Perhaps we could benchmark our web services?
-
-  (with tools like `ab`, or even simpler, `httping`)
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Benchmarking our web services
-
-- We want to check `hasher` and `rng`
-
-- We are going to use `httping`
-
-- It's just like `ping`, but using HTTP `GET` requests
-
-  (it measures how long it takes to perform one `GET` request)
-
-- It's used like this:
-  ```
-  httping [-c count] http://host:port/path
-  ```
-
-- Or even simpler:
-  ```
-  httping ip.ad.dr.ess
-  ```
---
-
-We can use the `shpod` we started earlier to run `httping` on the ClusterIP addresses of our services. That way we don't need to expose them to the internet.
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-
-## Checking `hasher` and `rng` response times
-
-.exercise[
-
-- Check the response times for both services:
-  ```bash
-  kubectl exec -ti shpod -- httping -c 3 hasher
-  kubectl exec -ti shpod -- httping -c 3 rng
-  ```
-
-]
-
-- `hasher` is fine (it should take a few milliseconds to reply)
-
-- `rng` is not (it should take about 700 milliseconds if there are 10 workers)
-
-- Something is wrong with `rng`, but ... what?
-
-???
-
-:EN:- Scaling up our demo app
-:FR:- *Scale up* de l'application de démo
-
-.debug[[k8s/scalingdockercoins.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/scalingdockercoins.md)]
----
-## Let's draw hasty conclusions
-
-- The bottleneck seems to be `rng`
-
-- *What if* we don't have enough entropy and can't generate enough random numbers?
-
-- We need to scale out the `rng` service on multiple machines!
-
-Note: this is a fiction! We have enough entropy. But we need a pretext to scale out.
-
-(In fact, the code of `rng` uses `/dev/urandom`, which never runs out of entropy...
-<br/>
-...and is [just as good as `/dev/random`](http://www.slideshare.net/PacSecJP/filippo-plain-simple-reality-of-entropy).)
-
-.debug[[shared/hastyconclusions.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/hastyconclusions.md)]
----
-
-class: pic
-
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/ShippingContainerSFBay.jpg)]
-
----
-
-name: toc-daemon-sets
-class: title
-
- Daemon sets
-
-.nav[
-[Previous section](#toc-scaling-our-demo-app)
-|
-[Back to table of contents](#toc-module-3)
-|
-[Next section](#toc-labels-and-selectors)
-]
-
-.debug[(automatically generated title slide)]
-
----
-# Daemon sets
-
-- We want to scale `rng` in a way that is different from how we scaled `worker`
-
-- We want one (and exactly one) instance of `rng` per node
-
-- We *do not want* two instances of `rng` on the same node
-
-- We will do that with a *daemon set*
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Why not a deployment?
-
-- Can't we just do `kubectl scale deployment rng --replicas=...`?
-
---
-
-- Nothing guarantees that the `rng` containers will be distributed evenly
-
-- If we add nodes later, they will not automatically run a copy of `rng`
-
-- If we remove (or reboot) a node, one `rng` container will restart elsewhere
-
-  (and we will end up with two instances `rng` on the same node)
-
-- By contrast, a daemon set will start one pod per node and keep it that way
-
-  (as nodes are added or removed)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Daemon sets in practice
-
-- Daemon sets are great for cluster-wide, per-node processes:
-
-  - `kube-proxy`
-
-  - `weave` (our overlay network)
-
-  - monitoring agents
-
-  - hardware management tools (e.g. SCSI/FC HBA agents)
-
-  - etc.
-
-- They can also be restricted to run [only on some nodes](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-only-some-nodes)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Creating a daemon set
-
-<!-- ##VERSION## -->
-
-- Unfortunately, as of Kubernetes 1.17, the CLI cannot create daemon sets
-
---
-
-- More precisely: it doesn't have a subcommand to create a daemon set
-
---
-
-- But any kind of resource can always be created by providing a YAML description:
-  ```bash
-  kubectl apply -f foo.yaml
-  ```
-
---
-
-- How do we create the YAML file for our daemon set?
-
---
-
-  - option 1: [read the docs](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#create-a-daemonset)
-
---
-
-  - option 2: `vi` our way out of it
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Creating the YAML file for our daemon set
-
-- Let's start with the YAML file for the current `rng` resource
-
-.exercise[
-
-- Dump the `rng` resource in YAML:
-  ```bash
-  kubectl get deploy/rng -o yaml >rng.yml
-  ```
-
-- Edit `rng.yml`
-
-]
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## "Casting" a resource to another
-
-- What if we just changed the `kind` field?
-
-  (It can't be that easy, right?)
-
-.exercise[
-
-- Change `kind: Deployment` to `kind: DaemonSet`
-
-<!--
-```bash vim rng.yml```
-```wait kind: Deployment```
-```keys /Deployment```
-```key ^J```
-```keys cwDaemonSet```
-```key ^[``` ]
-```keys :wq```
-```key ^J```
--->
-
-- Save, quit
-
-- Try to create our new resource:
-  ```bash
-  kubectl apply -f rng.yml
-  ```
-
-<!-- ```wait error:``` -->
-
-]
-
---
-
-We all knew this couldn't be that easy, right!
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Understanding the problem
-
-- The core of the error is:
-  ```
-  error validating data:
-  [ValidationError(DaemonSet.spec):
-  unknown field "replicas" in io.k8s.api.extensions.v1beta1.DaemonSetSpec,
-  ...
-  ```
-
---
-
-- *Obviously,* it doesn't make sense to specify a number of replicas for a daemon set
-
---
-
-- Workaround: fix the YAML
-
-  - remove the `replicas` field
-  - remove the `strategy` field (which defines the rollout mechanism for a deployment)
-  - remove the `progressDeadlineSeconds` field (also used by the rollout mechanism)
-  - remove the `status: {}` line at the end
-
---
-
-- Or, we could also ...
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Use the `--force`, Luke
-
-- We could also tell Kubernetes to ignore these errors and try anyway
-
-- The `--force` flag's actual name is `--validate=false`
-
-.exercise[
-
-- Try to load our YAML file and ignore errors:
-  ```bash
-  kubectl apply -f rng.yml --validate=false
-  ```
-
-]
-
---
-
-🎩✨🐇
-
---
-
-Wait ... Now, can it be *that* easy?
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Checking what we've done
-
-- Did we transform our `deployment` into a `daemonset`?
-
-.exercise[
-
-- Look at the resources that we have now:
-  ```bash
-  kubectl get all
-  ```
-
-]
-
---
-
-We have two resources called `rng`:
-
-- the *deployment* that was existing before
-
-- the *daemon set* that we just created
-
-We also have one too many pods.
-<br/>
-(The pod corresponding to the *deployment* still exists.)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## `deploy/rng` and `ds/rng`
-
-- You can have different resource types with the same name
-
-  (i.e. a *deployment* and a *daemon set* both named `rng`)
-
-- We still have the old `rng` *deployment*
-
-  ```
-NAME                       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/rng        1         1         1            1           18m
-  ```
-
-- But now we have the new `rng` *daemon set* as well
-
-  ```
-NAME                DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE SELECTOR  AGE
-daemonset.apps/rng  2        2        2      2           2          <none>         9s
-  ```
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Too many pods
-
-- If we check with `kubectl get pods`, we see:
-
-  - *one pod* for the deployment (named `rng-xxxxxxxxxx-yyyyy`)
-
-  - *one pod per node* for the daemon set (named `rng-zzzzz`)
-
-  ```
-  NAME                        READY     STATUS    RESTARTS   AGE
-  rng-54f57d4d49-7pt82        1/1       Running   0          11m
-  rng-b85tm                   1/1       Running   0          25s
-  rng-hfbrr                   1/1       Running   0          25s
-  [...]
-  ```
-
---
-
-The daemon set created one pod per node, except on the master node.
-
-The master node has [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) preventing pods from running there.
-
-(To schedule a pod on this node anyway, the pod will require appropriate [tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/).)
-
-.footnote[(Off by one? We don't run these pods on the node hosting the control plane.)]
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Is this working?
-
-- Look at the web UI
-
---
-
-- The graph should now go above 10 hashes per second!
-
---
-
-- It looks like the newly created pods are serving traffic correctly
-
-- How and why did this happen?
-
-  (We didn't do anything special to add them to the `rng` service load balancer!)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-class: pic
-
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
-
----
-
-name: toc-labels-and-selectors
-class: title
-
- Labels and selectors
-
-.nav[
-[Previous section](#toc-daemon-sets)
-|
-[Back to table of contents](#toc-module-3)
-|
-[Next section](#toc-rolling-updates)
-]
-
-.debug[(automatically generated title slide)]
-
----
-
-# Labels and selectors
-
-- The `rng` *service* is load balancing requests to a set of pods
-
-- That set of pods is defined by the *selector* of the `rng` service
-
-.exercise[
-
-- Check the *selector* in the `rng` service definition:
-  ```bash
-  kubectl describe service rng
-  ```
-
-]
-
-- The selector is `app=rng`
-
-- It means "all the pods having the label `app=rng`"
-
-  (They can have additional labels as well, that's OK!)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Selector evaluation
-
-- We can use selectors with many `kubectl` commands
-
-- For instance, with `kubectl get`, `kubectl logs`, `kubectl delete` ... and more
-
-.exercise[
-
-- Get the list of pods matching selector `app=rng`:
-  ```bash
-  kubectl get pods -l app=rng
-  kubectl get pods --selector app=rng
-  ```
-
-]
-
-But ... why do these pods (in particular, the *new* ones) have this `app=rng` label?
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Where do labels come from?
-
-- When we create a deployment with `kubectl create deployment rng`,
-  <br/>this deployment gets the label `app=rng`
-
-- The replica sets created by this deployment also get the label `app=rng`
-
-- The pods created by these replica sets also get the label `app=rng`
-
-- When we created the daemon set from the deployment, we re-used the same spec
-
-- Therefore, the pods created by the daemon set get the same labels
-
-.footnote[Note: when we use `kubectl run stuff`, the label is `run=stuff` instead.]
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Updating load balancer configuration
-
-- We would like to remove a pod from the load balancer
-
-- What would happen if we removed that pod, with `kubectl delete pod ...`?
-
---
-
-  It would be re-created immediately (by the replica set or the daemon set)
-
---
-
-- What would happen if we removed the `app=rng` label from that pod?
-
---
-
-  It would *also* be re-created immediately
-
---
-
-  Why?!?
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Selectors for replica sets and daemon sets
-
-- The "mission" of a replica set is:
-
-  "Make sure that there is the right number of pods matching this spec!"
-
-- The "mission" of a daemon set is:
-
-  "Make sure that there is a pod matching this spec on each node!"
-
---
-
-- *In fact,* replica sets and daemon sets do not check pod specifications
-
-- They merely have a *selector*, and they look for pods matching that selector
-
-- Yes, we can fool them by manually creating pods with the "right" labels
-
-- Bottom line: if we remove our `app=rng` label ...
-
- ... The pod "disappears" for its parent, which re-creates another pod to replace it
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-class: extra-details
-
-## Isolation of replica sets and daemon sets
-
-- Since both the `rng` daemon set and the `rng` replica set use `app=rng` ...
-
-  ... Why don't they "find" each other's pods?
-
---
-
-- *Replica sets* have a more specific selector, visible with `kubectl describe`
-
-  (It looks like `app=rng,pod-template-hash=abcd1234`)
-
-- *Daemon sets* also have a more specific selector, but it's invisible
-
-  (It looks like `app=rng,controller-revision-hash=abcd1234`)
-
-- As a result, each controller only "sees" the pods it manages
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Removing a pod from the load balancer
-
-- Currently, the `rng` service is defined by the `app=rng` selector
-
-- The only way to remove a pod is to remove or change the `app` label
-
-- ... But that will cause another pod to be created instead!
-
-- What's the solution?
-
---
-
-- We need to change the selector of the `rng` service!
-
-- Let's add another label to that selector (e.g. `active=yes`) 
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Complex selectors
-
-- If a selector specifies multiple labels, they are understood as a logical *AND*
-
-  (In other words: the pods must match all the labels)
-
-- Kubernetes has support for advanced, set-based selectors
-
-  (But these cannot be used with services, at least not yet!)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## The plan
-
-1. Add the label `active=yes` to all our `rng` pods
-
-2. Update the selector for the `rng` service to also include `active=yes`
-
-3. Toggle traffic to a pod by manually adding/removing the `active` label
-
-4. Profit!
-
-*Note: if we swap steps 1 and 2, it will cause a short
-service disruption, because there will be a period of time
-during which the service selector won't match any pod.
-During that time, requests to the service will time out.
-By doing things in the order above, we guarantee that there won't
-be any interruption.*
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Adding labels to pods
-
-- We want to add the label `active=yes` to all pods that have `app=rng`
-
-- We could edit each pod one by one with `kubectl edit` ...
-
-- ... Or we could use `kubectl label` to label them all
-
-- `kubectl label` can use selectors itself
-
-.exercise[
-
-- Add `active=yes` to all pods that have `app=rng`:
-  ```bash
-  kubectl label pods -l app=rng active=yes
-  ```
-
-]
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Updating the service selector
-
-- We need to edit the service specification
-
-- Reminder: in the service definition, we will see `app: rng` in two places
-
-  - the label of the service itself (we don't need to touch that one)
-
-  - the selector of the service (that's the one we want to change)
-
-.exercise[
-
-- Update the service to add `active: yes` to its selector:
-  ```bash
-  kubectl edit service rng
-  ```
-
-<!--
-```wait Please edit the object below```
-```keys /app: rng```
-```key ^J```
-```keys noactive: yes```
-```key ^[``` ]
-```keys :wq```
-```key ^J```
--->
-
-]
-
---
-
-... And then we get *the weirdest error ever.* Why?
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## When the YAML parser is being too smart
-
-- YAML parsers try to help us:
-
-  - `xyz` is the string `"xyz"`
-
-  - `42` is the integer `42`
-
-  - `yes` is the boolean value `true`
-
-- If we want the string `"42"` or the string `"yes"`, we have to quote them
-
-- So we have to use `active: "yes"`
-
-.footnote[For a good laugh: if we had used "ja", "oui", "si" ... as the value, it would have worked!]
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Updating the service selector, take 2
-
-.exercise[
-
-- Update the YAML manifest of the service
-
-- Add `active: "yes"` to its selector
-
-<!--
-```wait Please edit the object below```
-```keys /yes```
-```key ^J```
-```keys cw"yes"```
-```key ^[``` ]
-```keys :wq```
-```key ^J```
--->
-
-]
-
-This time it should work!
-
-If we did everything correctly, the web UI shouldn't show any change.
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Updating labels
-
-- We want to disable the pod that was created by the deployment
-
-- All we have to do, is remove the `active` label from that pod
-
-- To identify that pod, we can use its name
-
-- ... Or rely on the fact that it's the only one with a `pod-template-hash` label
-
-- Good to know:
-
-  - `kubectl label ... foo=` doesn't remove a label (it sets it to an empty string)
-
-  - to remove label `foo`, use `kubectl label ... foo-`
-
-  - to change an existing label, we would need to add `--overwrite`
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Removing a pod from the load balancer
-
-.exercise[
-
-- In one window, check the logs of that pod:
-  ```bash
-  POD=$(kubectl get pod -l app=rng,pod-template-hash -o name)
-  kubectl logs --tail 1 --follow $POD
-  ```
-  (We should see a steady stream of HTTP logs)
-
-<!--
-```wait HTTP/1.1```
-```tmux split-pane -v```
--->
-
-- In another window, remove the label from the pod:
-  ```bash
-  kubectl label pod -l app=rng,pod-template-hash active-
-  ```
-  (The stream of HTTP logs should stop immediately)
-
-<!--
-```key ^D```
-```key ^C```
--->
-
-]
-
-There might be a slight change in the web UI (since we removed a bit
-of capacity from the `rng` service). If we remove more pods,
-the effect should be more visible.
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-class: extra-details
-
-## Updating the daemon set
-
-- If we scale up our cluster by adding new nodes, the daemon set will create more pods
-
-- These pods won't have the `active=yes` label
-
-- If we want these pods to have that label, we need to edit the daemon set spec
-
-- We can do that with e.g. `kubectl edit daemonset rng`
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-class: extra-details
-
-## We've put resources in your resources
-
-- Reminder: a daemon set is a resource that creates more resources!
-
-- There is a difference between:
-
-  - the label(s) of a resource (in the `metadata` block in the beginning)
-
-  - the selector of a resource (in the `spec` block)
-
-  - the label(s) of the resource(s) created by the first resource (in the `template` block)
-
-- We would need to update the selector and the template
-
-  (metadata labels are not mandatory)
-
-- The template must match the selector
-
-  (i.e. the resource will refuse to create resources that it will not select)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Labels and debugging
-
-- When a pod is misbehaving, we can delete it: another one will be recreated
-
-- But we can also change its labels
-
-- It will be removed from the load balancer (it won't receive traffic anymore)
-
-- Another pod will be recreated immediately
-
-- But the problematic pod is still here, and we can inspect and debug it
-
-- We can even re-add it to the rotation if necessary
-
-  (Very useful to troubleshoot intermittent and elusive bugs)
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-## Labels and advanced rollout control
-
-- Conversely, we can add pods matching a service's selector
-
-- These pods will then receive requests and serve traffic
-
-- Examples:
-
-  - one-shot pod with all debug flags enabled, to collect logs
-
-  - pods created automatically, but added to rotation in a second step
-    <br/>
-    (by setting their label accordingly)
-
-- This gives us building blocks for canary and blue/green deployments
-
-???
-
-:EN:- Scaling with Daemon Sets
-:FR:- Utilisation de Daemon Sets
-
-.debug[[k8s/daemonset.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/daemonset.md)]
----
-
-class: pic
-
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
-
----
-
 name: toc-rolling-updates
 class: title
 
  Rolling updates
 
 .nav[
-[Previous section](#toc-labels-and-selectors)
+[Previous section](#toc-deploying-with-yaml)
 |
 [Back to table of contents](#toc-module-3)
 |
@@ -6011,11 +5010,9 @@ class: title
 
 .exercise[
 
-- Let's monitor what's going on by opening a few terminals, and run:
+- Let's monitor what's going on by running the following in a new terminal:
   ```bash
-  kubectl get pods -w
-  kubectl get replicasets -w
-  kubectl get deployments -w
+  watch -n 1 kubectl get all --selector "app=worker"
   ```
 
 <!--
@@ -6394,7 +5391,7 @@ class: extra-details
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/ShippingContainerSFBay.jpg)]
 
 ---
 
@@ -6918,7 +5915,7 @@ spec:
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/aerial-view-of-containers.jpg)]
 
 ---
 
@@ -7529,7 +6526,7 @@ spec:
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-housing.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/blue-containers.jpg)]
 
 ---
 
@@ -7849,7 +6846,7 @@ Sorry Star Trek fans, this is not the federation you're looking for!
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/containers-by-the-water.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/chinook-helicopter-container.jpg)]
 
 ---
 
@@ -8111,7 +7108,7 @@ are a few tools that can help us.*
 
 class: pic
 
-.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/distillery-containers.jpg)]
+.interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/container-cranes.jpg)]
 
 ---
 
