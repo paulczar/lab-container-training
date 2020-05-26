@@ -107,3 +107,5 @@ modules:
     name: "Two Containers share a volume"
   volumes/nginx-init:
     name: "Using an init container to populate a volume"
+  volumes/cleanup:
+    name: "Clean up volume examples"

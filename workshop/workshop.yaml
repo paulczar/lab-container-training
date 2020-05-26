@@ -54,5 +54,5 @@ modules:
     - volumes/nginx-with-volume
     - volumes/nginx-shared-volume
     - volumes/nginx-init
-
+    - volumes/cleanup
     - workshop-summary

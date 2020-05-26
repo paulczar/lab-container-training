@@ -23,7 +23,8 @@ kubectl apply -f !*
 ```execute
 kubectl wait pod/nginx-with-git --for condition=initialized
 IP=$(kubectl get pod nginx-with-git -o jsonpath={.status.podIP})
-kubectl run alpine -i --tty --image=alpine --restart=Never --rm -- while true; do wget -q -O - $IP; sleep 10; done
+kubectl run alpine -i --tty --image=alpine --restart=Never \
+  --rm -- /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
 ```
 
 *At first we should see "403 Forbidden", after a while it should show the HTML file from the Spoon-Knife repository.*
