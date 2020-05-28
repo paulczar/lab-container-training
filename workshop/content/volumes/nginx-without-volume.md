@@ -10,8 +10,11 @@ kubectl apply -f !*
 2. Get its IP Address
 
 ```execute
-IPADDR=$(kubectl get pod nginx-without-volume -o jsonpath={.status.podIP})
+kubectl get pod nginx-without-volume -o jsonpath={.status.podIP}
+IPADDR=$(!!)
 ```
+
+*`IPADDR=$(!!)` will take the last command and load its result into the `IPADDR` environment variable*
 
 3. Send a request with curl
 

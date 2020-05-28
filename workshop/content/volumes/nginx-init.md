@@ -17,7 +17,8 @@ Wait until it shows as `READY`
 
 3. Access it
 ```execute
-IP=$(kubectl get pod nginx-with-init -o jsonpath={.status.podIP})
+kubectl get pod nginx-with-init -o jsonpath={.status.podIP}
+IP=$(!!)
 kubectl run alpine -i --tty --image=alpine --restart=Never \
   --rm -- /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
 ```

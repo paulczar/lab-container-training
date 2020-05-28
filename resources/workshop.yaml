@@ -8,8 +8,8 @@ spec:
   url: https://github.com/paulczar/lab-container-training
   vendor: eduk8s.io
   authors:
-    - Paul Czarkowski
-    - Jerome Petazzio
+    - "Paul Czarkowski"
+    - "Jérôme Petazzoni"
   difficulty: beginner
   duration: 8h
   tags:

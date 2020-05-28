@@ -109,3 +109,11 @@ modules:
     name: "Using an init container to populate a volume"
   volumes/cleanup:
     name: "Clean up volume examples"
+  configmaps/intro:
+    name: "Introduction to ConfigMaps"
+  configmaps/as-volume:
+    name: "Config Maps as Volumes"
+  configmaps/as-env:
+    name: "Config Maps as Environment Variables"
+  ocnfigmaps/cleanup:
+    name: "Config Maps - Cleanup"

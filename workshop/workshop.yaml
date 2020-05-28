@@ -55,4 +55,10 @@ modules:
     - volumes/nginx-shared-volume
     - volumes/nginx-init
     - volumes/cleanup
+    - configmaps/intro
+    - configmaps/as-volume
+    - configmaps/as-env
+    - configmaps/cleanup
+
+
     - workshop-summary

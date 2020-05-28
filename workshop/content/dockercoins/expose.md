@@ -16,14 +16,10 @@ kubectl expose deploy/webui --type=LoadBalancer --port=80
 2. Check that `worker` is working now:
 
 ```execute
-stern worker
+kubectl logs deploy/worker --follow
 ```
 
-3. Wait for it to get an `EXTERNAL-IP`:
-
-```execute
-watch kubectl get svc webui
-```
+Wait for the `webui` service to get an `EXTERNAL-IP`.  You'll see it in the watch command output in the second terminal window.
 
 4. Get the IP address
 
