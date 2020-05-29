@@ -149,9 +149,9 @@ modules:
     name: "Multiple 'undos' don't work"
   dockercoins/rollout-history:
     name: "Listing versions"
-    dockercoins/replicasets:
+  dockercoins/replicasets:
     name: "Explaining deployment revisions"
-    dockercoins/replicasets-2:
+  dockercoins/replicasets-2:
     name: "What about the missing revisions?"
   dockercoins/patch:
     name: "Applying changes through a YAML patch"
