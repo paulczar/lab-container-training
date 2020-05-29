@@ -6,21 +6,13 @@ Deployments manage the full lifecycle of your application (`Pod`) by controlling
 
 Since `kubectl run` is either deprecated or only creates a `Pod` lets try again and make sure we get a deployment.
 
-1. Delete the original pingpong:
-
-```execute
-kubectl delete deployment pingpong || \
-  kubectl delete pod pingpong
-```
-
-2. Create a deployment for pingpong:
-
+1. Create a deployment for pingpong
 
 ```execute
 kubectl create deployment pingpong --image=jpetazzo/ping
 ```
 
-3. Check its running:
+2. Check the resources that were created
 
 ```execute
 kubectl get all

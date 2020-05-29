@@ -9,6 +9,8 @@ A service is a stable endpoint to connect to "something"
 kubectl -n default get services
 ```
 
+There is already one service in the `default` namespace on our cluster: the Kubernetes API itself.
+
 2. Connect to the `kubernetes` service:
 
 ```execute

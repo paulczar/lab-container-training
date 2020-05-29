@@ -1,9 +1,10 @@
 We should run the git clone as a `initContainer`
 
-1. Watch the pods in the second terminal
+1. Watch the pods in the second terminal 
+*(this should still be running from earlier*)
 
 ```copy
-kubectl get pods -o wide --watch
+watch kubectl get pods -o wide
 ```
 
 2. Create the pod
@@ -19,6 +20,7 @@ Wait until it shows as `READY`
 ```execute
 kubectl get pod nginx-with-init -o jsonpath={.status.podIP}
 IP=$(!!)
-kubectl run alpine -i --tty --image=alpine --restart=Never \
-  --rm -- /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
+kubectl run shpod -i --tty --image=jpetazzo/shpod \
+  --restart=Never --rm -- \
+  /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
 ```

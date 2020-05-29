@@ -15,15 +15,3 @@ The Job will keep trying until:
 ```execute
 kubectl create job flipcoin --image=alpine -- sh -c 'exit $(($RANDOM%2))'
 ```
-
-Our Job will create a Pod named flipcoin-xxxxx
-
-If the Pod succeeds, the Job stops
-
-If the Pod fails, the Job creates another Pod
-
-2. Check the status of the Pod(s) created by the Job:
-
-```execute
-kubectl get pods --selector=job-name=flipcoin
-```

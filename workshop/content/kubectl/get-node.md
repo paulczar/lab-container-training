@@ -6,21 +6,10 @@ Let's look at our Node resources with kubectl get!
 kubectl get node
 ```
 
-2. Give us more info about the nodes:
+These commands are equivalent:
 
-```execute
-kubectl get nodes -o wide
-```
-
-3. Let's have some YAML:
-
-```execute
-kubectl get no -o yaml
-```
-
-4. Show the capacity of all our nodes as a stream of JSON objects:
-
-```execute
-kubectl get nodes -o json |
-        jq ".items[] | {name:.metadata.name} + .status.capacity"
+```yaml
+kubectl get no
+kubectl get node
+kubectl get nodes
 ```

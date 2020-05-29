@@ -18,11 +18,3 @@ kubectl create cronjob every3mins --schedule="*/3 * * * *" \
 ```execute
 kubectl get cronjobs
 ```
-
-3. Check the Jobs that are created:
-
-```execute
-kubectl get jobs
-```
-
-*It will take a few minutes before the first job is scheduled.*

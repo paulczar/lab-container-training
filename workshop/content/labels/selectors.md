@@ -36,13 +36,3 @@ Labels: app=web
 ```
 Annotations: <none>
 ```
-
-**Other ways to view labels**
-
-* We can use the `--show-labels` flag with kubectl get
-
-3. Show labels for a bunch of objects:
-
-```execute
-kubectl get --show-labels po,rs,deploy,svc,no
-```

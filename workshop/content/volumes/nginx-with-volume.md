@@ -17,7 +17,8 @@ IPADDR=$(!!)
 3. Send a request with curl
 
 ```execute
-kubectl run alpine -i --tty --image=alpine --restart=Never --rm -- wget -qO - $IPADDR
+kubectl run shpod -i --tty --image=jpetazzo/shpod \
+  --restart=Never --rm -- curl -s $IPADDR
 ```
 
 *(We should now see a "403 Forbidden" error page.)*

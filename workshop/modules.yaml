@@ -13,32 +13,60 @@ modules:
     name: "Role Based Access Control"
   kubectl/get-node:
     name: "Tell me about my nodes"
+  kubectl/get-node-2:
+    name: "Machine-readable output"
+  kubectl/get-node-3:
+    name: "(Ab)using kubectl and jq"
   kubectl/describe:
     name: "kubectl describe"
   kubectl/get-pods:
     name: "Pods"
+  kubectl/get-namespaces:
+    name: "Namespaces"
+  kubectl/get-namespaces-2:
+    name: "Accessing namespaces"
+  kubectl/get-namespaces-3:
+    name: "Scoping another namespace"
   kubectl/get-services:
     name: "Services"
-  pingpong/run:
+  kubectl/get-services-2:
+    name: "ClusterIP services"
+  pingpong/version:
     name: "kubectl run pingpong"
+  pingpong/run:
+    name: "Starting a simple Pod"
+  pingpong/show-me:
+    name: "Show me all you got!"
+  pingpong/delete:
+    name: "Creating a deployment the proper way"
   pingpong/deployment:
     name: "kubectl create deployment"
   pingpong/logs:
     name: "Viewing container output"
+  pingpong/logs-2:
+    name: "Streaming logs in real time"
   pingpong/scale:
     name: "Scaling our application"
+  pingpong/scale-logs:
+    name: "Streaming logs of multiple pods"
   pingpong/resilience:
     name: "Resilience"
   jobs/intro:
     name: "Executing batch jobs"
   jobs/create:
     name: "Creating a job"
+  jobs/action:
+    name: "Our Job in action"
   jobs/cronjob:
-    name: "Creating a scheduled job"
+    name: "Creating a scheduled Job"
+  jobs/cronjob-action:
+    name: "Our Cronjob in action"
   jobs/cleanup:
     name: "Clean up cronjobs"
   labels/intro:
     name: "Labels and annotations"
+  labels/view:
+    name: "Other ways to view labels"
   labels/deployment:
     name: "Viewing labels and annotations"
   labels/selectors:
@@ -51,12 +79,20 @@ modules:
     name: "Revisiting logs"
   logs/multiple:
     name: "Streaming logs of multiple pods"
-  logs/multiple2:
+  logs/multiple-2:
+    name: "Viewing logs of multiple pods"
+  logs/multiple-3:
     name: "Streaming logs of multiple pods"
+  logs/multiple-4:
+    name: "Streaming logs of many pods"
   logs/shortcomings:
     name: "Shortcomings of kubectl logs"
   logs/stern:
     name: "Using Stern"
+  logs/stern-2:
+    name: "Stern convenience options"
+  logs/stern-3:
+    name: "Using Stern with a selector"
   pingpong/cleanup:
     name: "Clean up ping pong deployment"
   services/intro:
@@ -66,13 +102,19 @@ modules:
   services/flavors:
     name: "Many kinds and flavors of service"
   services/create:
-    name: "Create and Expose a Deployment"
+    name: "Create a Deployment"
+  services/create-2:
+    name: "Expose our Deployment"
   services/curl-clusterip:
+    name: "Testing our service"
+  services/curl-clusterip-2:
     name: "Testing our service"
   services/endpoints:
     name: "Services and endpoints"
   services/dns:
     name: "The DNS Zone"
+  services/dns-2:
+    name: "Accessing services via DNS"
   services/cleanup:
     name: "Clean up our services example"
   dockercoins/about:
@@ -81,16 +123,36 @@ modules:
     name: "Where is the code ?"
   dockercoins/run:
     name: "Running dockercoins"
+  dockercoins/run-2:
+    name: "Is this working?"
   dockercoins/expose:
     name: "Networking dockercoins"
+  dockercoins/worker:
+    name: "Is this working yet?"
+  dockercoins/worker-2:
+    name: "Exposing services for external access"
+  dockercoins/worker-3:
+    name: "Networking dockercoins"
+  dockercoins/yaml:
+    name: "Deploying dockercoins with YAML"
   dockercoins/upgrade:
     name: "Rolling updates"
+  dockercoins/upgrade-2:
+    name: "Upgrade worker"
   dockercoins/upgrade-bad:
     name: "Rolling out something invalid"
-  dockercoins/upgrade-rollback:
+  dockercoins/upgrade-bad-recover:
     name: "Recovering from a bad rollout"
-  dockercoins/replicasets:
+  dockercoins/upgrade-undos:
+    name: "Multiple 'undos'"
+  dockercoins/upgrade-undos-2:
+    name: "Multiple 'undos' don't work"
+  dockercoins/rollout-history:
+    name: "Listing versions"
+    dockercoins/replicasets:
     name: "Explaining deployment revisions"
+    dockercoins/replicasets-2:
+    name: "What about the missing revisions?"
   dockercoins/patch:
     name: "Applying changes through a YAML patch"
   dockercoins/cleanup:

@@ -11,13 +11,3 @@ Unless specified otherwise, it will only show logs of the first container in the
 ```execute
 kubectl logs deploy/pingpong
 ```
-
-You can also stream your logs in real time which is useful for live debugging.
-
-2. Combine the `--tail` and `--follow` arguments to stream just the latest logs:
-
-```execute
-kubectl logs deploy/pingpong --tail 1 --follow
-```
-
-**Stop the stream with Ctrl-C.**

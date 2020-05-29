@@ -8,31 +8,4 @@ A Pod is a group of containers that run on the same node and share resources suc
 kubectl get pods
 ```
 
-You're not running any pods yet ... but somebody else might be.
-
-Namespaces are used to separate workloads (tenancy).
-
-2. List namespaces:
-
-```execute
-kubectl get namespaces
-```
-
-We can see resources across all namespaces with `--all-namespaces`
-
-3. List all running pods in all namespaces:
-
-
-```execute
-kubectl get pods --all-namespaces
-```
-
-*You could have also run `kubectl get pods -A`.*
-
-You can also look at resources for a specific namespace.
-
-4. List all running pods in the `kube-system` namespace:
-
-```execute
-kubectl get pods --namespace=kube-system
-```
+*Where are the pods that we saw just a moment earlier?!?*

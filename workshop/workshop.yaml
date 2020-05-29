@@ -7,18 +7,31 @@ modules:
     - setup-environment
     - kubectl/auth-can-i
     - kubectl/get-node
+    - kubectl/get-node-2
+    - kubectl/get-node-3
     - kubectl/describe
     - kubectl/get-pods
+    - kubectl/get-namespaces
+    - kubectl/get-namespaces-2
+    - kubectl/get-namespaces-3
     - kubectl/get-services
+    - kubectl/get-services-2
+    - pingpong/version
     - pingpong/run
+    - pingpong/show-me
+    - pingpong/delete
     - pingpong/deployment
     - pingpong/logs
+    - pingpong/logs-2
     - pingpong/scale
     - pingpong/resilience
     - jobs/intro
     - jobs/create
+    - jobs/action
     - jobs/cronjob
+    - jobs/cronjob-action
     - labels/intro
+    - labels/view
     - labels/deployment
     - labels/selectors
     - labels/setting
@@ -28,24 +41,39 @@ modules:
     - logs/multiple2
     - logs/shortcomings
     - logs/stern
+    - logs/stern-2
+    - logs/stern-3
     - pingpong/cleanup
     - jobs/cleanup
     - services/intro
     - services/advantages
     - services/flavors
     - services/create
+    - services/create-2
     - services/curl-clusterip
+    - services/curl-clusterip-2
     - services/endpoints
     - services/dns
+    - services/dns-2
     - services/cleanup
     - dockercoins/about
     - dockercoins/code
     - dockercoins/run
+    - dockercoins/run-2
     - dockercoins/expose
+    - dockercoins/worker
+    - dockercoins/worker-2
+    - dockercoins/worker-3
+    - dockercoins/yaml
     - dockercoins/upgrade
+    - dockercoins/upgrade-2
     - dockercoins/upgrade-bad
-    - dockercoins/upgrade-rollback
+    - dockercoins/upgrade-bad-recover
+    - dockercoins/upgrade-undos
+    - dockercoins/upgrade-undos-2
+    - docerkcoins/rollout-history
     - dockercoins/replicasets
+    - dockercoins/replicasets-2
     - dockercoins/patch
     - dockercoins/cleanup
     - volumes/intro

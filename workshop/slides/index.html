@@ -29,12 +29,15 @@ Deploying and Scaling Microservices<br/>with Kubernetes<br/>
 
 .debug[
 ```
+ M slides/k8s/configuration.md
  M slides/k8s/kubectl-logs.md
  M slides/k8s/kubectlexpose.md
  M slides/k8s/kubectlget.md
  M slides/k8s/labels-annotations.md
  M slides/k8s/logs-cli.md
  M slides/k8s/rollout.md
+ M slides/k8s/shippingimages.md
+ M slides/k8s/volumes.md
  M slides/kube-fullday-namespaced.yml
  M slides/markmaker.py
  M slides/namespaced/connecting.md
@@ -238,19 +241,79 @@ class: extra-details
 
 .debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/about-slides.md)]
 ---
-## Chat room
+## Use the chat!
 
-- We've set up a chat room that we will monitor during the workshop
+- In the Zoom UI, click on "Chat" (at the bottom of the screen, in the middle)
+
+- This will bring up the chat panel
+
+- Say hi in the group chat!
+
+- If you'd like, you can open the chat to its own separate window:
+
+  - click on the little `v` on the left of "Zoom Group Chat"
+
+  - select "Pop Out"
+
+- We will be monitoring the Zoom chat during the whole training
 
 - Don't hesitate to use it to ask questions, or get help, or share feedback
 
-- The chat room will also be available after the workshop
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/chat-room-zoom-meeting.md)]
+---
 
-- Join the chat room: In person!
+## Use non-verbal communication cues
 
-- Say hi in the chat room!
+- ... wait, what?!?
 
-.debug[[shared/chat-room-im.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/chat-room-im.md)]
+--
+
+- In the Zoom UI, click on "Participants" (at the bottom of the screen, in the middle)
+
+- This will bring up the list of participants
+
+- You can pop it out if you like (just like the chat window)
+
+- At the bottom of the list of participants, there are feedback buttons:
+
+  raise hand, yes, no, go slower, go faster
+
+- If you click on "more" (on the right of these feedback buttons), you can also:
+
+  thumbs down, thumbs up, applause, need a break, away
+
+- Click on "thumbs up" to let us know that everything is working fine!
+
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/chat-room-zoom-meeting.md)]
+---
+
+## Use your webcam (if you'd like!)
+
+- If you would like to turn on your webcam, feel free to do so
+
+- You don't have to, but your teacher will appreciate it :)
+
+  (it's easier to teach and get feedback from human faces!)
+
+- You are welcome to smile / frown / raise your hand ... through your webcam as well!
+
+- Great metaphor, courtesy of
+  [Liz Howard](https://twitter.com/lizthedeveloper)):
+
+  *“It's just like being in a classroom.
+  <br/>People with their webcam on are in the front row;
+  <br/>people with their webcam off are in the back row.”*
+
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/chat-room-zoom-meeting.md)]
+---
+
+## During the session
+
+- We will often ask "yes/no" questions; use the corresponding buttons
+
+- If you have a question, you can ask in the chat, or use "raise hand"
+
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/shared/chat-room-zoom-meeting.md)]
 ---
 
 name: toc-module-1
@@ -436,9 +499,7 @@ class: in-person
 
 - They'll remain up for the duration of the workshop
 
-- You should have a little card with login+password+IP addresses
-
-- The namespace is the same as your login and should be set automatically when you log in.
+- If you're in the Zoom call, you should have already received the link to the workshop.
 
 
 .debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/handson.md)]
@@ -473,12 +534,24 @@ This should bring up a workshop dashboard with a terminal, a link to these slide
 
 If anything goes wrong, ask for help.
 
+.exercise[
+
+1. Test your connectivity to the Kubernetes Cluster
+
+```bash
+$ kubectl cluster-info
+```
+
+]
+
 .debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/connecting.md)]
 ---
 
 ## Role Based Authorization Control
 
-You are restricted to a subset of Kubernetes resources in your own namespace. Just like in a real world enterprise cluster.
+As mentioned earlier, you are restricted to a subset of Kubernetes resources in your own namespace. Just like in a real world enterprise cluster.
+
+You can ask Kubernetes if you have permission to perform a certain action.
 
 
 .exercise[
@@ -546,22 +619,6 @@ class: self-paced
 You will need a Docker ID to use Play-With-Docker.
 
 (Creating a Docker ID is free.)
-
-.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/connecting.md)]
----
-
-## Terminals
-
-Once in a while, the instructions will say:
-<br/>"Open a new terminal."
-
-There are multiple ways to do this:
-
-- create a new window or tab on your machine, and SSH into the VM;
-
-- use screen or tmux on the VM and open a new window from there.
-
-You are welcome to use the method that you feel the most comfortable with.
 
 .debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/connecting.md)]
 ---
@@ -1125,6 +1182,7 @@ class: extra-details
   ```bash
   kubectl get node
   ```
+]
 
 - These commands are equivalent:
   ```bash
@@ -1132,8 +1190,6 @@ class: extra-details
   kubectl get node
   kubectl get nodes
   ```
-
-]
 
 .debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/kubectlget.md)]
 ---
@@ -3624,7 +3680,7 @@ class: title
 
 - In another window, watch the pods (to see when they are created):
   ```bash
-  kubectl get pods -w
+  watch kubectl get pods
   ```
 
 <!--
@@ -3918,7 +3974,7 @@ class: extra-details
 
 - Resolve the cluster IP for the `httpenv` service:
   ```bash
-  kubectl exec shpod -- nslookup httpenv $IP
+  kubectl exec shpod -- nslookup httpenv
   ```
 
 ]
@@ -3946,6 +4002,25 @@ class: extra-details
   ```
 ]
 
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
+---
+
+## Cleaning up our services
+
+
+* Let's clean up before we move onto the next section.
+
+.exercise[
+- delete the `httpenv` service:
+  ```bash
+  kubectl delete svc httpenv
+  ```
+
+- delete the `httpenv` deployment:
+  ```bash
+  kubectl delete deployment httpenv
+  ```
+]
 
 .debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/kubectlexpose.md)]
 ---
@@ -4100,28 +4175,13 @@ class: title
 
 ## Building on the fly
 
-- Some services can build images on the fly from a repository
+- Some services can even build images on the fly from a repository
 
 - Example: [ctr.run](https://ctr.run/)
 
-.exercise[
-
-- Use ctr.run to automatically build a container image and run it:
   ```bash
   docker run ctr.run/github.com/jpetazzo/container.training/dockercoins/hasher
   ```
-
-<!--
-```longwait Sinatra```
-```key ^C```
--->
-
-]
-
-There might be a long pause before the first layer is pulled,
-because the API behind `docker pull` doesn't allow to stream build logs, and there is no feedback during the build.
-
-It is possible to view the build logs by setting up an account on [ctr.run](https://ctr.run/).
 
 ???
 
@@ -4129,26 +4189,6 @@ It is possible to view the build logs by setting up an account on [ctr.run](http
 :FR:- Déployer des images sur notre cluster
 
 .debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/shippingimages.md)]
----
-## Using images from the Docker Hub
-
-- For everyone's convenience, we took care of building DockerCoins images
-
-- We pushed these images to the DockerHub, under the [dockercoins](https://hub.docker.com/u/dockercoins) user
-
-- These images are *tagged* with a version number, `v0.1`
-
-- The full image names are therefore:
-
-  - `dockercoins/hasher:v0.1`
-
-  - `dockercoins/rng:v0.1`
-
-  - `dockercoins/webui:v0.1`
-
-  - `dockercoins/worker:v0.1`
-
-.debug[[k8s/buildshiprun-dockerhub.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/buildshiprun-dockerhub.md)]
 ---
 
 class: pic
@@ -4175,27 +4215,13 @@ class: title
 ---
 # Our sample application
 
-- We will clone the GitHub repository into our workspace
+- The code for our sample app exists inside our workshop environment.
 
-> _If you were provided a SSH host, SSH to that first._
+- If you are following along at home you will need to clone it down:
 
-- The repository also contains scripts and tools that we will use through the workshop
-
-.exercise[
-
-<!--
 ```bash
-cd ~
-if [ -d container.training ]; then
-  mv container.training container.training.$RANDOM
-fi
+git clone https://github.com/jpetazzo/container.training
 ```
--->
-
-- Clone the repository:
-  ```bash
-  git clone https://github.com/jpetazzo/container.training
-  ```
 
 ]
 
@@ -4347,159 +4373,6 @@ https://github.com/jpetazzo/container.training/blob/8279a3bce9398f7c1a53bdd95187
 .debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
 ---
 
-class: extra-details
-
-## Compose file format version
-
-*This is relevant only if you have used Compose before 2016...*
-
-- Compose 1.6 introduced support for a new Compose file format (aka "v2")
-
-- Services are no longer at the top level, but under a `services` section
-
-- There has to be a `version` key at the top level, with value `"2"` (as a string, not an integer)
-
-- Containers are placed on a dedicated network, making links unnecessary
-
-- There are other minor differences, but upgrade is easy and straightforward
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Our application at work
-
-- On the left-hand side, the "rainbow strip" shows the container names
-
-- On the right-hand side, we see the output of our containers
-
-- We can see the `worker` service making requests to `rng` and `hasher`
-
-- For `rng` and `hasher`, we see HTTP access logs
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Connecting to the web UI
-
-- "Logs are exciting and fun!" (No-one, ever)
-
-- The `webui` container exposes a web dashboard; let's view it
-
-.exercise[
-
-- With a web browser, connect to `localhost` on port 8000
-
-- Remember: the `nodeX` aliases are valid only on the nodes themselves
-
-- In your browser, you need to enter the IP address of your node
-
-<!-- ```open http://localhost:8000``` -->
-
-]
-
-A drawing area should show up, and after a few seconds, a blue
-graph will appear.
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: self-paced, extra-details
-
-## If the graph doesn't load
-
-If you just see a `Page not found` error, it might be because your
-Docker Engine is running on a different machine. This can be the case if:
-
-- you are using the Docker Toolbox
-
-- you are using a VM (local or remote) created with Docker Machine
-
-- you are controlling a remote Docker Engine
-
-When you run DockerCoins in development mode, the web UI static files
-are mapped to the container using a volume. Alas, volumes can only
-work on a local environment, or when using Docker Desktop for Mac or Windows.
-
-How to fix this?
-
-Stop the app with `^C`, edit `dockercoins.yml`, comment out the `volumes` section, and try again.
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## Why does the speed seem irregular?
-
-- It *looks like* the speed is approximately 4 hashes/second
-
-- Or more precisely: 4 hashes/second, with regular dips down to zero
-
-- Why?
-
---
-
-class: extra-details
-
-- The app actually has a constant, steady speed: 3.33 hashes/second
-  <br/>
-  (which corresponds to 1 hash every 0.3 seconds, for *reasons*)
-
-- Yes, and?
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-class: extra-details
-
-## The reason why this graph is *not awesome*
-
-- The worker doesn't update the counter after every loop, but up to once per second
-
-- The speed is computed by the browser, checking the counter about once per second
-
-- Between two consecutive updates, the counter will increase either by 4, or by 0
-
-- The perceived speed will therefore be 4 - 4 - 4 - 0 - 4 - 4 - 0 etc.
-
-- What can we conclude from this?
-
---
-
-class: extra-details
-
-- "I'm clearly incapable of writing good frontend code!" 😀 — Jérôme
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
-## Stopping the application
-
-- If we interrupt Compose (with `^C`), it will politely ask the Docker Engine to stop the app
-
-- The Docker Engine will send a `TERM` signal to the containers
-
-- If the containers do not exit in a timely manner, the Engine sends a `KILL` signal
-
-.exercise[
-
-- Stop the application by hitting `^C`
-
-<!--
-```key ^C```
--->
-
-]
-
---
-
-Some containers exit immediately, others take longer.
-
-The containers that do not handle `SIGTERM` end up being killed after a 10s timeout. If we are very impatient, we can hit `^C` a second time!
-
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/sampleapp.md)]
----
-
 class: pic
 
 .interstitial[![Image separating from the next module](https://gallant-turing-d0d520.netlify.com/containers/two-containers-on-a-truck.jpg)]
@@ -4605,12 +4478,13 @@ kubectl wait deploy/worker --for condition=available
 
 - `worker` doesn't need to be exposed
 
-- `webui` will be dealt with later
+- `webui` needs to be exposed as a type LoadBalancer
 
 .exercise[
 
 - Expose each deployment, specifying the right port:
   ```bash
+  kubectl expose deploy/webui --type=LoadBalancer --port=80
   kubectl expose deployment redis --port 6379
   kubectl expose deployment rng --port 80
   kubectl expose deployment hasher --port 80
@@ -4652,23 +4526,18 @@ We should now see the `worker`, well, working happily.
 
 - Now we would like to access the Web UI
 
-- We will expose it with a `LoadBalancer`
+- We exposed it with a `LoadBalancer`
 
 .exercise[
 
-- Create a `LoadBalancer` service for the Web UI:
-  ```bash
-  kubectl expose deploy/webui --type=LoadBalancer --port=80
-  ```
 
-- Check the results that was allocated:
+- Wait until the `EXTERNAL-IP` is allocated:
   ```bash
-  kubectl get svc
+  watch kubectl get svc
   ```
 ]
---
 
-Wait a few moments and rerun `kubectl get svc` you should see the `EXTERNAL-IP` go from *pending* to an IP address.
+*You should see the `EXTERNAL-IP` go from **pending** to an **IP address**.*
 
 .debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/namespaced/ourapponkube.md)]
 ---
@@ -4988,6 +4857,11 @@ class: title
             jq ".items[] | {name:.metadata.name} + .spec.strategy.rollingUpdate"
   ```
 
+- Scale our `worker` deployment to 3 replicas
+  ```bash
+  kubectl scale deploy/worker --replicas=3
+  ```
+
 ]
 
 .debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/rollout.md)]
@@ -5012,7 +4886,7 @@ class: title
 
 - Let's monitor what's going on by running the following in a new terminal:
   ```bash
-  watch -n 1 kubectl get all --selector "app=worker"
+  watch kubectl get deployment,rs,pod -l app=worker
   ```
 
 <!--
@@ -5377,6 +5251,24 @@ class: extra-details
 
 ]
 
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/rollout.md)]
+---
+
+## That's it for `dockercoin` time to clean it up.
+
+1. Delete the services
+
+```execute
+kubectl delete svc hasher redis rng webui
+```
+
+2. Delete the deployments
+
+```execute
+kubectl delete deployment hasher redis rng webui worker
+```
+
+
 ???
 
 :EN:- Rolling updates
@@ -5525,19 +5417,22 @@ It runs a single NGINX container.
 
 - Create the Pod:
   ```bash
-  kubectl create -f ~/container.training/k8s/nginx-1-without-volume.yaml
+  cat ~/container.training/k8s/nginx-1-without-volume.yaml
+  kubectl apply -f !*
   ```
 
 <!-- ```bash kubectl wait pod/nginx-without-volume --for condition=ready ``` -->
 
 - Get its IP address:
   ```bash
-  IPADDR=$(kubectl get pod nginx-without-volume -o jsonpath={.status.podIP})
+  kubectl get pod nginx-without-volume -o jsonpath={.status.podIP}
+  IPADDR=$(!!)
   ```
 
 - Send a request with curl:
   ```bash
-  curl $IPADDR
+  kubectl run shpod -i --tty --image=jpetazzo/shpod \
+   --restart=Never --rm -- curl -s $IPADDR
   ```
 
 ]
@@ -5595,19 +5490,22 @@ spec:
 
 - Create the Pod:
   ```bash
-  kubectl create -f ~/container.training/k8s/nginx-2-with-volume.yaml
+  cat ~/container.training/k8s/nginx-2-with-volume.yaml
+  kubectl apply -f !*
   ```
 
 <!-- ```bash kubectl wait pod/nginx-with-volume --for condition=ready ``` -->
 
 - Get its IP address:
   ```bash
-  IPADDR=$(kubectl get pod nginx-with-volume -o jsonpath={.status.podIP})
+  kubectl get pod nginx-with-volume -o jsonpath={.status.podIP}
+  IPADDR=$(!!)
   ```
 
 - Send a request with curl:
   ```bash
-  curl $IPADDR
+  kubectl run shpod -i --tty --image=jpetazzo/shpod --restart=Never \
+    --rm -- curl -s $IPADDR
   ```
 
 ]
@@ -5695,7 +5593,7 @@ spec:
 
 - Watch the pods (so that we can catch the Pod IP address)
   ```bash
-  kubectl get pods -o wide --watch
+  watch kubectl get pods -o wide
   ```
 
 <!--
@@ -5714,7 +5612,8 @@ spec:
 
 - Create the pod:
   ```bash
-  kubectl create -f ~/container.training/k8s/nginx-3-with-git.yaml
+  cat ~/container.training/k8s/nginx-3-with-git.yaml
+  kubectl apply -f !*
   ```
 
 <!--
@@ -5724,14 +5623,12 @@ spec:
 
 - As soon as we see its IP address, access it:
   ```bash
-  curl `$IP`
-  ```
-
-<!-- ```bash /bin/sleep 5``` -->
-
-- A few seconds later, the state of the pod will change; access it again:
-  ```bash
-  curl `$IP`
+kubectl wait pod/nginx-with-git --for condition=initialized
+kubectl get pod nginx-with-git -o jsonpath={.status.podIP}
+IP=$(!!)
+kubectl run shpod -i --tty --image=jpetazzo/shpod \
+  --restart=Never --rm -- \
+  /bin/sh -c "while ! curl -s $IP; do sleep 1; done"
   ```
 
 ]
@@ -5849,14 +5746,28 @@ spec:
 
 .exercise[
 
-- Repeat the same operation as earlier
+- Watch the pods in the second terminal
+  *(this should still be running from earlier*)
 
-  (try to send HTTP requests as soon as the pod comes up)
+  ```bash
+  watch kubectl get pods -o wide
+  ```
 
-<!--
-```key ^D```
-```key ^C```
--->
+2. Create the pod
+  ```execute
+  cat examples/volumes/nginx-4-with-init.yaml
+  kubectl apply -f !*
+  ```
+
+* Wait until it shows as `READY` and access it:
+
+  ```execute
+  kubectl get pod nginx-with-init -o jsonpath={.status.podIP}
+  IP=$(!!)
+  kubectl run shpod -i --tty --image=jpetazzo/shpod \
+    --restart=Never --rm -- \
+    /bin/sh -c "while ! curl -s $IP; do sleep 1; done"
+  ```
 
 ]
 
@@ -6389,7 +6300,7 @@ We should see connections served by Google, and others served by IBM.
 .debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/fullday-namespaced/slides/k8s/configuration.md)]
 ---
 
-## Exposing configmaps with the downward API
+## Exposing configmaps as Environment Variables
 
 - We are going to run a Docker registry on a custom port
 

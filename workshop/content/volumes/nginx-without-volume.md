@@ -7,6 +7,8 @@ cat examples/volumes/nginx-1-without-volume.yaml
 kubectl apply -f !*
 ```
 
+*What does `!*` do ?*
+
 2. Get its IP Address
 
 ```execute
@@ -14,12 +16,13 @@ kubectl get pod nginx-without-volume -o jsonpath={.status.podIP}
 IPADDR=$(!!)
 ```
 
-*`IPADDR=$(!!)` will take the last command and load its result into the `IPADDR` environment variable*
+*What does `$(!!) do ?*
 
-3. Send a request with curl
+3. Send a request
 
 ```execute
-kubectl run alpine -i --tty --image=alpine --restart=Never --rm -- wget -qO - $IPADDR
+kubectl run shpod -i --tty --image=jpetazzo/shpod \
+  --restart=Never --rm -- curl -s $IPADDR
 ```
 
 *Hey look, we just ran a one off pod that cleaned up after itself.  Neat!*

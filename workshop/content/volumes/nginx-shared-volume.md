@@ -9,7 +9,7 @@ Let's share the volume with another container in the Pod.
 1. Watch the pods in the second terminal
 
 ```copy
-kubectl get pods -o wide --watch
+watch kubectl get pods -o wide
 ```
 
 2. Create the pod
@@ -24,8 +24,9 @@ kubectl apply -f !*
 kubectl wait pod/nginx-with-git --for condition=initialized
 kubectl get pod nginx-with-git -o jsonpath={.status.podIP}
 IP=$(!!)
-kubectl run alpine -i --tty --image=alpine --restart=Never \
-  --rm -- /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
+kubectl run shpod -i --tty --image=jpetazzo/shpod \
+  --restart=Never --rm -- \
+  /bin/sh -c "while ! curl -s $IP; do sleep 1; done"
 ```
 
 *At first we should see "403 Forbidden", after a while it should show the HTML file from the Spoon-Knife repository.*
