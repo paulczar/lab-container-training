@@ -21,8 +21,5 @@ IPADDR=$(!!)
 3. Send a request
 
 ```execute
-kubectl run shpod -i --tty --image=jpetazzo/shpod \
-  --restart=Never --rm -- curl -s $IPADDR
+kubectl exec shpod -- curl -s $IPADDR
 ```
-
-*Hey look, we just ran a one off pod that cleaned up after itself.  Neat!*

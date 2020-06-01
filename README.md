@@ -8,8 +8,6 @@ make sure you have an ingress that supports websocket, contour works great:
 ```bash
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 ```
-
-
 Deploy Operator:
 
 *for now using create not apply, we want to roll the whole infra, not update*
@@ -17,7 +15,7 @@ Deploy Operator:
 ```bash
 kubectl create -k "github.com/eduk8s/eduk8s?ref=master"
 kubectl set env deployment/eduk8s-operator -n eduk8s \
-  INGRESS_DOMAIN=eduk8s.34.68.224.58.xip.io
+  INGRESS_DOMAIN=workshop.k8s.camp
 ```
 
 Deploy Workshop:

@@ -33,7 +33,7 @@ spec:
       editor:
         enabled: true
       docker:
-        enabled: true
+        enabled: false
     objects:
       - kind: ClusterRole
         apiVersion: rbac.authorization.k8s.io/v1
@@ -79,8 +79,8 @@ spec:
               memory: 32Mi
             type: Pod
           - default:
-              cpu: 250m
-              memory: 256Mi
+              cpu: 125m
+              memory: 128Mi
             defaultRequest:
               cpu: 50m
               memory: 128Mi

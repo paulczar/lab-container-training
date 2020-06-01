@@ -20,7 +20,6 @@ Wait until it shows as `READY`
 ```execute
 kubectl get pod nginx-with-init -o jsonpath={.status.podIP}
 IP=$(!!)
-kubectl run shpod -i --tty --image=jpetazzo/shpod \
-  --restart=Never --rm -- \
+kubectl exec shpod -- \
   /bin/sh -c "while ! wget -q -O - $IP; do sleep 1; done"
 ```

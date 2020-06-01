@@ -175,7 +175,13 @@ modules:
     name: "Introduction to ConfigMaps"
   configmaps/as-volume:
     name: "Config Maps as Volumes"
+  configmaps/as-volume-2:
+    name: "Using the configmap"
+  configmaps/as-volume-3:
+    name: "Testing our load balancer"
   configmaps/as-env:
     name: "Config Maps as Environment Variables"
-  ocnfigmaps/cleanup:
+  configmaps/as-env-2:
+    name: "Using the configmap"
+  configmaps/cleanup:
     name: "Config Maps - Cleanup"

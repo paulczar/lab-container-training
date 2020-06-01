@@ -24,6 +24,7 @@ modules:
     - pingpong/logs
     - pingpong/logs-2
     - pingpong/scale
+    - pingpong/scale-logs
     - pingpong/resilience
     - jobs/intro
     - jobs/create
@@ -31,14 +32,16 @@ modules:
     - jobs/cronjob
     - jobs/cronjob-action
     - labels/intro
-    - labels/view
     - labels/deployment
     - labels/selectors
+    - labels/view
     - labels/setting
     - labels/cleanup
     - logs/intro
     - logs/multiple
-    - logs/multiple2
+    - logs/multiple-2
+    - logs/multiple-3
+    - logs/multiple-4
     - logs/shortcomings
     - logs/stern
     - logs/stern-2
@@ -85,7 +88,10 @@ modules:
     - volumes/cleanup
     - configmaps/intro
     - configmaps/as-volume
+    - configmaps/as-volume-2
+    - configmaps/as-volume-3
     - configmaps/as-env
+    - configmaps/as-env-2
     - configmaps/cleanup
 
 

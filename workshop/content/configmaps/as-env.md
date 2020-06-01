@@ -12,24 +12,3 @@ kubectl create configmap registry --from-literal=http.addr=0.0.0.0:80
 ```execute
 kubectl get configmap registry -o yaml
 ```
-
-3. Create a registry Pod
-
-```execute
-cat examples/config/registry.yaml
-kubectl apply -f !*
-```
-
-4. Check the IP address allocated to the pod:
-
-```execute
-kubectl get pod registry -o wide
-IP=$(kubectl get pod registry -o json | jq -r .status.podIP)
-```
-
-5.Confirm that the registry is available on port 80:
-
-```execute
-kubectl run alpine -i --tty --image=alpine --restart=Never \
-  --rm -- wget -q -O - $IP/v2/_catalog
-```

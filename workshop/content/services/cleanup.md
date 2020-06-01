@@ -9,9 +9,3 @@ kubectl delete svc httpenv
 ```execute
 kubectl delete deployment httpenv
 ```
-
-3. Delete the `shpod` pod
-
-```execute
-kubectl delete pod shpod
-```

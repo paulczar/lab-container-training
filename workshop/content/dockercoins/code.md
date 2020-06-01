@@ -8,3 +8,9 @@ cat examples/dockercoins/docker-compose.yml
 ```
 
 *If you see an "editor" tab above, click it. You can browse to the `examples/dockercoins` path and view the `docker-compose.yml` and other project files in there.*
+
+2. Watch for `pods` and `services` in the second terminal window
+
+```execute
+watch kubectl get po,svc
+```

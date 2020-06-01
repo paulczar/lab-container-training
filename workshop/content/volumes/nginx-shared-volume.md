@@ -24,8 +24,7 @@ kubectl apply -f !*
 kubectl wait pod/nginx-with-git --for condition=initialized
 kubectl get pod nginx-with-git -o jsonpath={.status.podIP}
 IP=$(!!)
-kubectl run shpod -i --tty --image=jpetazzo/shpod \
-  --restart=Never --rm -- \
+kubectl exec shpod -- \
   /bin/sh -c "while ! curl -s $IP; do sleep 1; done"
 ```
 

@@ -10,10 +10,3 @@ kubectl -n default get services
 ```
 
 There is already one service in the `default` namespace on our cluster: the Kubernetes API itself.
-
-2. Connect to the `kubernetes` service:
-
-```execute
-curl -k https://$(kubectl -n default get service \
-    kubernetes -o json | jq -r .spec.clusterIP)
-```

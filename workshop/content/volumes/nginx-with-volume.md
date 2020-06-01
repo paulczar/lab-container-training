@@ -17,8 +17,7 @@ IPADDR=$(!!)
 3. Send a request with curl
 
 ```execute
-kubectl run shpod -i --tty --image=jpetazzo/shpod \
-  --restart=Never --rm -- curl -s $IPADDR
+kubectl exec shpod -- curl -s $IPADDR
 ```
 
 *(We should now see a "403 Forbidden" error page.)*

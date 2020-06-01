@@ -1,8 +1,12 @@
-We already have manifests written for `dockercoins` which can be be found in `dockercoins/k8s/dockercoins.yaml`.
+We already have manifests written for `dockercoins` which can be be found in `examples/dockercoins/k8s/dockercoins.yaml`.
 
-1. Open `dockercoins/k8s/dockercoins.yaml` with the built in text editor (or just `cat` it).
+1. Open `examples/dockercoins/k8s/dockercoins.yaml` with the built in text editor (or just `cat` it)
 
-2. Apply the manifest:
+```execute
+cat examples/dockercoins/k8s/dockercoins.yaml
+```
+
+2. Apply the manifest
 
 ```execute
 kubectl apply -f examples/dockercoins/k8s
