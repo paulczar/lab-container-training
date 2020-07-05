@@ -73,8 +73,8 @@
 
 - In Kubernetes 1.17-, the output is much more verbose:
   ```
-  kubectl run --generator=deployment/apps.v1 is DEPRECATED 
-  and will be removed in a future version. Use kubectl run 
+  kubectl run --generator=deployment/apps.v1 is DEPRECATED
+  and will be removed in a future version. Use kubectl run
   --generator=run-pod/v1 or kubectl create instead.
   deployment.apps/pingpong created
   ```
@@ -487,7 +487,7 @@ We'll see later how to address that shortcoming.
 
 <!--
 ```tmux select-pane -t 0```
-```copy pingpong-[^-]*-.....```
+```execute-2 pingpong-[^-]*-.....```
 ```tmux last-pane```
 ```keys kubectl delete pod ```
 ```paste```

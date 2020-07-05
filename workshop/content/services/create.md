@@ -4,7 +4,7 @@ Then we will scale it with kubectl scale
 
 1. make sure you're watching `kubectl get pods` in a second terminal
 
-```copy
+```execute-2
 watch kubectl get pods
 ```
 

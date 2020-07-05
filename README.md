@@ -8,6 +8,19 @@ make sure you have an ingress that supports websocket, contour works great:
 ```bash
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 ```
+
+nginx on GCP
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+```
+
+or nginx on AWS
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/aws/deploy.yaml
+```
+
 Deploy Operator:
 
 *for now using create not apply, we want to roll the whole infra, not update*

@@ -1,9 +1,9 @@
 We should run the git clone as a `initContainer`
 
-1. Watch the pods in the second terminal 
+1. Watch the pods in the second terminal
 *(this should still be running from earlier*)
 
-```copy
+```execute-2
 watch kubectl get pods -o wide
 ```
 

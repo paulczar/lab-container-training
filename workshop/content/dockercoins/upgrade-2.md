@@ -3,7 +3,7 @@ Rolling out the new `worker` service
 
 1. Let's monitor what's going on by running the following in the second terminal:
 
-```copy
+```execute-2
 watch kubectl get deployment,rs,pod -l app=worker
 ```
 

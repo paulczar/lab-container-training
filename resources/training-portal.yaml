@@ -5,9 +5,10 @@ metadata:
 spec:
   portal:
     capacity: 5
-    # reserved: 5
-    expires: 8h
-    orphaned: 15m
+    # reserved: 60
+    initial: 3
+    # expires: 8h
+    # orphaned: 15m
     ingress:
       hostname: "intro"
   workshops:

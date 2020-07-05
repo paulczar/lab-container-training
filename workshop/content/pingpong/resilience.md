@@ -8,7 +8,7 @@ What happens if pods disappear?
 
 1. In the bottom terminal watch the list of pods:
 
-```copy
+```execute-2
 watch kubectl get pods
 ```
 

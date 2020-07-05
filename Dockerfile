@@ -1,6 +1,6 @@
 #FROM quay.io/eduk8s/workshop-dashboard:master
 
-FROM quay.io/eduk8s/base-environment:200518.d8f9aef
+FROM quay.io/eduk8s/base-environment:200601.040417.e1f4cba
 
 # USER root
 

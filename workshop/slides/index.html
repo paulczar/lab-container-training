@@ -124,7 +124,7 @@ Password: **Something**
 
 - This was initially written by [Jérôme Petazzoni](https://twitter.com/jpetazzo) to support in-person,
   instructor-led workshops and tutorials
-  
+
 - Credit is also due to [multiple contributors](https://github.com/jpetazzo/container.training/graphs/contributors) — thank you!
 
 - You can also follow along on your own, at your own pace
@@ -1730,8 +1730,8 @@ class: title
 
 - In Kubernetes 1.17-, the output is much more verbose:
   ```
-  kubectl run --generator=deployment/apps.v1 is DEPRECATED 
-  and will be removed in a future version. Use kubectl run 
+  kubectl run --generator=deployment/apps.v1 is DEPRECATED
+  and will be removed in a future version. Use kubectl run
   --generator=run-pod/v1 or kubectl create instead.
   deployment.apps/pingpong created
   ```
@@ -2162,7 +2162,7 @@ We'll see later how to address that shortcoming.
 
 <!--
 ```tmux select-pane -t 0```
-```copy pingpong-[^-]*-.....```
+```execute-2 pingpong-[^-]*-.....```
 ```tmux last-pane```
 ```keys kubectl delete pod ```
 ```paste```
@@ -2260,7 +2260,7 @@ class: title
 
 - Create a Job that has a 50% chance of success:
   ```bash
-    kubectl create job flipcoin --image=alpine -- sh -c 'exit $(($RANDOM%2))' 
+    kubectl create job flipcoin --image=alpine -- sh -c 'exit $(($RANDOM%2))'
   ```
 
 ]
@@ -3123,7 +3123,7 @@ class: title
 
 --
 
-- Declarative seems simpler at first ... 
+- Declarative seems simpler at first ...
 
 --
 
@@ -3736,7 +3736,7 @@ class: title
   (it relies on mechanisms that don't support layer 3)
 
 - As a result: you *have to* indicate the port number for your service
-    
+
   (with some exceptions, like `ExternalName` or headless services, covered later)
 
 .debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
@@ -5193,7 +5193,7 @@ class: extra-details
 
   - revert to `v0.1`
   - be conservative on availability (always have desired number of available workers)
-  - go slow on rollout speed (update only one pod at a time) 
+  - go slow on rollout speed (update only one pod at a time)
   - give some time to our workers to "warm up" before starting more
 
 The corresponding changes can be expressed in the following YAML snippet:
@@ -5248,7 +5248,7 @@ class: extra-details
   kubectl get deploy -o json worker |
           jq "{name:.metadata.name} + .spec.strategy.rollingUpdate"
   ```
-  ] 
+  ]
 
 ]
 
@@ -5913,9 +5913,9 @@ class: title
 
 - Pass options to `args` array in the container specification
 
-- Example ([source](https://github.com/coreos/pods/blob/master/kubernetes.yaml#L29)): 
+- Example ([source](https://github.com/coreos/pods/blob/master/kubernetes.yaml#L29)):
   ```yaml
-      args: 
+      args:
         - "--data-dir=/var/lib/etcd"
         - "--advertise-client-urls=http://127.0.0.1:2379"
         - "--listen-client-urls=http://127.0.0.1:2379"
@@ -6158,7 +6158,7 @@ We'll cover them just after!*
   kubectl create cm my-app-config \
       --from-literal=foreground=red \
       --from-literal=background=blue
-  
+
   # Create a configmap from a file containing key=val pairs
   kubectl create cm my-app-config \
       --from-env-file=app.conf
@@ -6393,7 +6393,7 @@ spec:
 
 - The *intent* is different, though:
 
-  *"You should use secrets for things which are actually secret like API keys, 
+  *"You should use secrets for things which are actually secret like API keys,
   credentials, etc., and use config map for not-secret configuration data."*
 
   *"In the future there will likely be some differentiators for secrets like rotation or support for backing the secret API w/ HSMs, etc."*
@@ -6405,7 +6405,7 @@ spec:
 ---
 
 ## Differences between configmaps and secrets
- 
+
 - Secrets are base64-encoded when shown with `kubectl get secrets -o yaml`
 
   - keep in mind that this is just *encoding*, not *encryption*
@@ -7082,8 +7082,8 @@ That's all, folks! <br/> Questions?
         excludedClasses: ["self-paced"]
       });
     </script>
-    
-    <!-- 
+
+    <!--
     These two scripts will be available only when loading the
     content using the pub/sub server. Otherwise, they'll just
     404 and that's OK.

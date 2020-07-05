@@ -2,7 +2,7 @@ Wait for the `webui` service to get an `EXTERNAL-IP`
 
 1. Watch `kubectl get svc` in the second terminal
 
-```copy
+```execute-2
 watch kubectl get svc webui
 ```
 

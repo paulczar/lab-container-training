@@ -8,7 +8,7 @@ Let's share the volume with another container in the Pod.
 
 1. Watch the pods in the second terminal
 
-```copy
+```execute-2
 watch kubectl get pods -o wide
 ```
 
