@@ -7,7 +7,7 @@
 
 
 - logistics:
-   - Join the Zoom! *(We're also streaming to twitch.tv/makejarnotwar)*
+   - Join the Zoom! *(We're also streaming to twitch.tv/vmwaretanzu)*
    - The workshop will run from 9:00am PDT
    - We will wrap up around 1:00pm PDT
    - There will be coffee breaks :)
