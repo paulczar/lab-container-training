@@ -4,11 +4,11 @@ metadata:
   name: lab-container-training
 spec:
   portal:
-    capacity: 5
+    capacity: 60
     # reserved: 60
-    initial: 3
-    # expires: 8h
-    # orphaned: 15m
+    initial: 40
+    expires: 8h
+    orphaned: 15m
     ingress:
       hostname: "intro"
   workshops:

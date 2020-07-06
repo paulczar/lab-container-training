@@ -11,6 +11,6 @@ cat examples/dockercoins/docker-compose.yml
 
 2. Watch for `pods` and `services` in the second terminal window
 
-```execute
+```execute-2
 watch kubectl get po,svc
 ```
