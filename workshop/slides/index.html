@@ -1437,11 +1437,9 @@ class: extra-details
 
 - `kube-proxy` is the (per-node) component managing port mappings and such
 
-- `weave` is the (per-node) component managing the network overlay
+- `calico`/`weave` is the (per-node) component managing the network overlay
 
 - the `READY` column indicates the number of containers in each pod
-
-  (1 for most pods, but `weave` has 2, for instance)
 
 .debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
 ---
@@ -3396,9 +3394,9 @@ class: title
 
 ## Kubernetes network model: in practice
 
-- The nodes that we are using have been set up to use [Weave](https://github.com/weaveworks/weave)
+- The nodes that we are using have been set up to use [Calico](https://www.projectcalico.org/)
 
-- We don't endorse Weave in a particular way, it just Works For Us
+- This workshop doesn't endorse Calico in a particular way, it just Works For Us
 
 - Don't worry about the warning about `kube-proxy` performance
 

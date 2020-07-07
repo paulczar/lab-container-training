@@ -7,8 +7,8 @@ spec:
     capacity: 60
     # reserved: 60
     initial: 40
-    expires: 8h
-    orphaned: 15m
+    # expires: 8h
+    # orphaned: 15m
     ingress:
       hostname: "intro"
   workshops:

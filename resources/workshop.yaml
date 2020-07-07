@@ -11,7 +11,7 @@ spec:
     - "Paul Czarkowski"
     - "Jérôme Petazzoni"
   difficulty: beginner
-  duration: 8h
+  duration: 4h
   tags:
     - kubernetes
   content:

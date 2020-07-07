@@ -36,7 +36,7 @@
 
   - `kube-proxy`
 
-  - `weave` (our overlay network)
+  - `calico` (our overlay network)
 
   - monitoring agents
 
@@ -427,7 +427,7 @@ class: extra-details
 
 - We need to change the selector of the `rng` service!
 
-- Let's add another label to that selector (e.g. `active=yes`) 
+- Let's add another label to that selector (e.g. `active=yes`)
 
 ---
 
