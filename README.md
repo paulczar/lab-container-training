@@ -28,18 +28,18 @@ Deploy Operator:
 ```bash
 kubectl create -k "github.com/eduk8s/eduk8s?ref=master"
 kubectl set env deployment/eduk8s-operator -n eduk8s \
-  INGRESS_DOMAIN=workshop.k8s.camp
+  INGRESS_DOMAIN=austin-devops.workshop.paulczar.wtf
 ```
 
 Deploy Workshop:
 ```bash
-kubectl create -k "github.com/paulczar/lab-container-training?ref=master"
+kubectl create -k "github.com/paulczar/lab-container-training?ref=austin-devops"
 ```
 
 ## Cleanup
 
 ```bash
-kubectl delete -k .
+kubectl delete -k "github.com/paulczar/lab-container-training?ref=austin-devops"
 kubectl delete -k "github.com/eduk8s/eduk8s?ref=master"
 ```
 
