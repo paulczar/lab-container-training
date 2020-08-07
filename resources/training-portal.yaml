@@ -10,6 +10,6 @@ spec:
     # expires: 8h
     # orphaned: 15m
     ingress:
-      hostname: "intro"
+      hostname: "atxdevops"
   workshops:
   - name: lab-container-training

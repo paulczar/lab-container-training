@@ -2,7 +2,7 @@
 
 ```execute
 kubectl get all
-``
+```
 
 Kubernetes 1.18+:
 
