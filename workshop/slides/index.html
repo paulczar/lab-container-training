@@ -29,31 +29,14 @@ Deploying and Scaling Microservices<br/>with Kubernetes<br/>
 
 .debug[
 ```
-A  slides/k8s/batch-jobs-cleanup.md
-MM slides/k8s/configuration.md
-M  slides/k8s/kubectl-logs.md
-M  slides/k8s/kubectlexpose.md
-M  slides/k8s/kubectlget.md
-M  slides/k8s/labels-annotations.md
-M  slides/k8s/logs-cli.md
-MM slides/k8s/rollout.md
-M  slides/k8s/shippingimages.md
-MM slides/k8s/volumes.md
-MM slides/kube-fullday-namespaced.yml
-M  slides/markmaker.py
-MM slides/namespaced/connecting.md
-M  slides/namespaced/handson.md
-A  slides/namespaced/kubectlget.md
-M  slides/namespaced/ourapponkube.md
-A  slides/namespaced/rollout.md
-M  slides/namespaced/sampleapp.md
+ M slides/kube-fullday-namespaced.yml
 
 ```
 
-These slides have been built from commit: 6c74ac9
+These slides have been built from commit: df037cd
 
 
-[shared/title.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/title.md)]
+[shared/title.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/title.md)]
 ---
 
 class: title, in-person
@@ -75,7 +58,7 @@ Password: **Something**
 *Thank you!*
 -->
 
-.debug[[shared/title.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/title.md)]
+.debug[[shared/title.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/title.md)]
 ---
 ## Intros
 
@@ -84,8 +67,7 @@ Password: **Something**
 - Hello! We are:
 <ul>
 <li>👨🏾‍🎓 Paul Czarkowski <a href="https://twitter.com/pczarkowski">@pczarkowski</a>, VMware
-<li>👩🏻‍🏫 Tiffany Jernigan <a href="https://twitter.com/tiffanyfayj">@tiffanyfayj</a>, VMware
-<li>👨🏾‍🎓 Tyler Britten <a href="https://twitter.com/tybritten">@tybritten</a>, VMware
+<li>👨🏾‍🎓 JJ Asghar <a href="https://twitter.com/jjasghar">@jjasghar</a>, IBM
 </ul>
 
 
@@ -108,9 +90,6 @@ Password: **Something**
 
 - logistics:
   - Join the Zoom! *(We're also streaming to twitch.tv/vmwaretanzu)*
-  - The workshop will run from 9:00am PDT
-  - We will wrap up around 1:00pm PDT
-  - There will be coffee breaks :)
 
 - Feel free to interrupt for questions at any time
 
@@ -118,13 +97,13 @@ Password: **Something**
 
 - Live feedback, questions, help: In person!
 
-.debug[[logistics.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/logistics.md)]
+.debug[[logistics.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/logistics.md)]
 ---
 ## A brief introduction
 
 - This was initially written by [Jérôme Petazzoni](https://twitter.com/jpetazzo) to support in-person,
   instructor-led workshops and tutorials
-
+  
 - Credit is also due to [multiple contributors](https://github.com/jpetazzo/container.training/graphs/contributors) — thank you!
 
 - You can also follow along on your own, at your own pace
@@ -137,7 +116,7 @@ Password: **Something**
 
 - ... And looking for answers on [StackOverflow](http://stackoverflow.com/questions/tagged/kubernetes) and other outlets
 
-.debug[[k8s/intro.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/intro.md)]
+.debug[[k8s/intro.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/intro.md)]
 ---
 
 class: self-paced
@@ -159,7 +138,7 @@ class: self-paced
 - If you are doing this on your own:
   <br/>the first chapter will give you various options to get your own cluster
 
-.debug[[k8s/intro.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/intro.md)]
+.debug[[k8s/intro.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/intro.md)]
 ---
 ## Accessing these slides now
 
@@ -177,7 +156,7 @@ class: self-paced
 
   (e.g. .../#123 for slide 123)
 
-.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/about-slides.md)]
+.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/about-slides.md)]
 ---
 
 ## Accessing these slides later
@@ -196,7 +175,7 @@ class: self-paced
 
   https://container.training/
 
-.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/about-slides.md)]
+.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/about-slides.md)]
 ---
 
 ## These slides are open source
@@ -219,7 +198,7 @@ class: self-paced
 ]
 -->
 
-.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/about-slides.md)]
+.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/about-slides.md)]
 ---
 
 class: extra-details
@@ -240,7 +219,7 @@ class: extra-details
 
 - You can review these slides another time if you want, they'll be waiting for you ☺
 
-.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/about-slides.md)]
+.debug[[shared/about-slides.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/about-slides.md)]
 ---
 ## Use the chat!
 
@@ -260,7 +239,7 @@ class: extra-details
 
 - Don't hesitate to use it to ask questions, or get help, or share feedback
 
-.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/chat-room-zoom-meeting.md)]
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/chat-room-zoom-meeting.md)]
 ---
 
 ## Use non-verbal communication cues
@@ -285,7 +264,7 @@ class: extra-details
 
 - Click on "thumbs up" to let us know that everything is working fine!
 
-.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/chat-room-zoom-meeting.md)]
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/chat-room-zoom-meeting.md)]
 ---
 
 ## Use your webcam (if you'd like!)
@@ -305,7 +284,7 @@ class: extra-details
   <br/>People with their webcam on are in the front row;
   <br/>people with their webcam off are in the back row.”*
 
-.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/chat-room-zoom-meeting.md)]
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/chat-room-zoom-meeting.md)]
 ---
 
 ## During the session
@@ -314,7 +293,7 @@ class: extra-details
 
 - If you have a question, you can ask in the chat, or use "raise hand"
 
-.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/chat-room-zoom-meeting.md)]
+.debug[[shared/chat-room-zoom-meeting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/chat-room-zoom-meeting.md)]
 ---
 
 name: toc-module-1
@@ -391,7 +370,7 @@ name: toc-module-5
 
 
 
-.debug[[shared/toc.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/toc.md)]
+.debug[[shared/toc.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/toc.md)]
 ---
 
 class: pic
@@ -436,7 +415,7 @@ class: title
 
 - It's totally OK if you are not a Docker expert!
 
-.debug[[shared/prereqs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/prereqs.md)]
+.debug[[shared/prereqs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/prereqs.md)]
 ---
 
 class: title
@@ -451,7 +430,7 @@ Misattributed to Benjamin Franklin
 
 [(Probably inspired by Chinese Confucian philosopher Xunzi)](https://www.barrypopik.com/index.php/new_york_city/entry/tell_me_and_i_forget_teach_me_and_i_may_remember_involve_me_and_i_will_lear/)
 
-.debug[[shared/prereqs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/prereqs.md)]
+.debug[[shared/prereqs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/prereqs.md)]
 ---
 ## Hands-on sections
 
@@ -473,21 +452,21 @@ Misattributed to Benjamin Franklin
 
 ]
 
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/handson.md)]
+.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/handson.md)]
 ---
 
 class: in-person
 
 ## Where are we going to run our containers?
 
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/handson.md)]
+.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/handson.md)]
 ---
 
 class: in-person, pic
 
 ![You get a namespace](images/you-get-a-namespace.jpg)
 
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/handson.md)]
+.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/handson.md)]
 ---
 
 class: in-person
@@ -503,7 +482,7 @@ class: in-person
 - If you're in the Zoom call, you should have already received the link to the workshop.
 
 
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/handson.md)]
+.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/handson.md)]
 ---
 
 class: in-person
@@ -523,7 +502,7 @@ class: in-person
 
   - a web browser
 
-.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/handson.md)]
+.debug[[namespaced/handson.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/handson.md)]
 ---
 class: in-person
 
@@ -545,7 +524,7 @@ $ kubectl cluster-info
 
 ]
 
-.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/connecting.md)]
+.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/connecting.md)]
 ---
 
 ## Role Based Access Control
@@ -573,7 +552,7 @@ $ kubectl auth can-i delete namespaces
 
 1. You can create pods in your own namespace.
 2. You cannot delete namespaces.
-.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/connecting.md)]
+.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/connecting.md)]
 ---
 
 ## Doing or re-doing the workshop on your own?
@@ -594,7 +573,7 @@ $ kubectl auth can-i delete namespaces
 
   Bigger setup effort; ideal for group training
 
-.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/connecting.md)]
+.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/connecting.md)]
 ---
 
 class: self-paced
@@ -621,7 +600,7 @@ You will need a Docker ID to use Play-With-Docker.
 
 (Creating a Docker ID is free.)
 
-.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/connecting.md)]
+.debug[[namespaced/connecting.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/connecting.md)]
 ---
 
 class: pic
@@ -656,7 +635,7 @@ class: title
 
 - What does that really mean?
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## What can we do with Kubernetes?
@@ -679,7 +658,7 @@ class: title
 
 - Let's see how we would deploy our app on Kubernetes!
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 
@@ -713,7 +692,7 @@ class: title
 
 - Keep processing requests during the upgrade; update my containers one at a time
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Other things that Kubernetes can do for us
@@ -730,7 +709,7 @@ class: title
 
   (blue/green deployment, canary deployment)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## More things that Kubernetes can do for us
@@ -751,19 +730,19 @@ class: title
 
   (e.g. database replication, failover, etc.)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Kubernetes architecture
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: pic
 
 ![haha only kidding](images/k8s-arch1.png)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Kubernetes architecture
@@ -772,14 +751,14 @@ class: pic
 
 - OK, I was trying to scare you, it's much simpler than that ❤️
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: pic
 
 ![that one is more like the real thing](images/k8s-arch2.png)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Credits
@@ -792,7 +771,7 @@ class: pic
 
   (Courtesy of [Imesh Gunaratne](https://medium.com/containermind/a-reference-architecture-for-deploying-wso2-middleware-on-kubernetes-d4dee7601e8e))
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Kubernetes architecture: the nodes
@@ -809,7 +788,7 @@ class: pic
 
   (You might see that word in older articles or documentation)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Kubernetes architecture: the control plane
@@ -826,14 +805,14 @@ class: pic
 
 - The control plane is also called the "master"
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: pic
 
 ![One of the best Kubernetes architecture diagrams available](images/k8s-arch4-thanks-luxas.png)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -858,7 +837,7 @@ class: extra-details
 
   (This is sometimes called a "multi-master" setup)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -880,7 +859,7 @@ class: extra-details
 
 *For this reason, it is more accurate to say "control plane" rather than "master."*
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -905,7 +884,7 @@ class: extra-details
 
   (however, running a cluster of that size requires a lot of tuning)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -922,7 +901,7 @@ No!
 
 - <del>We could also use `rkt` ("Rocket") from CoreOS</del> (deprecated)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -943,7 +922,7 @@ class: extra-details
 
 - [And more](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -968,7 +947,7 @@ Yes!
 
 .footnote[¹[Not Invented Here](https://en.wikipedia.org/wiki/Not_invented_here)]
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: extra-details
@@ -987,7 +966,7 @@ class: extra-details
 
 .footnote[More information about CRI [on the Kubernetes blog](https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes)]
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Interacting with Kubernetes
@@ -1006,14 +985,14 @@ class: extra-details
 
   - service (stable network endpoint to connect to one or multiple containers)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: pic
 
 ![Node, pod, container](images/k8s-arch3-thanks-weave.png)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Scaling
@@ -1033,7 +1012,7 @@ class: pic
   - they would all have the same IP address
     <br/>(resulting in `Address alreading in use` errors)
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Together or separate
@@ -1057,7 +1036,7 @@ class: pic
 
 - Both scenarios can make sense, depending on our goals
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 ## Credits
@@ -1079,7 +1058,7 @@ Both diagrams used with permission.
 :EN:- Kubernetes concepts
 :FR:- Kubernetes en théorie
 
-.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/concepts-k8s.md)]
+.debug[[k8s/concepts-k8s.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/concepts-k8s.md)]
 ---
 
 class: pic
@@ -1124,7 +1103,7 @@ class: title
 
 - `kubectl` can be pronounced "Cube C T L", "Cube cuttle", "Cube cuddle"...
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1147,7 +1126,7 @@ class: extra-details
 
   - to inspect and poke at things
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1170,7 +1149,7 @@ class: extra-details
 
 - The Kubernetes API is always the underlying access method
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## `kubectl get`
@@ -1192,7 +1171,7 @@ class: extra-details
   kubectl get nodes
   ```
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Obtaining machine-readable output
@@ -1214,7 +1193,7 @@ class: extra-details
 
 ]
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## (Ab)using `kubectl` and `jq`
@@ -1231,7 +1210,7 @@ class: extra-details
 
 ]
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1257,7 +1236,7 @@ class: extra-details
   kubectl explain node --recursive
   ```
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1276,7 +1255,7 @@ class: extra-details
 
   (they communicate with the API server and obtain the exact type definitions)
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Type names
@@ -1295,7 +1274,7 @@ class: extra-details
 
   (because even a single `Endpoints` resource is actually a list of endpoints)
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Viewing details
@@ -1314,7 +1293,7 @@ class: extra-details
 
 - For a comprehensive overview, we can use `kubectl describe` instead
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## `kubectl describe`
@@ -1343,7 +1322,7 @@ class: extra-details
 
 (We should notice a bunch of control plane pods.)
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Listing running containers
@@ -1369,7 +1348,7 @@ class: extra-details
 
 *Where are the pods that we saw just a moment earlier?!?*
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Namespaces
@@ -1395,7 +1374,7 @@ class: extra-details
 
 `kubectl describe node node1`
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Accessing namespaces
@@ -1420,7 +1399,7 @@ class: extra-details
 
 *Here are our system pods!*
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## What are all these control plane pods?
@@ -1437,11 +1416,13 @@ class: extra-details
 
 - `kube-proxy` is the (per-node) component managing port mappings and such
 
-- `calico`/`weave` is the (per-node) component managing the network overlay
+- `weave` is the (per-node) component managing the network overlay
 
 - the `READY` column indicates the number of containers in each pod
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+  (1 for most pods, but `weave` has 2, for instance)
+
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Scoping another namespace
@@ -1458,7 +1439,7 @@ class: extra-details
 
 ]
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Namespaces and other `kubectl` commands
@@ -1478,7 +1459,7 @@ class: extra-details
   - `kubectl label` can add/remove/update labels across multiple namespaces
 
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: extra-details
@@ -1500,7 +1481,7 @@ class: extra-details
 [KEP-0009]: https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/0009-node-heartbeat.md
 [node controller documentation]: https://kubernetes.io/docs/concepts/architecture/nodes/#node-controller
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Services
@@ -1523,7 +1504,7 @@ class: extra-details
 
 There is already one service on our cluster: the Kubernetes API itself.
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## ClusterIP services
@@ -1547,7 +1528,7 @@ There is already one service on our cluster: the Kubernetes API itself.
 
 The command above should either time out, or show an authentication error. Why?
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Time out
@@ -1562,7 +1543,7 @@ The command above should either time out, or show an authentication error. Why?
 
 - To try the connection from within the cluster, we can use [shpod](https://github.com/jpetazzo/shpod)
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Authentication error
@@ -1586,7 +1567,7 @@ $ curl -k https://10.96.0.1
 }
 ```
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## Explanations
@@ -1605,7 +1586,7 @@ $ curl -k https://10.96.0.1
 
   (many apps integrating with Kubernetes will use this)
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 ## DNS integration
@@ -1625,7 +1606,7 @@ $ curl -k https://10.96.0.1
 :EN:- Getting started with kubectl
 :FR:- Se familiariser avec kubectl
 
-.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/kubectlget.md)]
+.debug[[namespaced/kubectlget.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/kubectlget.md)]
 ---
 
 class: pic
@@ -1672,7 +1653,7 @@ class: title
 
 - We'll explain what has changed, and why
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Choose your own adventure
@@ -1694,7 +1675,7 @@ class: title
 
   (to indicate "up to Kubernetes 1.17" and "from Kubernetes 1.18")
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Starting a simple pod with `kubectl run`
@@ -1716,7 +1697,7 @@ class: title
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## What do we see?
@@ -1728,8 +1709,8 @@ class: title
 
 - In Kubernetes 1.17-, the output is much more verbose:
   ```
-  kubectl run --generator=deployment/apps.v1 is DEPRECATED
-  and will be removed in a future version. Use kubectl run
+  kubectl run --generator=deployment/apps.v1 is DEPRECATED 
+  and will be removed in a future version. Use kubectl run 
   --generator=run-pod/v1 or kubectl create instead.
   deployment.apps/pingpong created
   ```
@@ -1740,7 +1721,7 @@ class: title
 
 🤔 What does that mean?
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Show me all you got!
@@ -1760,7 +1741,7 @@ Note: `kubectl get all` is a lie. It doesn't show everything.
 
 (But it shows a lot of "usual suspects", i.e. commonly used resources.)
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## The situation with Kubernetes 1.18+
@@ -1777,7 +1758,7 @@ We wanted a pod, we got a pod, named `pingpong`. Great!
 
 (We can ignore `service/kubernetes`, it was already there before.)
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## The situation with Kubernetes 1.17-
@@ -1800,7 +1781,7 @@ Our pod is not named `pingpong`, but `pingpong-xxxxxxxxxxx-yyyyy`.
 
 We have a Deployment named `pingpong`, and an extra Replica Set, too. What's going on?
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## From Deployment to Pod
@@ -1821,7 +1802,7 @@ We have the following resources:
 
 Let's explain what these things are.
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Pod
@@ -1840,7 +1821,7 @@ Let's explain what these things are.
 
   (except by manually creating more Pods)
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 class: extra-details
@@ -1863,7 +1844,7 @@ class: extra-details
 
 - If some containers fail and don't get restarted, the Pod ends in "Failed" phase
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Replica Set
@@ -1886,7 +1867,7 @@ class: extra-details
 
   - as a consequence, the Replica Set controller creates/deletes Pods
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Deployment
@@ -1909,7 +1890,7 @@ class: extra-details
 
 - When we scale up/down a Deployment, it scales up/down its Replica Set
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## `kubectl run` through the ages
@@ -1930,7 +1911,7 @@ class: extra-details
 
   - other kinds of resources can still be created with `kubectl create`
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Creating a Deployment the proper way
@@ -1953,7 +1934,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Running `ping` in a Deployment
@@ -1984,7 +1965,7 @@ class: extra-details
 
   (it has a default command of `ping 127.0.0.1`)
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Creating a Deployment running `ping`
@@ -2009,7 +1990,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Viewing container output
@@ -2033,7 +2014,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Streaming logs in real time
@@ -2062,7 +2043,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Scaling our application
@@ -2088,7 +2069,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 class: extra-details
@@ -2109,7 +2090,7 @@ class: extra-details
 
   (when we will look at how rolling updates work!)
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Streaming logs of multiple pods
@@ -2130,7 +2111,7 @@ It is showing us only one of them.
 
 We'll see later how to address that shortcoming.
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## Resilience
@@ -2160,7 +2141,7 @@ We'll see later how to address that shortcoming.
 
 <!--
 ```tmux select-pane -t 0```
-```execute-2 pingpong-[^-]*-.....```
+```copy pingpong-[^-]*-.....```
 ```tmux last-pane```
 ```keys kubectl delete pod ```
 ```paste```
@@ -2174,7 +2155,7 @@ We'll see later how to address that shortcoming.
 
 ]
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 ## What happened?
@@ -2196,7 +2177,7 @@ We'll see later how to address that shortcoming.
 :EN:- Running pods and deployments
 :FR:- Créer un pod et un déploiement
 
-.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-run.md)]
+.debug[[k8s/kubectl-run.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-run.md)]
 ---
 
 class: pic
@@ -2239,7 +2220,7 @@ class: title
 
   (just like the classic UNIX `cron` daemon with its `crontab` files)
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Creating a Job
@@ -2258,12 +2239,12 @@ class: title
 
 - Create a Job that has a 50% chance of success:
   ```bash
-    kubectl create job flipcoin --image=alpine -- sh -c 'exit $(($RANDOM%2))'
+    kubectl create job flipcoin --image=alpine -- sh -c 'exit $(($RANDOM%2))' 
   ```
 
 ]
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Our Job in action
@@ -2283,7 +2264,7 @@ class: title
 
 ]
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 class: extra-details
@@ -2302,7 +2283,7 @@ class: extra-details
 
   (we have to write our own YAML manifest to use them)
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Scheduling periodic background work
@@ -2323,7 +2304,7 @@ class: extra-details
 
 - Example: `*/3 * * * *` means "every three minutes"
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Creating a Cron Job
@@ -2349,7 +2330,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Cron Jobs in action
@@ -2373,7 +2354,7 @@ class: extra-details
 
 (It will take a few minutes before the first job is scheduled.)
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 class: extra-details
@@ -2398,7 +2379,7 @@ class: extra-details
 
 *Avoid using these forms, as they are deprecated since Kubernetes 1.18!*
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 ## Beyond `kubectl create`
@@ -2424,7 +2405,7 @@ class: extra-details
 :EN:- Running batch and cron jobs
 :FR:- Tâches périodiques *(cron)* et traitement par lots *(batch)*
 
-.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs.md)]
+.debug[[k8s/batch-jobs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs.md)]
 ---
 
 class: pic
@@ -2467,7 +2448,7 @@ class: title
 
   - ... many other ways! (`kubectl apply -f`, `kubectl patch`, ...)
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Viewing labels and annotations
@@ -2490,7 +2471,7 @@ class: title
 
 So, what do we get?
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Labels and annotations for our Deployment
@@ -2509,7 +2490,7 @@ So, what do we get?
 
 - This is to keep track of successive versions when doing rolling updates
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Selectors
@@ -2538,7 +2519,7 @@ So, what do we get?
 
 We could have also used `kubectl get pods --selector=app` to get all pods with the selector "app" regardless of its value.
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Labels and annotations for our Pod
@@ -2561,7 +2542,7 @@ We could have also used `kubectl get pods --selector=app` to get all pods with t
   ```
 
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 class: extra-details
@@ -2582,7 +2563,7 @@ class: extra-details
 
   Examples: `kubectl delete`, `kubectl label`, ...
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Other ways to view labels
@@ -2598,7 +2579,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Setting labels and annotations
@@ -2619,7 +2600,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Differences between labels and annotations
@@ -2640,7 +2621,7 @@ class: extra-details
 
   (dozens of kilobytes is fine, hundreds maybe not so much)
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 ## Cleanup web deployment
@@ -2660,7 +2641,7 @@ class: extra-details
 :EN:- Labels and annotations
 :FR:- *Labels* et annotations
 
-.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/labels-annotations.md)]
+.debug[[k8s/labels-annotations.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/labels-annotations.md)]
 ---
 
 class: pic
@@ -2701,7 +2682,7 @@ class: title
   ```
 ]
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 ## Streaming logs of multiple pods
@@ -2724,7 +2705,7 @@ class: title
 
 `kubectl logs` only shows us the logs of one of the Pods.
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 ## Viewing logs of multiple pods
@@ -2746,7 +2727,7 @@ class: title
 
 ]
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 ## Streaming logs of multiple pods
@@ -2771,7 +2752,7 @@ class: title
 
 *Let's try to understand why ...*
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 class: extra-details
@@ -2803,7 +2784,7 @@ but maximum allowed concurency is 5,
 use --max-log-requests to increase the limit
 ```
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 class: extra-details
@@ -2827,7 +2808,7 @@ class: extra-details
 - For more details about the rationale, see
   [PR #67573](https://github.com/kubernetes/kubernetes/pull/67573)
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 ## Shortcomings of `kubectl logs`
@@ -2844,7 +2825,7 @@ class: extra-details
 
   (e.g.: [Stern](https://github.com/wercker/stern))
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 class: extra-details
@@ -2863,7 +2844,7 @@ class: extra-details
 
 *See [#70554](https://github.com/kubernetes/kubernetes/issues/70554) for details.*
 
-.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectl-logs.md)]
+.debug[[k8s/kubectl-logs.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectl-logs.md)]
 ---
 
 class: pic
@@ -2898,7 +2879,7 @@ class: title
 
 - We are going to see how to do it better
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Doing it manually
@@ -2919,7 +2900,7 @@ class: title
 
 - We *could* do it, but thankfully, others did it for us already!
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Stern
@@ -2935,7 +2916,7 @@ From the README:
 
 Exactly what we need!
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Installing Stern
@@ -2963,7 +2944,7 @@ Exactly what we need!
 
 <!-- ##VERSION## -->
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Using Stern
@@ -2990,7 +2971,7 @@ Exactly what we need!
 
 ]
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Stern convenient options
@@ -3015,7 +2996,7 @@ Exactly what we need!
 
 ]
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Using Stern with a selector
@@ -3044,7 +3025,7 @@ Exactly what we need!
 
 ]
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 
 ## Cleanup ping pong deployment
@@ -3063,7 +3044,7 @@ Exactly what we need!
 :EN:- Viewing pod logs from the CLI
 :FR:- Consulter les logs des pods depuis la CLI
 
-.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/logs-cli.md)]
+.debug[[k8s/logs-cli.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/logs-cli.md)]
 ---
 ## Clean up our Jobs from earlier
 
@@ -3082,7 +3063,7 @@ Remember the `Job` and `Cronjob` we created earlier? Now would be a great time t
   ```
 ]
 
-.debug[[k8s/batch-jobs-cleanup.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/batch-jobs-cleanup.md)]
+.debug[[k8s/batch-jobs-cleanup.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/batch-jobs-cleanup.md)]
 ---
 
 class: pic
@@ -3121,13 +3102,13 @@ class: title
 
 --
 
-- Declarative seems simpler at first ...
+- Declarative seems simpler at first ... 
 
 --
 
 - ... As long as you know how to brew tea
 
-.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/declarative.md)]
+.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/declarative.md)]
 ---
 
 ## Declarative vs imperative
@@ -3153,7 +3134,7 @@ class: title
 .footnote[Did you know there was an [ISO standard](https://en.wikipedia.org/wiki/ISO_3103)
 specifying how to brew tea?]
 
-.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/declarative.md)]
+.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/declarative.md)]
 ---
 
 ## Declarative vs imperative
@@ -3173,7 +3154,7 @@ specifying how to brew tea?]
 
   - ... and compute a "diff" between *what we have* and *what we want*
 
-.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/declarative.md)]
+.debug[[shared/declarative.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/declarative.md)]
 ---
 ## Declarative vs imperative in Kubernetes
 
@@ -3189,7 +3170,7 @@ specifying how to brew tea?]
 
 - A *controller* will "notice" that spec and act upon it
 
-.debug[[k8s/declarative.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/declarative.md)]
+.debug[[k8s/declarative.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/declarative.md)]
 ---
 
 ## Reconciling state
@@ -3210,7 +3191,7 @@ specifying how to brew tea?]
 :EN:- Declarative vs imperative models
 :FR:- Modèles déclaratifs et impératifs
 
-.debug[[k8s/declarative.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/declarative.md)]
+.debug[[k8s/declarative.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/declarative.md)]
 ---
 ## 19,000 words
 
@@ -3222,84 +3203,84 @@ The following 19 slides show what really happens when we run:
 kubectl create deployment web --image=nginx
 ```
 
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/01.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/02.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/03.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/04.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/05.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/06.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/07.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/08.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/09.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/10.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/11.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/12.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/13.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/14.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/15.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/16.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/17.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/18.svg)
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 class: pic
 ![](images/kubectl-create-deployment-slideshow/19.svg)
 
-.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/deploymentslideshow.md)]
+.debug[[k8s/deploymentslideshow.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/deploymentslideshow.md)]
 ---
 
 class: pic
@@ -3346,7 +3327,7 @@ class: title
 
 - Kubernetes doesn't mandate any particular implementation
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 ## Kubernetes network model: the good
@@ -3367,7 +3348,7 @@ class: title
 
 - The specification is simple enough to allow many various implementations
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 ## Kubernetes network model: the less good
@@ -3389,14 +3370,14 @@ class: title
 - `kube-proxy` is on the data path when connecting to a pod or container,
   <br/>and it's not particularly fast (relies on userland proxying or iptables)
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 ## Kubernetes network model: in practice
 
-- The nodes that we are using have been set up to use [Calico](https://www.projectcalico.org/)
+- The nodes that we are using have been set up to use [Weave](https://github.com/weaveworks/weave)
 
-- This workshop doesn't endorse Calico in a particular way, it just Works For Us
+- We don't endorse Weave in a particular way, it just Works For Us
 
 - Don't worry about the warning about `kube-proxy` performance
 
@@ -3411,7 +3392,7 @@ class: title
 - If necessary, there are alternatives to `kube-proxy`; e.g.
   [`kube-router`](https://www.kube-router.io)
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 class: extra-details
@@ -3432,7 +3413,7 @@ class: extra-details
 
   - configure the interface as well as required routes etc.
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 class: extra-details
@@ -3457,7 +3438,7 @@ class: extra-details
 
   - can be bundled with the "pod network" or provided by another component
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 class: extra-details
@@ -3483,7 +3464,7 @@ class: extra-details
 :EN:- The Kubernetes network model
 :FR:- Le modèle réseau de Kubernetes
 
-.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubenet.md)]
+.debug[[k8s/kubenet.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubenet.md)]
 ---
 
 class: pic
@@ -3526,7 +3507,7 @@ class: title
 
 - Services address all these questions!
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Services in a nutshell
@@ -3545,7 +3526,7 @@ class: title
 
   (in the example above, our code can now connect to http://my-little-deploy/)
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Advantages of services
@@ -3566,7 +3547,7 @@ class: title
 
   (when a pod fails, the service seamlessly sends traffic to its replacement)
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Many kinds and flavors of service
@@ -3585,7 +3566,7 @@ class: title
 
 - Wow, that's a lot! Let's start with the basics ...
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## `ClusterIP`
@@ -3602,7 +3583,7 @@ class: title
 
 - Perfect for internal communication, within the cluster
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## `NodePort`
@@ -3624,7 +3605,7 @@ class: title
   (e.g. most clusters deployed with kubeadm or on-premises)
 
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## `LoadBalancer`
@@ -3645,7 +3626,7 @@ class: title
 - In practice, it will often flow through a `NodePort` first
 
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Running containers with open ports
@@ -3666,7 +3647,7 @@ class: title
 
   (and therefore, will be different on each backend)
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Creating a deployment for our HTTP server
@@ -3699,7 +3680,7 @@ class: title
 
 ]
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Exposing our deployment
@@ -3720,7 +3701,7 @@ class: title
 
 ]
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Services are layer 4 constructs
@@ -3734,10 +3715,10 @@ class: title
   (it relies on mechanisms that don't support layer 3)
 
 - As a result: you *have to* indicate the port number for your service
-
+    
   (with some exceptions, like `ExternalName` or headless services, covered later)
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Testing our service
@@ -3769,7 +3750,7 @@ class: title
 
 This Pod will live for 2400 seconds (4 hours) before exiting. Which means we can re-use it throughout the workshop.
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Testing our service
@@ -3801,7 +3782,7 @@ This Pod will live for 2400 seconds (4 hours) before exiting. Which means we can
 
 Our requests are load balanced across multiple pods.
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 
@@ -3823,7 +3804,7 @@ kubectl create service externalname k8s --external-name kubernetes.io
 ```
 *Creates a CNAME `k8s` pointing to `kubernetes.io`*
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3845,7 +3826,7 @@ class: extra-details
 
   (they will be added automatically by the process provisioning the load balancer)
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3866,7 +3847,7 @@ class: extra-details
 
 - In that case, we can use a "headless service"
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3885,7 +3866,7 @@ class: extra-details
 
 - This gives us an easy way to discover all the replicas for a deployment
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3911,7 +3892,7 @@ In the output, there will be a line starting with `Endpoints:`.
 
 That line will list a bunch of addresses in `host:port` format.
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3936,7 +3917,7 @@ class: extra-details
   kubectl get pods -l app=httpenv -o wide
   ```
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3956,7 +3937,7 @@ error: the server doesn't have a resource type "endpoint"
 
 - The type doesn't represent a single endpoint, but a list of endpoints
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -3978,7 +3959,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Accessing services via DNS
@@ -4001,7 +3982,7 @@ class: extra-details
   ```
 ]
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 ## Cleaning up our services
@@ -4021,7 +4002,7 @@ class: extra-details
   ```
 ]
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: extra-details
@@ -4048,7 +4029,7 @@ class: extra-details
 :FR:- Différents types de services : ClusterIP, NodePort, LoadBalancer
 :FR:- Utiliser CoreDNS pour la *service discovery*
 
-.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/kubectlexpose.md)]
+.debug[[k8s/kubectlexpose.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/kubectlexpose.md)]
 ---
 
 class: pic
@@ -4085,7 +4066,7 @@ class: title
 
 - The easiest way to ship container images is to use a registry
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 ## How Docker registries work (a reminder)
@@ -4108,7 +4089,7 @@ class: title
   docker push registry.mycompany.io:5000/myimage:awesome
   ```
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 ## Running DockerCoins on Kubernetes
@@ -4125,7 +4106,7 @@ class: title
 
 - For the 4 others, we need to build images and push them to some registry
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 ## Building and shipping images
@@ -4148,7 +4129,7 @@ class: title
 
   - that system gets the code, builds it, pushes the image to the registry
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 ## Which registry do we want to use?
@@ -4169,7 +4150,7 @@ class: title
 
   (when it has one)
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 ## Building on the fly
@@ -4187,7 +4168,7 @@ class: title
 :EN:- Shipping images to Kubernetes
 :FR:- Déployer des images sur notre cluster
 
-.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/shippingimages.md)]
+.debug[[k8s/shippingimages.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/shippingimages.md)]
 ---
 
 class: pic
@@ -4226,7 +4207,7 @@ git clone https://github.com/jpetazzo/container.training
 
 (You can also fork the repository on GitHub and clone your fork if you prefer that.)
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## What's this application?
@@ -4257,7 +4238,7 @@ git clone https://github.com/jpetazzo/container.training
 
   (the only common points are "randomness," "hashing," and "coins" in the name)
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## DockerCoins in the microservices era
@@ -4278,7 +4259,7 @@ git clone https://github.com/jpetazzo/container.training
   [docker-compose.yml](
   https://github.com/jpetazzo/container.training/blob/master/dockercoins/docker-compose.yml)
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## How DockerCoins works
@@ -4295,14 +4276,14 @@ git clone https://github.com/jpetazzo/container.training
 
 *(See diagram on next slide!)*
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 class: pic
 
 ![Diagram showing the 5 containers of the applications](images/dockercoins-diagram.svg)
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## Service discovery in container-land
@@ -4319,7 +4300,7 @@ How does each service find out the address of the other ones?
 
   (And by container-magic, we mean "a crafty, dynamic, embedded DNS server")
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## Example in `worker/worker.py`
@@ -4343,7 +4324,7 @@ def hash_bytes(data):
 https://github.com/jpetazzo/container.training/blob/8279a3bce9398f7c1a53bdd95187c53eda4e6435/dockercoins/worker/worker.py#L17
 ))
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 ## Show me the code!
@@ -4369,7 +4350,7 @@ https://github.com/jpetazzo/container.training/blob/8279a3bce9398f7c1a53bdd95187
   `rng` is in the [rng](https://github.com/jpetazzo/container.training/blob/master/dockercoins/rng/)
   directory, etc.)
 
-.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/sampleapp.md)]
+.debug[[namespaced/sampleapp.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/sampleapp.md)]
 ---
 
 class: pic
@@ -4415,7 +4396,7 @@ class: title
 
 ]
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 class: extra-details
@@ -4436,7 +4417,7 @@ class: extra-details
   done
 ```
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 ## Is this working?
@@ -4468,7 +4449,7 @@ kubectl wait deploy/worker --for condition=available
 
 💡 Oh right! We forgot to `expose`.
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 ## Connecting containers together
@@ -4491,7 +4472,7 @@ kubectl wait deploy/worker --for condition=available
 
 ]
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 ## Is this working yet?
@@ -4518,7 +4499,7 @@ kubectl wait deploy/worker --for condition=available
 
 We should now see the `worker`, well, working happily.
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 ## Exposing services for external access
@@ -4538,7 +4519,7 @@ We should now see the `worker`, well, working happily.
 
 *You should see the `EXTERNAL-IP` go from **pending** to an **IP address**.*
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 ## Accessing the web UI
@@ -4556,7 +4537,7 @@ We should now see the `worker`, well, working happily.
 
 ]
 
-.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/namespaced/ourapponkube.md)]
+.debug[[namespaced/ourapponkube.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/namespaced/ourapponkube.md)]
 ---
 
 class: pic
@@ -4593,7 +4574,7 @@ class: title
 
 - We can also create resources directly with YAML manifests
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## `kubectl apply` vs `create`
@@ -4614,7 +4595,7 @@ class: title
 
   - stores the manifest as an *annotation* in the resource
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## Creating multiple resources
@@ -4635,7 +4616,7 @@ class: title
  ...
 ```
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## Creating multiple resources
@@ -4654,7 +4635,7 @@ class: title
    ...
 ```
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## Deploying dockercoins with YAML
@@ -4678,7 +4659,7 @@ class: title
 because the resources that we created lack the necessary annotation.
 We can safely ignore them.)
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## Deleting resources
@@ -4693,7 +4674,7 @@ We can safely ignore them.)
 
   (just their `kind`, `apiVersion`, and `name`)
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## Pruning¹ resources
@@ -4710,7 +4691,7 @@ We can safely ignore them.)
 
 .footnote[¹If English is not your first language: *to prune* means to remove dead or overgrown branches in a tree, to help it to grow.]
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 ## YAML as source of truth
@@ -4731,7 +4712,7 @@ We can safely ignore them.)
 
 - Compares to "Infrastructure-as-Code", but for app deployments
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 class: extra-details
@@ -4761,7 +4742,7 @@ class: extra-details
 :EN:- Deploying with YAML manifests
 :FR:- Déployer avec des *manifests* YAML
 
-.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/yamldeploy.md)]
+.debug[[k8s/yamldeploy.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/yamldeploy.md)]
 ---
 
 class: pic
@@ -4798,7 +4779,7 @@ class: title
 
   - if something goes wrong, ¯\\\_(ツ)\_/¯
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling updates
@@ -4821,7 +4802,7 @@ class: title
 
   (if we start another update before the first one is done)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Update strategy
@@ -4841,7 +4822,7 @@ class: title
 - We have the possibility of rolling back to the previous version
   <br/>(if the update fails or is unsatisfactory in any way)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Checking current rollout parameters
@@ -4863,7 +4844,7 @@ class: title
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling updates in practice
@@ -4876,7 +4857,7 @@ class: title
 
 - Rolling updates can be monitored with the `kubectl rollout` subcommand
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling out the new `worker` service
@@ -4904,7 +4885,7 @@ class: title
 
 That rollout should be pretty quick. What shows in the web UI?
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Give it some time
@@ -4927,7 +4908,7 @@ That rollout should be pretty quick. What shows in the web UI?
 
   (The grace period is 30 seconds, but [can be changed](https://kubernetes.io/docs/concepts/workloads/pods/pod/#termination-of-pods) if needed)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling out something invalid
@@ -4959,7 +4940,7 @@ Our rollout is stuck. However, the app is not dead.
 
 (After a minute, it will stabilize to be 20-25% slower.)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## What's going on with our rollout?
@@ -4980,7 +4961,7 @@ Our rollout is stuck. However, the app is not dead.
   <br/>
   but the total number of pods being rolled out is allowed to be 25+25=50%
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 class: extra-details
@@ -5001,7 +4982,7 @@ class: extra-details
 
 - Our rollout is stuck at this point!
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Checking the dashboard during the bad rollout
@@ -5018,7 +4999,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Recovering from a bad rollout
@@ -5041,7 +5022,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling back to an older version
@@ -5052,7 +5033,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 - How can we get back to the previous version?
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Multiple "undos"
@@ -5072,7 +5053,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 🤔 That didn't work.
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Multiple "undos" don't work
@@ -5094,7 +5075,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## In this specific scenario
@@ -5105,7 +5086,7 @@ If you didn't deploy the Kubernetes dashboard earlier, just skip this slide.
 
 - What if we had changed other parameters in the Pod spec?
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Listing versions
@@ -5127,7 +5108,7 @@ We might see something like 1, 4, 5.
 
 (Depending on how many "undos" we did before.)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Explaining deployment revisions
@@ -5145,7 +5126,7 @@ We might see something like 1, 4, 5.
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 class: extra-details
@@ -5162,7 +5143,7 @@ class: extra-details
 
   (if we wanted to!)
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## Rolling back to an older version
@@ -5180,7 +5161,7 @@ class: extra-details
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 class: extra-details
@@ -5191,7 +5172,7 @@ class: extra-details
 
   - revert to `v0.1`
   - be conservative on availability (always have desired number of available workers)
-  - go slow on rollout speed (update only one pod at a time)
+  - go slow on rollout speed (update only one pod at a time) 
   - give some time to our workers to "warm up" before starting more
 
 The corresponding changes can be expressed in the following YAML snippet:
@@ -5212,7 +5193,7 @@ spec:
 ```
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 class: extra-details
@@ -5246,11 +5227,11 @@ class: extra-details
   kubectl get deploy -o json worker |
           jq "{name:.metadata.name} + .spec.strategy.rollingUpdate"
   ```
-  ]
+  ] 
 
 ]
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 ## That's it for `dockercoin` time to clean it up.
@@ -5280,7 +5261,7 @@ kubectl delete deployment hasher redis rng webui worker
 :FR:- Concept de *rolling update* et *rollback*
 :FR:- Paramétrer la vitesse de déploiement
 
-.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/rollout.md)]
+.debug[[k8s/rollout.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/rollout.md)]
 ---
 
 class: pic
@@ -5323,7 +5304,7 @@ class: title
 
   - access storage systems (like Ceph, EBS, NFS, Portworx, and many others)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 class: extra-details
@@ -5350,7 +5331,7 @@ class: extra-details
 
 - If you're not familiar with Docker volumes, you can safely ignore this slide!
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Volumes ≠ Persistent Volumes
@@ -5373,7 +5354,7 @@ class: extra-details
 
   - won't be discussed further in this section
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Adding a volume to a Pod
@@ -5390,7 +5371,7 @@ class: extra-details
 
 - It will "shadow" the directory where it's mounted
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Our basic Pod
@@ -5410,7 +5391,7 @@ This is a MVP! (Minimum Viable Pod😉)
 
 It runs a single NGINX container.
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Trying the basic pod
@@ -5440,7 +5421,7 @@ It runs a single NGINX container.
 
 (We should see the "Welcome to NGINX" page.)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Adding a volume
@@ -5461,7 +5442,7 @@ It runs a single NGINX container.
 
 - That container mounts the volume `www` to path `/usr/share/nginx/html/`
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## The Pod with a volume
@@ -5482,7 +5463,7 @@ spec:
       mountPath: /usr/share/nginx/html/
 ```
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Trying the Pod with a volume
@@ -5512,7 +5493,7 @@ spec:
 
 (We should now see a "403 Forbidden" error page.)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Populating the volume with another container
@@ -5531,7 +5512,7 @@ spec:
 
   - it's very popular (more than 100K stars!)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Sharing a volume between two containers
@@ -5561,7 +5542,7 @@ spec:
 ```
 ]
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Sharing a volume, explained
@@ -5578,7 +5559,7 @@ spec:
 
 - As a result, NGINX now serves this website
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Trying the shared volume
@@ -5603,7 +5584,7 @@ spec:
 
 ]
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Shared volume in action
@@ -5636,7 +5617,7 @@ The first time, we should see "403 Forbidden".
 
 The second time, we should see the HTML file from the Spoon-Knife repository.
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Explanations
@@ -5659,7 +5640,7 @@ The second time, we should see the HTML file from the Spoon-Knife repository.
 
   (NGINX serves the HTML file)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## The devil is in the details
@@ -5672,7 +5653,7 @@ The second time, we should see the HTML file from the Spoon-Knife repository.
 
 - That's why we specified `restartPolicy: OnFailure`
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Inconsistencies
@@ -5689,7 +5670,7 @@ The second time, we should see the HTML file from the Spoon-Knife repository.
 
 - How can we avoid that?
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Init Containers
@@ -5708,7 +5689,7 @@ The second time, we should see the HTML file from the Spoon-Knife repository.
 
 .footnote[See [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) documentation for all the details.]
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Defining Init Containers
@@ -5738,7 +5719,7 @@ spec:
 ```
 ]
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Trying the init container
@@ -5777,7 +5758,7 @@ spec:
 
   (a "half-ready" container)
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Other uses of init containers
@@ -5794,7 +5775,7 @@ spec:
 
 - etc.
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 ## Volume lifecycle
@@ -5819,7 +5800,7 @@ spec:
 :FR:- Partager des données grâce aux volumes
 :FR:- Quand et comment utiliser un *Init Container*
 
-.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/volumes.md)]
+.debug[[k8s/volumes.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/volumes.md)]
 ---
 
 class: pic
@@ -5862,7 +5843,7 @@ class: title
 
 - How can we do these things with containers and Kubernetes?
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Passing configuration to containers
@@ -5883,7 +5864,7 @@ class: title
 
 - Let's review these different strategies!
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Baking custom images
@@ -5904,16 +5885,16 @@ class: title
 
 - Avoid doing it unless you don't have the time to figure out other options
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Command-line arguments
 
 - Pass options to `args` array in the container specification
 
-- Example ([source](https://github.com/coreos/pods/blob/master/kubernetes.yaml#L29)):
+- Example ([source](https://github.com/coreos/pods/blob/master/kubernetes.yaml#L29)): 
   ```yaml
-      args:
+      args: 
         - "--data-dir=/var/lib/etcd"
         - "--advertise-client-urls=http://127.0.0.1:2379"
         - "--listen-client-urls=http://127.0.0.1:2379"
@@ -5925,7 +5906,7 @@ class: title
 
   ... or to a wrapper script that will use them to e.g. generate a config file
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Command-line arguments, pros & cons
@@ -5946,7 +5927,7 @@ class: title
 
 - Not ideal when we need to pass a real configuration file anyway
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Environment variables
@@ -5968,7 +5949,7 @@ class: title
 
 🤔 Why this weird `{name: xxx, value: yyy}` scheme? It will be revealed soon!
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## The downward API
@@ -5989,7 +5970,7 @@ class: title
 
 - Let's see a few concrete examples!
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Exposing the pod's namespace
@@ -6011,7 +5992,7 @@ class: title
   curl api-backend.$MY_POD_NAMESPACE.svc.cluster.local
   ```
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Exposing the pod's IP address
@@ -6027,7 +6008,7 @@ class: title
 
   (we could also read it from `eth0`, but this is more solid)
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Exposing the container's resource limits
@@ -6055,7 +6036,7 @@ class: title
   [this blog post](https://very-serio.us/2017/12/05/running-jvms-in-kubernetes/)
   for detailed examples)
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## More about the downward API
@@ -6066,7 +6047,7 @@ class: title
 
   (through files that get created in the container filesystem)
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Environment variables, pros and cons
@@ -6089,7 +6070,7 @@ class: title
 
 (Do it if you really need to, we're not judging! But we'll see better ways.)
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Injecting configuration files
@@ -6114,7 +6095,7 @@ class: title
 are another type of resource behaving very much like configmaps.
 We'll cover them just after!*
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Configmaps storing entire files
@@ -6139,7 +6120,7 @@ We'll cover them just after!*
   kubectl create configmap my-app-config --from-file=config.d/
   ```
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Configmaps storing individual parameters
@@ -6156,13 +6137,13 @@ We'll cover them just after!*
   kubectl create cm my-app-config \
       --from-literal=foreground=red \
       --from-literal=background=blue
-
+  
   # Create a configmap from a file containing key=val pairs
   kubectl create cm my-app-config \
       --from-env-file=app.conf
   ```
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Exposing configmaps to containers
@@ -6181,7 +6162,7 @@ We'll cover them just after!*
 
 - Let's see how to do both!
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Passing a configuration file with a configmap
@@ -6196,7 +6177,7 @@ We'll cover them just after!*
 
 - It listens on port 80, and load balances connections between IBM and Google
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Creating the configmap
@@ -6216,7 +6197,7 @@ We'll cover them just after!*
 
 ]
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Using the configmap
@@ -6241,7 +6222,7 @@ spec:
       mountPath: /usr/local/etc/haproxy/
 ```
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Using the configmap
@@ -6265,7 +6246,7 @@ spec:
 
 ]
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Testing our load balancer
@@ -6291,7 +6272,7 @@ We should see connections served by Google, and others served by IBM.
 <br/>
 (Each server sends us a redirect page. Look at the URL that they send us to!)
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Exposing configmaps as Environment Variables
@@ -6306,7 +6287,7 @@ We should see connections served by Google, and others served by IBM.
 
 - Then we will expose that configmap as a container environment variable
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Creating the configmap
@@ -6325,7 +6306,7 @@ We should see connections served by Google, and others served by IBM.
 
 ]
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Using the configmap
@@ -6349,7 +6330,7 @@ spec:
           key: http.addr
 ```
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Using the configmap
@@ -6378,7 +6359,7 @@ spec:
 
 ]
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Passwords, tokens, sensitive information
@@ -6391,7 +6372,7 @@ spec:
 
 - The *intent* is different, though:
 
-  *"You should use secrets for things which are actually secret like API keys,
+  *"You should use secrets for things which are actually secret like API keys, 
   credentials, etc., and use config map for not-secret configuration data."*
 
   *"In the future there will likely be some differentiators for secrets like rotation or support for backing the secret API w/ HSMs, etc."*
@@ -6399,11 +6380,11 @@ spec:
   (Source: [the author of both features](https://stackoverflow.com/a/36925553/580281
 ))
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 ## Differences between configmaps and secrets
-
+ 
 - Secrets are base64-encoded when shown with `kubectl get secrets -o yaml`
 
   - keep in mind that this is just *encoding*, not *encryption*
@@ -6426,7 +6407,7 @@ spec:
 :FR:- Configuration au travers de la *downward API*
 :FR:- Configuration via les *Config Maps* et *Secrets*
 
-.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/configuration.md)]
+.debug[[k8s/configuration.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/configuration.md)]
 ---
 
 class: pic
@@ -6471,7 +6452,7 @@ Suggested containerization checklist:
 
 And *then* it is time to look at orchestration!
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 
@@ -6489,7 +6470,7 @@ And *then* it is time to look at orchestration!
 
   (price: $-$$$, difficulty: hard)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## One big cluster vs. multiple small ones
@@ -6510,7 +6491,7 @@ And *then* it is time to look at orchestration!
 
   (whether it's a local minikube or a full-blown multi-node cluster)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Namespaces
@@ -6531,7 +6512,7 @@ And *then* it is time to look at orchestration!
 
 .warning[This does not provide *isolation*! That would be the job of network policies.]
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Relevant sections
@@ -6544,7 +6525,7 @@ And *then* it is time to look at orchestration!
 
   (covers permissions model, user and service accounts management ...)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Stateful services (databases etc.)
@@ -6565,7 +6546,7 @@ And *then* it is time to look at orchestration!
     <br/>
     (application-level proxies that can provide credentials injection and more)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Stateful services (second take)
@@ -6593,7 +6574,7 @@ And *then* it is time to look at orchestration!
 
 - Excellent [blog post](http://www.databasesoup.com/2018/07/should-i-run-postgres-on-kubernetes.html) tackling the question: “Should I run Postgres on Kubernetes?”
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## HTTP traffic handling
@@ -6613,7 +6594,7 @@ And *then* it is time to look at orchestration!
 
 - [This section](kube-selfpaced.yml.html#toc-exposing-http-services-with-ingress-resources) shows how to expose multiple HTTP apps using [Træfik](https://docs.traefik.io/user-guide/kubernetes/)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Logging
@@ -6630,7 +6611,7 @@ And *then* it is time to look at orchestration!
 
 - [This section](kube-selfpaced.yml.html#toc-centralized-logging) shows how to do that with [Fluentd](https://docs.fluentd.org/v0.12/articles/kubernetes-fluentd) and the EFK stack
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Metrics
@@ -6649,7 +6630,7 @@ And *then* it is time to look at orchestration!
 
   (but is being [deprecated](https://github.com/kubernetes/heapster/blob/master/docs/deprecation.md) starting with Kubernetes 1.11)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Managing the configuration of our applications
@@ -6668,7 +6649,7 @@ And *then* it is time to look at orchestration!
 
 - [This section](kube-selfpaced.yml.html#toc-managing-configuration) shows how to manage app config with config maps (among others)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Managing stack deployments
@@ -6685,7 +6666,7 @@ And *then* it is time to look at orchestration!
   - how often we change it (i.e. add/remove components)
   - the size and skills of our team
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## A few tools to manage stacks
@@ -6706,7 +6687,7 @@ And *then* it is time to look at orchestration!
 - [Brigade](https://brigade.sh/)
   (event-driven scripting; no YAML)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Cluster federation
@@ -6723,7 +6704,7 @@ Sorry Star Trek fans, this is not the federation you're looking for!
 
 (If I add "Your cluster is in another federation" I might get a 3rd fandom wincing!)
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 ## Cluster federation
@@ -6746,7 +6727,7 @@ Sorry Star Trek fans, this is not the federation you're looking for!
 
 - Discover resources across clusters
 
-.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/whatsnext.md)]
+.debug[[k8s/whatsnext.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/whatsnext.md)]
 ---
 
 class: pic
@@ -6787,7 +6768,7 @@ class: title
 
 - ... What does that mean?
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Running an app involves many steps
@@ -6808,7 +6789,7 @@ class: title
 
 - And much more
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Who does what?
@@ -6825,7 +6806,7 @@ class: title
 
   (e.g. if we add "buy/rack/provision machines" in that list)
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## What do we ship?
@@ -6838,7 +6819,7 @@ class: title
 
 - Let's see a few options, and what they imply
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Shipping code
@@ -6853,7 +6834,7 @@ class: title
 
 ❌ very little advantage of using containers
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Shipping container images
@@ -6874,7 +6855,7 @@ class: title
 
 ❌ complex applications will run very differently between dev and prod
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Shipping Compose files
@@ -6893,7 +6874,7 @@ class: title
 
 ❌ there will be *some* differences between dev and prod
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Shipping Kubernetes manifests
@@ -6912,7 +6893,7 @@ class: title
 
 ❌ Kubernetes is not a very convenient development platform (at least, not yet)
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## What's the right answer?
@@ -6933,7 +6914,7 @@ class: title
 
   - do we give people resources (time, money) to learn?
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 class: extra-details
@@ -6955,7 +6936,7 @@ are a few tools that can help us.*
 
 - ...
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Where do we run?
@@ -6970,7 +6951,7 @@ are a few tools that can help us.*
 
 - Which versions/features to enable?
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Developer experience
@@ -6985,7 +6966,7 @@ are a few tools that can help us.*
 
 *These questions are good "sanity checks" to validate our strategy!*
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 ## Some guidelines
@@ -7008,7 +6989,7 @@ are a few tools that can help us.*
 
 - Iterate!
 
-.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/lastwords.md)]
+.debug[[k8s/lastwords.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/lastwords.md)]
 ---
 
 class: pic
@@ -7054,13 +7035,13 @@ Everything else:
 
 .footnote[These slides (and future updates) are on → http://container.training/]
 
-.debug[[k8s/links.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/k8s/links.md)]
+.debug[[k8s/links.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/k8s/links.md)]
 ---
 class: title, self-paced
 
 Thank you!
 
-.debug[[shared/thankyou.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/thankyou.md)]
+.debug[[shared/thankyou.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/thankyou.md)]
 ---
 
 class: title, in-person
@@ -7069,7 +7050,7 @@ That's all, folks! <br/> Questions?
 
 ![end](images/end.jpg)
 
-.debug[[shared/thankyou.md](https://github.com/paulczar/container.training/tree/jun-workshop/slides/shared/thankyou.md)]</textarea>
+.debug[[shared/thankyou.md](https://github.com/paulczar/container.training/tree/austin-devops/slides/shared/thankyou.md)]</textarea>
     <script src="remark.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">
@@ -7080,8 +7061,8 @@ That's all, folks! <br/> Questions?
         excludedClasses: ["self-paced"]
       });
     </script>
-
-    <!--
+    
+    <!-- 
     These two scripts will be available only when loading the
     content using the pub/sub server. Otherwise, they'll just
     404 and that's OK.

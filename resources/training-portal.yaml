@@ -4,12 +4,17 @@ metadata:
   name: lab-container-training
 spec:
   portal:
-    capacity: 60
+    registration:
+      type: anonymous
+      password: happy-birthday-paul
+    # capacity: 100
+    capacity: 10
     # reserved: 60
-    initial: 40
+    # initial: 40
+    initial: 4
     # expires: 8h
     # orphaned: 15m
     ingress:
-      hostname: "atxdevops"
+      hostname: "austin-devops"
   workshops:
   - name: lab-container-training

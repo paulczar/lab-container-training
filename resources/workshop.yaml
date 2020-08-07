@@ -17,7 +17,7 @@ spec:
   content:
     # image: paulczar/eduk8s-base:stable
     # image: paulczar/lab-container-training:latest
-    files: github.com/paulczar/lab-container-training
+    files: github.com/paulczar/lab-container-training?ref=austin-devops
   # logo:
   session:
     budget: custom
