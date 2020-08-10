@@ -9,6 +9,7 @@ kubectl set image deploy worker worker=dockercoins/worker:v0.3
 ```
 
 2. Check what's going on
+
 ```execute
 kubectl rollout status deploy worker
 ```

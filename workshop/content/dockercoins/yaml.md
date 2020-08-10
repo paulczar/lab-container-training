@@ -13,3 +13,25 @@ kubectl apply -f examples/dockercoins/k8s
 ```
 
 *Note: if the path given to `kubectl apply -f` is a directory, all manifests in that directory will be applied.*
+
+*Additional note: You'll see k8s warn you about this, it's ok to ignore.*
+```
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/hasher configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+service/hasher configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/redis configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+service/redis configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/rng configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+service/rng configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/webui configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+service/webui configured
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/worker configured
+```

@@ -14,7 +14,7 @@ kubectl get pod registry -o wide
 IP=$(kubectl get pod registry -o json | jq -r .status.podIP)
 ```
 
-3.Confirm that the registry is available on port 80
+3. Confirm that the registry is available on port 80
 
 ```execute
 kubectl exec shpod -- curl -s $IP/v2/_catalog

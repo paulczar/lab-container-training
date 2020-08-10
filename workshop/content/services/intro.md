@@ -2,7 +2,7 @@
 
 * An easy way to create a service is to use `kubectl expose`
 
-* If we have a deployment named `my-little-deploy`, we can run:
+* If we have a deployment named `my-little-deploy`, we could run:
 
 ```
 kubectl expose deployment my-little-deploy --port=80

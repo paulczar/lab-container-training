@@ -1,3 +1,3 @@
 Thanks for training with us!
 
-- Paul, Tiffany, & Tyler.
+- Paul and JJ

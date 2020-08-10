@@ -19,7 +19,8 @@ cat examples/volumes/nginx-3-with-git.yaml
 kubectl apply -f !*
 ```
 
-3. As soon as we see its IP address, access it
+3. Wait a couple seconds, or a minute-ish. And as soon as we see its IP address, access it
+
 ```execute
 kubectl wait pod/nginx-with-git --for condition=initialized
 kubectl get pod nginx-with-git -o jsonpath={.status.podIP}

@@ -15,6 +15,8 @@ kubectl logs -l app=pingpong --tail 1 -f
 
 We see a message like the following one:
 
+```
 error: you are attempting to follow 8 log streams,
 but maximum allowed concurency is 5,
 use --max-log-requests to increase the limit
+```

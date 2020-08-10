@@ -1,6 +1,6 @@
 After waiting for the deployment to complete, let's look at the logs!
 
-(Hint: use kubectl get deploy -w to watch deployment events)
+(Hint: use `kubectl get deploy -w` to watch deployment events)
 
 
 1. Check if `rng` is working:

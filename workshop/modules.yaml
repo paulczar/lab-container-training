@@ -8,7 +8,7 @@ modules:
     name: Workshop Summary
     exit_sign: Finish Workshop
   logistics:
-    name: "logistics"
+    name: "Logistics"
   kubectl/auth-can-i:
     name: "Role Based Access Control"
   kubectl/get-node:

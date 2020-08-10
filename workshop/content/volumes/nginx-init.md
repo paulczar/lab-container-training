@@ -17,6 +17,7 @@ kubectl apply -f !*
 Wait until it shows as `READY`
 
 3. Access it
+
 ```execute
 kubectl get pod nginx-with-init -o jsonpath={.status.podIP}
 IP=$(!!)
