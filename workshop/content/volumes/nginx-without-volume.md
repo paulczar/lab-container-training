@@ -16,7 +16,7 @@ kubectl get pod nginx-without-volume -o jsonpath={.status.podIP}
 IPADDR=$(!!)
 ```
 
-*What does `$(!!) do ?*
+*What does `$(!!)` do ?*
 
 3. Send a request
 
