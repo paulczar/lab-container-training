@@ -34,8 +34,8 @@ spec:
         enabled: true
       docker:
         enabled: false
-    namespaces:
-      budget: medium
+    # namespaces:
+    #   budget: medium
     objects:
       - kind: ClusterRole
         apiVersion: rbac.authorization.k8s.io/v1
@@ -64,76 +64,76 @@ spec:
           kind: ClusterRole
           name: $(session_namespace)-workshop-extra
           apiGroup: rbac.authorization.k8s.io
-      # - apiVersion: v1
-      #   kind: LimitRange
-      #   metadata:
-      #     annotations:
-      #       resource-budget: custom
-      #     name: resource-limits
-      #     namespace: $(session_namespace)
-      #   spec:
-      #     limits:
-      #     - max:
-      #         cpu: "2"
-      #         memory: 2Gi
-      #       min:
-      #         cpu: 50m
-      #         memory: 32Mi
-      #       type: Pod
-      #     - default:
-      #         cpu: 125m
-      #         memory: 128Mi
-      #       defaultRequest:
-      #         cpu: 50m
-      #         memory: 128Mi
-      #       max:
-      #         cpu: "2"
-      #         memory: 2Gi
-      #       min:
-      #         cpu: 50m
-      #         memory: 32Mi
-      #       type: Container
-      #     - max:
-      #         storage: 5Gi
-      #       min:
-      #         storage: 1Gi
-      #       type: PersistentVolumeClaim
-      # - apiVersion: v1
-      #   kind: ResourceQuota
-      #   metadata:
-      #     annotations:
-      #       resource-budget: custom
-      #     name: compute-resources
-      #     namespace: $(session_namespace)
-      #   spec:
-      #     hard:
-      #       limits.cpu: "2"
-      #       limits.memory: 2Gi
-      #     scopes:
-      #     - NotTerminating
-      # - apiVersion: v1
-      #   kind: ResourceQuota
-      #   metadata:
-      #     annotations:
-      #       resource-budget: custom
-      #     name: compute-resources-timebound
-      #     namespace: $(session_namespace)
-      #   spec:
-      #     hard:
-      #       limits.cpu: "2"
-      #       limits.memory: 2Gi
-      #     scopes:
-      #     - Terminating
-      # - apiVersion: v1
-      #   kind: ResourceQuota
-      #   metadata:
-      #     annotations:
-      #       resource-budget: custom
-      #     name: object-counts
-      #     namespace: $(session_namespace)
-      #   spec:
-      #     hard:
-      #       persistentvolumeclaims: "6"
-      #       replicationcontrollers: "15"
-      #       secrets: "25"
-      #       services: "10"
+      - apiVersion: v1
+        kind: LimitRange
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: resource-limits
+          namespace: $(session_namespace)
+        spec:
+          limits:
+          - max:
+              cpu: "2"
+              memory: 2Gi
+            min:
+              cpu: 50m
+              memory: 32Mi
+            type: Pod
+          - default:
+              cpu: 125m
+              memory: 128Mi
+            defaultRequest:
+              cpu: 50m
+              memory: 128Mi
+            max:
+              cpu: "2"
+              memory: 2Gi
+            min:
+              cpu: 50m
+              memory: 32Mi
+            type: Container
+          - max:
+              storage: 5Gi
+            min:
+              storage: 1Gi
+            type: PersistentVolumeClaim
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: compute-resources
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            limits.cpu: "2"
+            limits.memory: 2Gi
+          scopes:
+          - NotTerminating
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: compute-resources-timebound
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            limits.cpu: "2"
+            limits.memory: 2Gi
+          scopes:
+          - Terminating
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          annotations:
+            resource-budget: custom
+          name: object-counts
+          namespace: $(session_namespace)
+        spec:
+          hard:
+            persistentvolumeclaims: "6"
+            replicationcontrollers: "15"
+            secrets: "25"
+            services: "10"
